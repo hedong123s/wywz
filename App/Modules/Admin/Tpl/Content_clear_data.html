@@ -1,0 +1,46 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--table-list-->
+<div class="table-edit">
+	<form method="post" action="<{:U('clear_data_send')}>">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th colspan="2">请选择需要清理的数据<span style="color:#db0000;">（清理后，不可恢复）</span></th>
+		</tr>
+		<tbody>
+	
+		<tr>
+			<td width="100"  align="center">
+				<input type="checkbox" class="input-text-c input-text" value="content" name="tables[]">
+			</td>
+			<td>内容</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="90">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" onclick="if(confirm('清理后不可恢复，确定??')){return true }else {return false;}" /> 
+		
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

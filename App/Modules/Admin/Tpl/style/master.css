@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* ===============================
+
+@ title:系统后台整体框架css
+@ author:flc
+@ company:jiufang
+@ creattime:2013-08-14 18:06:37
+@ updatetime:2013-08-14 17:23:59
+
+=================================*/
+body{ width:100%; min-width:1100px; overflow-y:hidden; background:#e2e9ea}
+
+/*top*/
+.top{ width:100%; min-width:1100px; height:80px; background:#3a8dc9 url(../images/top_bg.jpg) repeat-x left top;}
+.top_l{ width:100%; height:80px; background:url(../images/top_lbg.jpg) no-repeat left top}
+.top_r{ width:100%; height:80px; background:url(../images/top_rbg.jpg) no-repeat right top}
+
+.logo{ width:136px; height:80px; background:url(../images/top_s.jpg) no-repeat right top;}
+
+/*shortcut 快捷按钮*/
+.shortcut{ padding-left:10px;}
+.shortcut ul li{ width:68px; height:80px; overflow:hidden; float:left; display:inline; margin-right:8px;}
+.shortcut ul li a{ width:68px; height:72px;_height:74px; display:inline-block; text-align:center; padding-top:8px;_padding-top:6px; color:#b0dbf4;}
+.shortcut ul li a:hover{ color:#eaf4fa; background:url(../images/shortcut_curbg.png) no-repeat center top; _background:#7bc0e9;}
+.shortcut_ico{ width:48px; height:48px; font-size:0; line-height:0; overflow:hidden;}
+.shortcut_title{ text-align:center; display:block; line-height:24px;}
+
+/*登录信息*/
+.sys_adimin_inf{ color:#fff; line-height:32px; padding-right:12px; height:32px; float:right;}
+.sys_adimin_inf i{ font-style:normal; padding:0 4px; color:#a9d8f0;}
+.sys_adimin_inf a{ color:#fff;}
+.sys_adimin_inf a:hover{ color:#fff; text-decoration:underline;}
+
+/*系统菜单*/
+.sys_menu{ height:30px; background:url(../images/sys_menu.png) no-repeat left bottom; float:right; padding-left:40px; padding-right:8px;}
+.sys_menu ul li{ height:30px; float:left; background:url(../images/sys_menu_s.jpg) no-repeat right center; margin-left:-2px;}
+.sys_menu ul li.nobg{ background:none;}
+.sys_menu ul li a{ height:30px; display:inline-block; line-height:30px; color:#daf5ff; padding-left:4px;}
+.sys_menu ul li a span{ cursor:pointer; display:inline-block; padding:0 15px 0 11px;}
+.sys_menu ul li a:hover span{ color:#daf5ff; text-decoration:underline;}
+.sys_menu ul li.cur a { background:url(../images/sys_menu_curbg.jpg) no-repeat left bottom; color:#000; font-weight:bold;}
+.sys_menu ul li.cur a span { background:url(../images/sys_menu_curbg.jpg) no-repeat right bottom;}
+.sys_menu ul li.cur a:hover span{ color:#000; text-decoration:none;}
+
+/*系统弹窗*/
+.sys_alert_wrap{ width:100%; position:relative; z-index:9999; text-align:center;}
+.sys_alert{ line-height:18px; display:inline-block; text-align:center; background:#68af02; color:#fff; position:absolute; left:50%; margin-left:-125px; padding:2px 12px; bottom:12px; z-index:9999; border-radius:3px; max-width:250px; display:none;}
+.sys_alert_error{ background:#e23030;}
+.sys_alert_wran{ background:#f8cd10;}
+
+/*容器*/
+.col-div{ border:1px solid #f4f6f5;zoom:1; background:#fff}
+.col-div .col-div-con{border:1px solid #c2d1d8;zoom:1;}
+
+
+/*sys_left_wrap 系统左侧*/
+.col-left{ width:135px; border:none; border-right:1px solid #f4f6f5; }
+.col-left .col-div-con{ border:none;border-right:1px solid #c2d1d8}
+.sys_left_wrap{ background:#f7fbfc; width:134px; overflow:hidden; position:relative;}
+
+.sys_left_menu{ width:134px; overflow:hidden;}
+.sys_left_menu h4{ height:31px; line-height:31px; background:url(../images/sys_left_menu.png) no-repeat right -32px; color:#007296; font-size:14px; font-weight:bold;text-shadow:1px 1px 0px #fff; padding-left:12px; cursor:pointer;}
+.sys_left_menu h4.open{background:url(../images/sys_left_menu.png) no-repeat right top;}
+.sys_left_menu ul{ padding:6px 0; padding-left:8px;}
+.sys_left_menu ul li{ width:126px; margin-bottom:2px;}
+.sys_left_menu ul li a{ width:126px; height:20px; line-height:20px; display:block; text-indent:10px; overflow:hidden; outline:none;}
+.sys_left_menu ul li a:hover{ background:url(../images/sys_left_menu.png) no-repeat -234px -65px; color:#444;}
+.sys_left_menu ul li.cur a{ height:26px; line-height:26px; color:#007296; background:url(../images/sys_left_menu.png) no-repeat -234px -88px; font-weight:bold;}
+.sys_left_menu ul li.cur a:hover{ background:url(../images/sys_left_menu.png) no-repeat -234px -88px; color:#007296;}
+
+.sys_left_scroll{ position:absolute; left:0px; bottom:0px; padding-top:5px; width:126px; height:24px; border-top:1px solid #c2d1d8; padding-left:8px; overflow:hidden; z-index:999; background:#f7fbfc;}
+.sys_left_scroll a{ background:url(../images/scroll_bg.png) no-repeat left top; width:48px; height:17px; display:inline-block; margin:0 5px;}
+.sys_left_scroll a:hover{ background-position:left bottom}
+.sys_left_scroll a.next{background-position:right top}
+.sys_left_scroll a.next:hover{ background-position:right bottom}
+
+/*sys_close_menu*/
+.sys_close_menu{ width:8px; font-size:0; line-height:0; display:inline-block; float:left; text-indent:-9999px; background:url(../images/sys_close_menu.gif) no-repeat 2px center; outline:none; overflow:hidden;}
+.sys_close_menu:hover{background:#d8dfe0 url(../images/sys_close_menu.gif) no-repeat 2px center;}
+.sys_close_menu_open{background:url(../images/sys_close_menu.gif) no-repeat -28px center;}
+.sys_close_menu_open:hover{background:#d8dfe0 url(../images/sys_close_menu.gif) no-repeat -28px center;}
+
+/*sys_sort_wrap  内容分类*/
+.col-sort{ margin:8px 8px 0 0; width:180px; display:none;}
+.sys_sort_content{ width:178px; overflow:hidden;}
+
+/*col-main  main显示*/
+.col-main{margin:8px 0 0 0;}
+.sys_main_wrap{}
+
+
+
+
+
+
+
+
+
+
+
+
+

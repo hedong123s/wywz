@@ -1,0 +1,81 @@
+<include file="Index/header" />
+<script type="text/javascript">
+	$(function(){
+		$("#selectdb").click(function(){
+			if($(this).attr('checked')=='checked'){
+				$('input[name="db[]"]').attr('checked','checked');
+			}else{
+				$('input[name="db[]"]').attr('checked',false);
+			}
+		})
+	})
+</script>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="javascript:;" class="cur"><i>数据库操作</i></a> | 
+		<a href="<{:U('import')}>"><i>数据库还原</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form name="myform" method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="35"><input type="checkbox"  value="" id="selectdb" checked="checked" ></th>
+			<th>表名</th>
+			<th>记录数</th>
+			<th width="200">操作</th>
+		</tr>
+		<tbody>
+		<if condition="$list">
+		<volist name="list" id="foo">
+		<tr>
+			<td align="center"><input type="checkbox"  value="<{$foo['dbname']}>" checked="checked" name="db[]" ></td>
+			<td align="center"><{$foo.dbname}></td>
+			<td  align="center"><{$foo.countnum|intval=###}></td>
+			<td align="center"><a href="<{:U('optimize',array('db'=>$foo['dbname']))}>">优化</a> | <a href="<{:U('repair',array('db'=>$foo['dbname']))}>">修复</a> | <a href="<{:U('struct',array('db'=>$foo['dbname']))}>">结构</a></td>
+		</tr>
+		</volist>
+		</if>
+		</tbody>
+	</table>
+
+	<div class="tools-list">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+		
+				<td colspan="3">
+				<label for="selectdb">全选/取消</label>
+					<input type="button" class="sys_btn" value="优化" onclick="myform.action='<{:U('optimize')}>';myform.submit();" /> 
+					&nbsp;
+					<input type="button" class="sys_btn" value="修复" onclick="myform.action='<{:U('repair')}>';myform.submit();" /> 
+				</td>
+				<td align="right">
+					备份表结构：<input type="checkbox"  value="1" name="isstruct">
+					&nbsp;
+					<input type="button" class="sys_btn" value="开始备份数据" onclick="myform.action='<{:U('backup')}>';myform.submit();" /> 					
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

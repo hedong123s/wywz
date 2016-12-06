@@ -1,0 +1,76 @@
+<include file='Index/header' />
+<link rel="stylesheet" type="text/css" href="__TMPL__style/jquery.lightTreeview.css" />
+<script type="text/javascript" src="__TMPL__js/jquery.lightTreeview.pack.js"></script>
+<script type="text/javascript">
+
+
+
+<if condition="ACTION_NAME  eq 'menu' ">	
+$("#sys_main_iframe",parent.document).attr('src','<{:U('content/index')}>');
+</if>
+
+
+$(function(){
+	
+	$("span.btn").eq(0).toggle(function(){
+		$.lightTreeview.close('#node ol,#node ul')
+	},function(){
+		$.lightTreeview.open('#node ol,#node ul')
+	})
+	
+	$('#node').html("<div style='font-size:12px;padding:5px 0 5px 20px;overflow:hidden;'><img src='__TMPL__images/loading_d.gif' style='margin:10px 0 0 10px;display:block;'>加载中,请稍后</div>");
+
+		$("#node").load('<{:U('SortIframe/menu_list')}>',function(){
+		$('#node').lightTreeview({
+			collapse: true,
+			line: true,
+			nodeEvent: false,
+			unique: false,
+			style: 'defalut', //red black gray
+			animate: 0,
+			fileico: false,
+			folderico: false
+		});
+	});
+	
+	$("#node a").live("click",function(){
+		$("#node").find("a").removeClass("cur");
+		$(this).addClass("cur");
+	})
+	
+})
+
+
+
+
+
+
+</script>
+<style type="text/css">
+
+.btn {
+	cursor: pointer;
+	display:block;
+	background:url(__TMPL__images/application_side_expand.png) 0 0 no-repeat;
+	padding:0 0 5px 20px;
+}
+ul#node li{white-space:nowrap;}
+
+</style>
+</head>
+
+<body>
+
+<div class="description">
+<span class="btn" >展开/收缩</span>
+<span class="btn" onClick="$.lightTreeview.toggle('#node ol,#node ul')" style="display:none;"> 切换全部</span>
+
+
+<ul id="node">
+	
+</ul>
+
+</div>	
+	
+</body>
+</html>

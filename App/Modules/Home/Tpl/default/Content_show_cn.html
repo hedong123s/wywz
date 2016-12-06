@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<{:getSeo($id,1)}>
+<include file="Public/cn_title" />
+</head>
+
+<body>
+<include file="Public/cn_header" />
+
+<!--ipath-->
+<div class="w1100 ipath mt20">
+<a href="<{:U('Index/cn')}>">网站首页</a><{:getPos($cid)}>
+</div>
+<!--ipath-->
+
+<!--wrap-->
+<div class="w1100 clearfix mt20">
+	<div class="fl w175">
+    	<div class="leftTit"><{$topClassArray['classname']}></div>
+    	<div class="leftNav">
+        	<ul>
+            	<volist name="ClassMenuArray" id="fo">
+            	<li <if condition="substr_count($categoryArray['path'],$fo['path']) gt 0">class="cur"</if>><a href="<{:UU('Content/lists',array('cid'=>$fo['id']))}>"><{$fo['classname']}></a></li>
+				</volist>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="fr rightWrap">
+    	<div class="rightTitle"><{$categoryArray['classname']}></div>
+    	<div class="rightContent">
+        	<!--主体内容-->
+            <h1 class="sys_nview_title"><{$contentArray['title']|escapeshow}></h1>
+            <div class="sys_nview_other">更新时间:<{$contentArray['posttime']|getdatetime}> <span class="sys_nview_s">|</span> 来源:<{$contentArray['source']|default=''}> <span class="sys_nview_s">|</span> 点击量:<script type="text/javascript" src="<{:U('getShowHits',array('id'=>$id))}>"></script></div>
+            <div class="sys_nview_content"><{$contentArray['content']|editor|escapeshow=true}></div>
+            <php>
+            if(!empty($contentArray['tag'])){	
+            $tag=explode(',',$contentArray['tag']);
+            </php>
+            <div class="sys_tab">Tag标签:<foreach name="tag" item="foo"><span><{$foo}></span></foreach></div>
+            <php>}</php>
+            
+            <?php
+            $relation=M("content")->where("id in (".$contentArray['relation_id'].") and id!=".$id."")->select();
+            if(is_array($relation)){
+            ?>
+            <div class="sys_relation">
+                <h2>相关推荐</h2>
+                <ul>
+                    <volist name="relation" id="row">
+                    <li><em><{$row['posttime']|getdatetime}></em><a href="<{:UU('show',array('id'=>$row['id']))}>"><{$row['title']|escapeshow}></a></li>
+                    </volist>
+                </ul>
+            </div>
+            <?php }?>
+			<!--主体内容-->
+        </div>
+        
+    </div>
+</div>
+<!--wrap-->
+<include file="Public/cn_footer" />
+</body>
+</html>
+

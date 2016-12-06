@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* ===============================
+
+@ title:系统后台登录css
+@ author:xxj
+@ company:jiufang
+@ creattime:2013-08-19 10:02:39
+@ updatetime:2013-08-19 18:02:50
+
+=================================*/
+body{ width:100%; min-width:1100px; background:#dcdcdc url(../images/login_body_bg.jpg) repeat-x;}
+.login_wrap{ background:url(../images/login_wrap_bg.jpg) top center no-repeat; padding:142px 0 0 0;}
+.login{ background:url(../images/loginbody.png) 68px 0 no-repeat; width:456px; height:420px; padding:0 118px 0 88px; margin:auto;} 
+.login_t{ background:url(../images/titleline.jpg) bottom repeat-x; font-size:23px; color:#d1d1d1; font-family:"Vrinda","Arial"; padding:16px 0 0 0px; height:57px; line-height:57px;}
+.login_title{ background:url(../images/login_tbg.png) no-repeat left bottom; height:22px; padding:15px 0 0 8px;}
+
+.loginform{ width:456px; font-family:"微软雅黑"; font-size:14px; color:#777; padding:25px 0 0 0; overflow:hidden;}
+
+.loginform dl{ width:300px; margin:0 auto; padding-left:80px; padding-bottom:12px;}
+.loginform dl dt{ width:80px; margin-left:-80px; width:70px; float:left; font-size:14px; text-align:right; font-family:"微软雅黑"; display:inline; text-shadow:1px 1px 0 #fff; height:30px; line-height:30px;}
+.loginform dl dd{ vertical-align:middle;}
+
+.lg_input{ width:245px; height:30px; display:inline-block; vertical-align:middle; background:url(../images/login_form.png) no-repeat left top;}
+.lg_input input{ width:235px; height:22px; padding:3px 5px; border:none; line-height:22px; background:none;}
+.lg_input_cur{ background:url(../images/login_form.png) no-repeat left -34px;}
+
+.lg_short_input{ width:110px; height:30px; display:inline-block; vertical-align:middle; background:url(../images/login_form.png) no-repeat left -68px;}
+.lg_short_input input{ width:100px; height:22px; padding:3px 5px; border:none; line-height:22px; background:none;}
+.lg_short_input_cur{ background:url(../images/login_form.png) no-repeat left -102px;}
+
+.lg_submit{ padding-left:80px; width:300px; margin:0 auto; line-height:35px;}
+.lg_btn{ width:120px; height:35px; background:url(../images/login_form.png) no-repeat left -137px; border:none; cursor:pointer;}
+.lg_btn:hover{ background:url(../images/login_form.png) no-repeat left -176px;}
+
+.error{width:300px; padding-left:80px; margin:0 auto; padding-bottom:8px; display:none;}
+.error_show{border:1px solid #f4e4b4;background:url(../images/notewarn.gif) 8px 6px no-repeat #fffff0!important;color:#f0aa34;overflow:hidden; padding:4px 25px; line-height:18px; font-size:12px;}
+
+.copyright{height:24px; line-height:24px; font-family:"微软雅黑"; color:#777; text-align:center; padding:0 0 40px 0; text-shadow:1px 1px 0 #f8f8f8;}
+
+
+

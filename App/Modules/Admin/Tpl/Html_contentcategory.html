@@ -1,0 +1,56 @@
+<include file="Index/header" />
+</head>
+
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+	<div class="at_tab">
+		<a href="" class="cur"><i><{$data['classname']}>生成内容列表页</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+
+<!--table-list-->
+<div class="table-list">
+	<form name="myform" id="myform" method="post" action="<{:U('contentcategorysend')}>">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="450">按栏目生成</th>
+			<th>ID</th>
+		</tr>
+		<tr>
+			<td rowspan="3" align="center">
+            	<select name="cid[]" size="2" style="height:200px;" multiple="multiple" title="按住“Ctrl”或“Shift”键可以多选，按住“Ctrl”可取消选择">
+                    <option value="" selected="">不限栏目</option>
+                    <{$category}>
+                </select>
+            </td>
+			<td>
+            	每轮更新 <input type="text" value="10" name="size" onKeyUp="CheckInputInt(this)" class="sys_text sys_text50" /> 条信息
+            </td>
+		</tr>
+		<tr>
+		  <td>
+				<input type="submit" class="sys_blue_btn" value="提交" /> 
+          </td>
+	  </tr>
+      <tr>
+		  <td valign="top"></td>
+	  </tr>
+	</table>
+  </form>
+</div>
+<!--/table-list-->
+</body>
+</html>
+<script>
+//不能小于0.1
+function CheckInputInt(oInput) {
+	if ('' != oInput.value.replace(/\d/g,'')){
+		oInput.value = oInput.value.replace(/\D/g,'');   
+	}  
+	if(parseInt(oInput.value)<0.1){oInput.value="1"; }
+}
+</script>

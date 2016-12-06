@@ -1,0 +1,88 @@
+
+<include file='Index/header' />
+<script type="text/javascript">
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+ 
+ $("#realname").formValidator({onshow:"请输入真实姓名",onfocus:"真实姓名应该为2-20位之间"}).inputValidator({min:2,max:20,onerror:"真实姓名应该为2-20位之间"})
+ $("#email").formValidator({onshow:"请输入E-mail",onfocus:"请输入E-mail",oncorrect:"E-mail格式正确"}).regexValidator({regexp:"email",datatype:"enum",onerror:"E-mail格式错误"});
+ 
+ })
+</script>
+</head>
+
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+	<div class="at_tab">
+
+		<a href="#" class="cur"><i>修改个人信息</i></a> 
+
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+
+<!--table-list-->
+<div class="table-edit ">
+	
+	<form method="post" id="myform">
+	<div class="table-edit_form">
+		<div  class="te_tab_c">
+			
+			<!--修改个人信息-->
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			<tr>
+				<th width="100">用户名：</th>
+				<td><{$Think.session.admin_9f_username}></td>
+			</tr>
+			<tr>
+				<th >最后登录时间：</th>
+				<td><{$Think.session.admin_9f_lastlogintime|getdatetime=###}></td>
+			</tr>
+			<tr>
+				<th >最后登录IP：</th>
+				<td><{$Think.session.admin_9f_lastloginip}></td>
+			</tr>
+			<tr>
+				<th >真实姓名：</th>
+				<td><input type="text" class="sys_text" name="realname" id="realname"  value="<{$data['realname']|escapeshow=###}>" />
+					
+				</td>
+			</tr>
+			<tr>
+				<th >E-mail：</th>
+				<td><input type="text" class="sys_text" name="email" id="email" value="<{$data['email']|escapeshow=###}>" /> </td>
+			</tr>
+
+			</tbody>
+		    </table>
+	
+		
+		</div>
+
+	</div>
+	
+	
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="100">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+			
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+
+
+
+
+</body>
+</html>

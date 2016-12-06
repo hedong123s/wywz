@@ -1,0 +1,343 @@
+<include file="Index/header" />
+<script type="text/javascript">
+
+	$(function(){
+		 $.formValidator.initConfig({autotip:true,formid:"add_form",onerror:function(msg){}});	
+		$("#varname").formValidator({onshow:"请输入变量名称",onfocus:"变量名称只能是英文且不能重复"}).inputValidator({onerror:"变量名称请输入有误"}).regexValidator({regexp:"^[a-z_]+$",onerror:"变量名称只能为英文"});
+		 $("#varinfo").formValidator({onshow:"请输入参数说明",onfocus:"请输入参数说明"}).inputValidator({min:1,onerror:"参数说明不能小于1位"})
+		
+	
+	})
+	
+	$(function(){
+		$("form#add_form").submit(function(){
+			if($("input[name='add_var[vartype]']:checked").val()=='bool' && ($("#varvalue").val()!='Y' && $("#varvalue").val()!='N')){
+				alert('布尔变量值必须为Y或N！');
+				return false;
+			}
+			
+		})
+	})
+
+function test_mail() {
+	$("#testButton").val('发送中,请等待结果...');
+
+    $.post("<{:U('public_test_mail')}>",{mail_type:$("input[name='mail_type']:checked").val(),mail_server:$("#mail_server").val(),mail_port:$("#mail_port").val(),mail_from:$("#mail_from").val(),mail_user:$("#mail_user").val(),mail_password:$("#mail_password").val(),mail_to:$("#mail_to").val()}, function(data){
+		$("input[type='button']").val('测试发送');
+		alert(data);
+	});
+	return false;
+}
+
+
+function tag(id){
+	if(id=='') id=1;
+	
+	$(".table-edit_form").find(".te_tab_c").hide();
+	$(".table-edit_tab").find("li").removeClass('cur');
+	$(".table-edit_tab").find("li").each(function(){
+	;
+		if($(this).attr('data-id')=='te_tab_'+id){
+			$(this).addClass('cur');
+		}
+	});
+	$("#te_tab_"+id).show();
+}
+
+$(function(){
+	tag('<{$Think.get.tab}>');
+})	
+	
+	
+</script>
+</head>
+<body>
+
+
+<!--table-list-->
+<div class="table-edit">
+	<div class="table-edit_tab">
+		<ul>
+			<volist name="vargroup" id="foo">
+	
+			<li data-id="te_tab_<{$foo.id}>" <if condition="$i eq 1">class="cur"</if>><a href="javascript:;"><{$foo.title}></a></li>
+			</volist>
+			<li data-id="te_tab_0"><a href="javascript:;">添加新变量</a></li>
+		</ul>
+		<div class="clearall"></div>
+	</div>
+	<div class="table-edit_form">
+		<form method="post" action="<{:U('update')}>">
+
+		<volist name="list" id="foo" key="k">
+
+		<div id="te_tab_<{$k}>" class="te_tab_c" style="display:<if condition="$k eq 1">block<else/>none</if>;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			<volist name="foo['list']" id="foo">
+			<tr>
+				<th width="200"><{$foo['varinfo']}></th>
+				<td width="534">
+					<if condition="$foo['vartype'] eq 'string'">
+					<input type="text" value="<{$foo['varvalue']|escapeshow=###}>" name="<{$foo['varname']}>" class="sys_text sys_text350">
+					</if>					
+					
+					<if condition="$foo['vartype'] eq 'number' && $foo['id'] neq 36">
+					<input type="text" value="<{$foo['varvalue']|escapeshow=###}>" name="<{$foo['varname']}>" class="sys_text">
+					</if>		
+					
+					<if condition="$foo['id'] eq 36">
+					<label><input type="radio" <if condition="intval($foo['varvalue']) eq 0">checked="checked"</if> value="0" name="<{$foo['varname']}>"> 动态 </label> 
+					<label><input type="radio" <if condition="intval($foo['varvalue']) eq 1">checked="checked"</if>  value="1" name="<{$foo['varname']}>"> 纯静态</label>		
+				
+					</if>
+					
+					<if condition="$foo['vartype'] eq 'bool'">
+					<label><input type="radio" <if condition="$foo['varvalue'] eq 'Y'">checked="checked"</if> value="Y" name="<{$foo['varname']}>"> 是 </label> 
+					<label><input type="radio" <if condition="$foo['varvalue'] eq 'N'">checked="checked"</if>  value="N" name="<{$foo['varname']}>"> 否</label>
+					</if>
+					
+					<if condition="$foo['vartype'] eq 'bstring'">
+					<textarea class="sys_textarea " style="width:500px;height:120px;" name="<{$foo['varname']}>"><{$foo['varvalue']|escapeshow=###}></textarea>
+					</if>
+					
+					
+					
+				</td>
+				<td width="278"><span style="color:#999;font-size:12px;font-family:Arial;">&lt;{:C('cfg_<{$foo['varname']}>')}&gt;</span></td>
+			</tr>
+			</volist>
+
+			</tbody>
+		</table>
+			<div class="tools-edit">
+		  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+				<tr>
+					<th width="230">&nbsp;</th>
+					<td>
+						<input type="submit" class="sys_blue_btn" value="提交" /> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+		</volist>
+		
+		
+		
+		</form>
+		
+		<form method="post" enctype="multipart/form-data" action="<{:U('update_wmk')}>">
+		<div id="te_tab_10" class="te_tab_c" style="display:none;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			<tr>
+				<th width="200">是否开启水印</th>
+				<td>
+					<label><input  type="radio" value="Y" name="markswitch" <if condition="C('cfg_markswitch') eq 'Y'">checked="checked"</if>> 启用 </label> 
+					<label><input  type="radio" value="N" name="markswitch" <if condition="C('cfg_markswitch') eq 'N'">checked="checked"</if>> 关闭</label> 
+				</td>
+			</tr>
+			<tr>
+				<th>水印添加条件</th>
+				<td>
+					宽&nbsp;
+					<input type="text" name="markminwidth" id="markminwidth" value="<{:intval(C('cfg_markminwidth'))}>" class="sys_text" style="width:50px;" />
+					px&nbsp;&nbsp;高&nbsp;
+					<input type="text" name="markminheight" id="markminheight" value="<{:intval(C('cfg_markminheight'))}>" class="sys_text" style="width:50px;" />
+					px 
+					
+				</td>
+			</tr>
+			<tr>
+				<th>水印类型</th>
+				<td>
+				<label><input name="marktype" type="radio" value="0" <if condition="C('cfg_marktype') eq '0'">checked="checked"</if>  />
+					图片</label> &nbsp;
+				<label><input type="radio" name="marktype"  value="1" <if condition="C('cfg_marktype') eq '1'">checked="checked"</if>  />
+					文字</label>
+				</td>
+			</tr>
+		
+			<tr>
+				<th>水印预览</th>
+				<td>
+					<if condition="C('cfg_markpicurl') neq ''"><img src="<{:C('cfg_markpicurl')}>" id="watermark_prew" />
+					<input name="markpicurl" type="hidden" id="markpicurl" value="<{:C('cfg_markpicurl')}>" />
+					</if>
+				</td>
+			</tr>
+			<tr>
+				<th>上传水印</th>
+				<td><input type="file"  name="watermarket"></td>
+			</tr>			
+			<tr>
+				<th>水印文字</th>
+				<td><input name="marktext" type="text" id="marktext" class="sys_text" value="<{:escapeshow(C('cfg_marktext'))}>" style="color:<{:C('cfg_markcolor')}>;" /></td>
+			</tr>				
+			<tr>
+				<th>水印文字</th>
+				<td><input name="markcolor" type="text" id="markcolor" class="sys_text" value="<{:escapeshow(C('cfg_markcolor'))}>" /></td>
+			</tr>			
+			
+			<tr>
+				<th>文字大小</th>
+				<td><input name="marksize" type="text" id="marksize" class="sys_text" value="<{:intval(C('cfg_marksize'))}>" /></td>
+			</tr>
+			
+			
+			<tr>
+				<th width="200">水印位置：</th>
+				<td>
+					<label><input type="radio" value="1" name="markwhere" <if condition="C('cfg_markwhere') eq '1'">checked="checked"</if> > 左上  </label>
+					<label><input type="radio" value="2" name="markwhere" <if condition="C('cfg_markwhere') eq '2'">checked="checked"</if>> 中上  </label>
+					<label><input type="radio" value="3" name="markwhere" <if condition="C('cfg_markwhere') eq '3'">checked="checked"</if>> 右上</label>
+					<br/>
+					<label><input type="radio" value="4" name="markwhere" <if condition="C('cfg_markwhere') eq '4'">checked="checked"</if>> 左中  </label>
+					<label><input type="radio" value="5" name="markwhere" <if condition="C('cfg_markwhere') eq '5'">checked="checked"</if>> 中间  </label>
+					<label><input type="radio" value="6" name="markwhere" <if condition="C('cfg_markwhere') eq '6'">checked="checked"</if>> 右中</label>
+					<br/>
+					<label><input type="radio" value="7"  name="markwhere" <if condition="C('cfg_markwhere') eq '7'">checked="checked"</if>> 左下  </label>
+					<label><input type="radio" value="8" name="markwhere" <if condition="C('cfg_markwhere') eq '8'">checked="checked"</if>> 中下  </label>
+					<label><input type="radio" value="9" name="markwhere" <if condition="C('cfg_markwhere') eq '9'">checked="checked"</if>> 右下</label>
+					<br/>
+					<label><input type="radio"  value="0" name="markwhere" <if condition="C('cfg_markwhere') eq '0'">checked="checked"</if>> 随机</label>
+					
+				</td>
+			</tr>
+	
+			</tbody>
+		</table>
+			<div class="tools-edit">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+				<tr>
+					<th width="200">&nbsp;</th>
+					<td>
+						<input type="submit" class="sys_blue_btn" value="提交" /> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+		</form>
+		
+		
+		<form method="post"  id="email_form" action="<{:U('update_email')}>">
+		<div id="te_tab_11" class="te_tab_c" style="display:none;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			<tr>
+				<th width="200">邮件发送模式 </th>
+				<td>
+					<label><input type="radio" checked="checked"   value="1" name="mail_type">SMTP 函数发送</label>
+					<label><input type="radio" disabled="disabled" value="0"  name="mail_type">mail 模块发送</label> 
+				</td>
+			</tr>
+			<tr>
+				<th>邮件服务器</th>
+				<td><input type="text" class="sys_text"  value="<{:escapeshow(C('Cfg_mail_server'))}>" name="mail_server" id="mail_server" />
+				</td>
+			</tr>
+			<tr>
+				<th>邮件发送端口</th>
+				<td><input type="text" class="sys_text"  value="<{:intval(C('Cfg_mail_port'))}>" name="mail_port" id="mail_port" /></td>
+			</tr>
+            <tr>
+				<th>发件人地址</th>
+				<td><input type="text" class="sys_text " value="<{:escapeshow(C('Cfg_mail_user'))}>" name="mail_user" id="mail_user" /></td>
+			</tr>
+			<tr>
+				<th>密码</th>
+				<td><input type="password" class="sys_text " value="<{:C('Cfg_mail_password')}>" name="mail_password" id="mail_password" /></td>
+			</tr>
+			<tr>
+				<th>收件人地址</th>
+				<td><input type="text" class="sys_text"  value="<{:escapeshow(C('Cfg_mail_from'))}>" name="mail_from" id="mail_from" /></td>
+			</tr>
+			<tr>
+				<th>邮件标题测试</th>
+				<td>
+					<input type="text" class="sys_text " name="mail_to" id="mail_to" value="<{:escapeshow(C('Cfg_mail_to'))}>" /> <input type="button" id="textButton" value="测试发送" class="sys_btn" onClick="javascript:test_mail();">
+				</td>
+			</tr>
+			</tbody>
+		</table>
+			<div class="tools-edit">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+				<tr>
+					<th width="200">&nbsp;</th>
+					<td>
+						<input type="submit" class="sys_blue_btn" value="提交" /> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+		</form>
+		
+
+	
+		<form name="" method="post" id="add_form" action="<{:U('add_var')}>">
+		<div id="te_tab_0" class="te_tab_c" style="display:none;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			<tr>
+				<th width="200">变量名称</th>
+				<td>
+					<input type="text"  id="varname" class="sys_text" name="add_var[varname]" >
+				</td>
+			</tr>
+			<tr>
+				<th>参数说明</th>
+				<td>
+					<input type="text" id="varinfo" class="sys_text" name="add_var[varinfo]" >
+				</td>
+			</tr>
+			<tr>
+				<th>变量值</th>
+				<td><input type="text" class="sys_text" id="varvalue"  name="add_var[varvalue]" /></td>
+			</tr>
+			<tr>
+				<th>变量类型</th>
+				<td>
+					<label><input type="radio" value="string" name="add_var[vartype]" checked="checked"> 文本 </label>
+					<label><input type="radio" value="number" name="add_var[vartype]"> 数字 </label>
+					<label><input type="radio" value="bool" name="add_var[vartype]"> 布尔(Y/N) </label>
+					<label><input type="radio" value="bstring" name="add_var[vartype]"> 多行文本 </label>
+					<label><input type="radio" value="edit" name="add_var[vartype]"> 编辑器 </label>
+				</td>
+			</tr>
+			<tr>
+				<th>所属组</th>
+				<td>
+				<select name="add_var[vargroup]">
+					<volist name="vargroup" id="foo">
+					<if condition="$foo.id neq '10' and $foo.id neq '11' ">
+					<option value="<{$foo['id']}>"><{$foo.title}></option>
+					</if>
+					</volist>
+				</select>
+				</td>
+			</tr>
+
+			</tbody>
+		</table>
+			<div class="tools-edit">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+					<tr>
+						<th width="100">&nbsp;</th>
+						<td>
+							<input type="submit" class="sys_blue_btn" value="提交" /> 			
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		</form>
+		
+	</div>
+	
+</div>
+<!--/table-list-->
+</body>
+</html>

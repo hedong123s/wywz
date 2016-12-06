@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/public/wy/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/wy/css/index.css">
+</head>
+<body>
+	<include file="Public/header" />
+  
+    <div id="banner" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="JavaScript:;">
+                    <img src="/public/wy/images/banner1.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:;">
+                    <img src="/public/wy/images/banner1.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="container special">
+        <div id="ceramics">
+            <div class="left">
+                <h3>Ceramics</h3>
+                <p>Special field assembles and sells the Wei bath product and the accessory</p>
+            </div>
+            <div class="right">
+                <volist name="list1" id="l1">
+                    <a href="index.php?m=product&a=detail&id=<{$l1.id}>">
+                        <img src="<{$l1.picurl}>" alt="">
+                        <span><{$l1.title}></span>
+                    </a>
+                </volist>
+               
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="Sanitary">
+            <div class="left">
+                <h3>Sanitary ware</h3>
+                <p>Special field assembles and sells the Wei bath product and the accessory </p>
+            </div>
+            <div class="right">
+                <volist name="list2" id="l2">
+                    <a href="index.php?m=product&a=detail&id=<{$l2.id}>">
+                        <img src="<{$l2.picurl}>" alt="">
+                        <span><{$l2.title}></span>
+                    </a>
+                </volist>
+               
+            </div>
+        </div>
+    </div>
+    <div class="container con_about">
+        <div   id="content">
+            <div class="about">
+                <p class="about_title">BATHROOM PRODUCTS FROM FAENZA OFFER <br> ADDED VALUE</p>
+                <p class="about_img"><img src="/public/wy/images/about1.png" alt=""></p>
+                <p class="about_txt">In regards to the long lifetime of a bathroom, many people, In regards to the long lifetime of a bathroom, many people, In regards to the long lifetime of a bathroom, many people, In regards to the long lifetime of a bathroom, many people, inc</p>
+                <i>Step Inside Our Company And Our Culture.</i>
+            </div>
+        </div>
+    </div>
+    
+    <include file="Public/footer"/>
+
+    <script src="js/jquery-3.1.1.slim.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+                autoplay:2000,
+                autoplayDisableOnInteraction:false
+
+            });
+            var $bannerHeight = 652 * (document.body.clientWidth / 1920)+"px";
+            console.log($bannerHeight);
+            $("#banner").css({"height":$bannerHeight});
+        })
+    </script>
+</body>
+</html>

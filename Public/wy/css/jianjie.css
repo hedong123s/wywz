@@ -1,0 +1,23 @@
+
+.same{min-height:1077px;width:1190px;margin:0 auto; padding-top:60px }
+.same h1{height:28px;width:100%;text-align:center;line-height:28px;padding:55px 0;font-size:28px;color:#066f39;border-bottom:1px solid #666;}
+.same .middle{min-height:466px;width:100%}
+.same .middle h3{height:24px;width:100%;line-height:24px;text-align:center;padding:50px 0;font-size:24px;}
+.same .middle p{width:940px;margin:0 auto;line-height:24px;}
+.same  .down{height:294px;width:1085px;margin:0 auto;}
+.same  .down a{float:left;height:294px;width:278px;}
+.same  .down .aa{margin:0 125px;}
+.same  .down a img{height:255px;width:278px;margin-bottom:18px;}
+.same .down a  u{display:block;height:21px;width:278px;line-height:21px;font-size:20px;text-align:center;}
+.banner{height:652px;width:100%;}
+.banner img{height:100%;width:100%;}
+.banner2{height:544px;width:100%;}
+.banner2 img{height:100%;width:100%;}
+
+
+
+#origin .down{height:218px;width:656px;margin:0 auto;}
+#origin .down a{float:left;height:218px;width:656px;margin:0;}
+#origin .down a img{height:218px;width:656px;}
+
+

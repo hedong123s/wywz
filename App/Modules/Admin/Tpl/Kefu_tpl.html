@@ -1,0 +1,52 @@
+<include file="Index/header" />
+<style type="text/css">
+	dl{width:200px;float:left;margin:0 15px 20px 0;}
+	dl dt{border:3px solid #e6e6e6;width:200px;height:200px;}
+	dl dt:hover{border:3px solid #99cc00;width:200px;}
+	dl dt img{max-width:200px;max-height:200px;display:block;margin:0 auto;}
+	dl dd{padding:10px 0 0 0;width:206px;}
+</style>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab" style="border:0;">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>客服管理</i></a>&nbsp;|&nbsp;<a href="<{:U('add')}>" ><i>添加客服</i></a>&nbsp;|&nbsp;<a href="<{:U('set')}>" ><i>客服设置</i></a>&nbsp;|&nbsp;<a href="javascript:;" class="cur"><i>模板选择</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit ">
+	<form method="post" id="myform">
+
+	<div class="table-edit_form" style="overflow:hidden;">
+		<div id="te_tab_1" class="te_tab_c">
+		<volist name="list" id="foo">
+		<dl>
+			<dt><img src="<{$foo['url']}>"></dt>
+			<dd><a href="<{:U('show',array('dirname'=>$foo['dirname']))}>" target="_blank" style="float:right;">查看</a><label><input type="radio" name="skin">&nbsp;风格<{$i}></label></dd>
+		</dl>
+		</volist>
+		</div>
+	
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+		
+				<td align="center">
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>" class="cur"><i>联动菜单</i></a> | 
+		<a href="<if condition="$_GET['id'] eq 0"><{:U('add')}><else/><{:U('add',array('id'=>$_GET['id']))}></if>"><i>添加联动菜单</i></a>
+
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form id="myform" method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="15" class="nobg"><input type="checkbox" value="" id="check_box" ></th>
+			<th width="35">ID</th>
+			<th>菜单名称</th>
+			<th width="300">菜单描述</th>
+			<th width="200">操作</th>
+		</tr>
+		<tbody>
+		<if condition="$list">
+		<volist name="list" id="foo">
+		<tr>
+			<td><input type="checkbox" value="<{$foo['id']}>" name="id[]"></td>
+			<td align="center"><{$foo.id}></td>
+			<td><{$foo.classname|escapeshow=###}></td>
+			<td align="center"><{$foo.description}></td>
+			<td align="center"><if condition="empty($_GET['id'])"><a href="<{:U('index',array('id'=>$foo['id']))}>">管理子菜单</a> |</if> <a href="<{:U('edit',array('id'=>$foo['id']))}>">修改</a> | 
+			<if condition="$foo['id'] neq 1">
+			<a href="<{:U('del',array('id'=>$foo['id']))}>" onclick="return del(1);">删除</a>
+			<else/>
+			<span style="color:#ccc;">删除</span>
+			</if>
+			</td>
+		</tr>
+		</volist>
+		<else/>
+		<tr><td colspan="5" class="nodata">暂无相关数据</td></tr>
+		
+		</if>
+		</tbody>
+	</table>
+	
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

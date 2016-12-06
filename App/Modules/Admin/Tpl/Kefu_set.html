@@ -1,0 +1,84 @@
+<include file="Index/header" />
+<script type="text/javascript">
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+ 
+ $("#account").formValidator({onshow:"请输入帐号",onfocus:"请输入帐号"}).inputValidator({min:1,onerror:"请输入帐号"})
+
+ 
+})
+
+</script>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab" style="border:0;">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>客服管理</i></a>&nbsp;|&nbsp;<a href="<{:U('add')}>" ><i>添加客服</i></a>&nbsp;|&nbsp;<a href="javascript:;" class="cur"><i>客服设置</i></a>&nbsp;|&nbsp;<a href="<{:U('tpl')}>"><i>模板选择</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit ">
+	<form method="post" id="myform">
+
+
+	<div class="table-edit_form">
+		<div id="te_tab_1" class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>		
+			<tr>
+				<th>启用客服：</th>
+				<td><label><input type="radio" value="0" name="show" <if condition="C('cfg_kefu_show') eq 0">checked="checked"</if>>&nbsp;启用</label>&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="1" name="show" <if condition="C('cfg_kefu_show') eq 1">checked="checked"</if>>&nbsp;不启用</label></td>
+			</tr>
+			<tr>
+				<th  width="200">模板：</th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>样式：</th>
+				<td><label><input type="radio" value="0" name="style" <if condition="C('cfg_kefu_style') eq 0">checked="checked"</if>>&nbsp;浮动</label></td>
+			</tr>
+
+			<tr>
+				<th>所在位置：</th>
+				<td><label><input type="radio" value="right"  name="position" <if condition="C('cfg_kefu_position') eq 'right'">checked="checked"</if>>&nbsp;右</label>&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="left" name="position" <if condition="C('cfg_kefu_position') eq 'left'">checked="checked"</if>>&nbsp;左</label></td>
+			</tr>		
+			
+			<tr>
+				<th>顶部距离：</th>
+				<td> <input type="text" class="sys_text" name="top"  value="<{:intval(C('cfg_kefu_top'))}>" style="width:50px;" /><span style="margin:0 0 0 10px;">(说明：离浏览器顶部距离) </span></td>
+			</tr>				
+			
+			<tr>
+				<th>边框距离：</th>
+				<td><input type="text" class="sys_text"  name="left" value="<{:intval(C('cfg_kefu_left'))}>" style="width:50px;"/><span style="margin:0 0 0 10px;">(说明：离浏览器左边或右边边框的距离) </span></td>
+			</tr>			
+
+	
+
+			</tbody>
+		</table>
+		</div>
+
+
+		
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="200">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+</body>
+</html>

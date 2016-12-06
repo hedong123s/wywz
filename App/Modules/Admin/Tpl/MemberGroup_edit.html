@@ -1,0 +1,69 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab" style="border:0;">
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>管理会员组</i></a> | 
+		<if condition="ACTION_NAME eq 'add'">
+			<a href="<{:U('add')}>" class="cur"><i>添加会员组</i></a>
+			<else/>
+			
+				<a href="javascript:;" class="cur"><i>编辑会员组</i></a>
+		</if>
+
+		
+
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit ">
+	<form method="post" id="myform" action="<{:U('send')}>">
+
+	<div class="table-edit_form">
+		<div id="te_tab_1" class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>		
+
+			<tr>
+				<th width="200">会员组名称：</th>
+				<td><input type="text" class="sys_text" name="info[title]" id="title" value="<{$data['title']|escapeshow=###}>" /></td>
+			</tr>
+			<tr>
+				<th>积分小于：</th>
+				<td><input type="text" class="sys_text" name="info[point]" id="point" value="<{$data['point']|escapeshow=###}>" /></td>
+			</tr>
+
+
+			<tr>
+				<th>是否显示：</th>
+				<td>
+					<label><input type="checkbox"  value="1" name="info[checkinfo]" <if condition="$data['checkinfo']  eq '1' "> checked="checked" </if> /> 不显示 </label> 
+				</td>
+			</tr>			
+
+			</tbody>
+		</table>
+		</div>
+
+		
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="200">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+					<input type="hidden" value="<{$data['id']}>" name="info[id]">
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+</body>
+</html>

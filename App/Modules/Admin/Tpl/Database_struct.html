@@ -1,0 +1,54 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>" class="cur"><i>数据库操作</i></a> | 
+		<a href="<{:U('import')}>"><i>数据库还原</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form name="myform"method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th>字段[备注]</th>
+			<th>类型(长度)</th>
+			<th>整理</th>
+			<th>允许为空</th>
+			<th>默认值</th>
+			<th >额外</th>
+		</tr>
+		<tbody>
+		<volist name="list" id="foo">
+		<tr>
+			<td align="right" width="110" ><{$foo.Field}><if condition="$foo['Key'] eq 'PRI'">&nbsp;<img src="__TMPL__images/database_key.gif" title="主键" /></if> <if condition="$foo['Comment']"><span style="font-size:10px;color:#999;padding-left:5px;">[<{$foo['Comment']}>]</span></if></td>
+			<td align="center"><{$foo.Type}></td>
+			<td align="center"><{$foo.Collation}></td>
+			<td align="center"><if condition="$foo['Null'] eq 'NO'">否<else/>是</if></td>
+			<td align="center"><if condition="$foo['Default'] eq 'NO'">无<else/><{$foo['Default']}></if></td>
+			<td align="center"><{$foo.Extra}></td>
+		</tr>
+		</volist>
+		<tr  style="border:0;height:50px;"><td colspan="6" align="center">共<strong><{:count($list)}></strong>个字段</td></tr>
+		</tbody>
+	</table>
+
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

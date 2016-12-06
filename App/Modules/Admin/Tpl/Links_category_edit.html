@@ -1,0 +1,62 @@
+<include file='Index/header' />
+<script type="text/javascript">
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+ 
+ $("#title").formValidator({onshow:"请输入名称",onfocus:"请输入名称"}).inputValidator({min:1,onerror:"请输入名称"})
+ 
+ })
+</script>
+</head>
+
+<body>
+<div class="add-tab" style="border:0;">
+	<a href="javascript:location.reload();" style="float:right;" class="f5">刷新</a>
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>友情链接管理</i></a>&nbsp;|&nbsp;<a href="<{:U('add')}>" ><i><if condition="ACTION_NAME eq 'add'">添加友情链接<else/>编辑友情链接</if></i></a>&nbsp;|&nbsp;<a href="<{:U('category_add')}>" class="cur"><i><if condition="ACTION_NAME eq 'category_add'">添加类别<else/>编辑类别</if></i></a>&nbsp;|&nbsp;<a href="<{:U('category')}>"><i>分类管理</i></a>
+
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--table-list-->
+<div class="table-edit ">
+	
+	<form method="post" id="myform" action="<{:U('category_send')}>">
+	<div class="table-edit_form">
+		<div  class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>		
+			<tr>
+				<th width="200">名称：</th>
+				<td><input type="text" class="sys_text" name="info[title]" id="title"  value="<{$info['title']|escapeshow=###}>"></td>
+			</tr>								
+			<tr>
+				<th>排序：</th>
+				<td><input type="text" class="sys_text" style="width:60px;" name="info[orderid]" id="orderid" value="<{$info['orderid']|intval=###}>" /></td>
+			</tr>			
+
+			</tbody>
+		    </table>
+		</div>
+
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th>&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" /> 
+					<input type="hidden" value="<{$info['id']}>" name="info[id]">
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+
+
+
+
+</body>
+</html>

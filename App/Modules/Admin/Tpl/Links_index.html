@@ -1,0 +1,75 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="javascript:;" class="cur"><i>友情链接管理</i></a>&nbsp;|&nbsp;<a href="<{:U('add')}>"><i>添加友情链接</i></a>&nbsp;|&nbsp;<a href="<{:U('category_add')}>"><i>添加类别</i></a>&nbsp;|&nbsp;<a href="<{:U('category')}>"><i>分类管理</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form id="myform" method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="15"><input type="checkbox" value="" id="check_box" ></th>
+			<th width="35">排序</th>
+			<th>网站名称</th>
+			<th>缩略图</th>
+			<th>所属分类</th>
+			<th>状态</th>
+			<th>操作</th>
+		</tr>
+		<tbody>
+		<if condition="$list">
+		<volist name="list" id="foo">
+		<tr>
+			<td><input type="checkbox" value="<{$foo['id']}>" name="id[]"></td>
+			<td><input type="text" class="sys_text" style="width:25px;text-align:center;" name="orderid[<{$foo['id']}>]" value="<{$foo.orderid|intval=###}>" /></td>
+			<td  align="center"><{$foo.title|escapeshow=###}></td>
+			<td align="center"><if condition="$foo['picurl'] neq ''"><img src="__ROOT__/<{$foo.picurl|escapeshow=###}>" style="max-height:50px;max-width:400px;"><else/><img src="__ROOT__/data/images/nofoundpic.gif"  style="max-height:50px;max-width:400px;"></if></td>
+			<td align="center"><{:type('link_type',$foo['cid'],1)}></td>
+			<td align="center"><if condition="$foo['checkinfo'] eq '0'">显示<else/>不显示</if></td>
+			<td align="center"><a href="<{:U('edit',array('id'=>$foo['id']))}>">修改</a> | <a href="<{:U('del',array('id'=>$foo['id']))}>" onclick="return del(0);">删除</a></td>
+		</tr>
+		</volist>
+		<else/>
+		<tr><td colspan="7" class="nodata">暂无相关数据</td></tr>
+		
+		</if>
+		</tbody>
+	</table>
+
+	<div class="tools-list">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+		
+				<td colspan="2">
+				<label for="check_box">全选/取消</label>
+					<input type="button" class="sys_btn" value="删除" onclick="myform.action='<{:U('del',array('menuid'=>$data['id']))}>';return confirm_del();" /> 
+					&nbsp;<input type="button" class="sys_btn" value="排序" onclick="myform.action='<{:U('orderid',array('menuid'=>$data['id']))}>';myform.submit();" /> 
+				</td>
+				<td class="bk_right">
+					<div class="pages"><{$page}></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

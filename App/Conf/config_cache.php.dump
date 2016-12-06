@@ -1,0 +1,11 @@
+<?php return array(
+'cfg_webname'=>'FAENZA',
+'cfg_weburl'=>'www.xiutub.com',
+'cfg_webpath'=>'/',
+'cfg_keyword'=>'FAENZA',
+'cfg_description'=>'this is FAENZA',
+'cfg_copyright'=>'漏2016 FAENZA Sanitary ware All Rights Reserved.',
+'cfg_beianhao'=>'漏2016 FAENZA Sanitary ware All Rights Reserved.',
+'cfg_email'=>'hedong123s@163.com',
+'cfg_scape'=>'474738268@qq.com',
+)?>

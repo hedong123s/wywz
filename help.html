@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>9FCMS - 帮助中心</title>
+</head>
+<style type="text/css">
+*{margin:0; padding:0; font-family:"Consolas",Tahoma, "微软雅黑", Geneva, sans-serif;}
+body{width:98%; margin:0 auto; padding:15px 0; font-family:"Consolas",Tahoma, "微软雅黑", Geneva, sans-serif; font-size:18px; color:#3e3e3e;}
+ul li,ol li{ margin:0; padding:0;}
+ul,ol{ padding-left:2em; margin-left:1em;}
+.wrap{border:2px solid #d1d7dc; background:#fafafa; padding:12px; clear:both; margin-bottom:15px;}
+.wrap_title{ font-size:28px; color:#000; padding-bottom:12px;}
+.wrap_content{ line-height:180%;}
+.f_out{ color:#c00;}
+.f_sub{ color:#07c;}
+.f_blur{ color:#999;}
+</style>
+<body>
+
+<div class="wrap">
+	<h1 class="wrap_title">公用函数(前后台通用) <span class="f_blur">App/Common/</span></h1>
+    <div class="wrap_content"> 
+		<ol>
+        	<li><b class="f_sub">pass_jm($str)</b> 密码加密 （可用于用户登录注册等）</li>
+            <li><b class="f_sub">getip()</b> 获取访问IP</li>
+            <li><b class="f_sub">getdatetime($t,$format='Y-m-d H:i:s')</b> 转换时间格式 （$t时间戳，$format时间格式）</li>
+            <li><b class="f_sub">escapeshow($str,$iseditor=false)</b> 去掉\扛，用于显示数据($iseditor是否为编辑器数据)</li>
+            <li><b class="f_sub">clearhtml($str)</b> 完全过虑PHP，JS，css</li>
+            <li><b class="f_sub">jsonEscape($val)</b> Json存数据库转义 （用于考虑get_magic_quotes_gpc是否开启）</li>
+            <li><b class="f_sub">restrlen($sourcestr, $cutlength=10, $etc='...')</b> 截取指定长度的字符串($sourcestr原字符串,$cutlength截取长度,$etc省略字符...)</li>
+            <li><b class="f_sub">getUrl()</b> 获取当前页面完整URL地址</li>
+            <li><b class="f_sub">getHttpUrl()</b> //获取当前页面URL开头（如，http://localhost:8888)</li>
+            <li><b class="f_sub">formatPrice($str,$len=2)</b> 价格格式化($len小数点保留位数)</li>
+            <li><b class="f_sub">getCateName($id,$field='classname')</b> 通过ID获取内容栏目名称或其他字段
+            	<p class="f_blur">$field 默认为classname，如果填写其他字段，则返回其他字段数据。此时返回值，而非数组<br />
+                若$field的值为[array]则，返回当前id所有字段值，此时返回数组</p>
+            </li>
+            <li><b class="f_sub">getShopCateName($id,$field='classname')</b> 通过ID获取商品栏目名称或其他字段（用户商城）
+            	<p class="f_blur">$field 默认为classname，如果填写其他字段，则返回其他字段数据。此时返回值，而非数组<br />
+                若$field的值为[array]则，返回当前id所有字段值，此时返回数组</p>
+            </li>
+            <li><b class="f_sub">getSpecAttrName($id,$field='name')</b> 通过ID获取规格或属性的名称或其他字段（用户商城）
+            	<p class="f_blur">$field 默认为name，如果填写其他字段，则返回其他字段数据。此时返回值，而非数组<br />
+                若$field的值为[array]则，返回当前id所有字段值，此时返回数组</p>
+            </li>
+            <li><b class="f_sub">GoUrl($url='')</b> URL跳转不弹窗,不填写，直接返回上一级</li>
+            <li><b class="f_sub">sendsEmail($reci,$theme='',$body='',$fromname='')</b> 发送邮件
+            	<p>
+                	$reci 收件人email<br />
+					$theme 邮件主题<br />
+					$body= 邮件内容<br />
+					$fromname 发送人称呼<br />
+					返回true或false，<br />
+					例子:<br />
+					require_once('data/phpmailer/class.phpmailer.php');<br />
+					echo sendsEmail("123456@qq.com","111","22222");
+                </p>
+            </li>
+        </ol>
+	</div>
+</div>
+
+<div class="wrap">
+	<h1 class="wrap_title">前台函数 <span class="f_blur">App/Modules/Home/Common/</span></h1>
+    <div class="wrap_content"> 
+		<ol>
+            <li><b class="f_sub">listPages类</b> 查询分页数据
+            	<p class="f_blur">
+                	参数说明 $page=new listPages($sql,$pageNum,$lan='cn');<br />
+					$sql sql语句<br />
+					$pageNum 每页显示数量<br />
+					$lan  默认为cn，还有en为英文<br /><br />
+					使用方法：如：<br />
+					$page=new listPages("select * from `#@__goods`",12);<br />
+					$list=$page->data;   //返回数据集<br />
+					$pages=$page->pages;   //返回分页代码
+                </p>
+            </li>
+            <li><b class="f_sub">getPos($id,$model='content',$str=' &amp;gt; ')</b> 获取当前位置
+            	<p class="f_blur">
+                	$id 栏目ID<br />
+					$model 模型, shop则为商城，此时调用商城相关信息，默认为content，即内容模型<br />
+					$str 分隔符
+                </p>
+            </li>
+            <li><b class="f_sub">getSeo($id,$type=0,$str='',$model='content')</b> 获取前台SEO信息
+            	<p class="f_blur">
+                	$id 栏目ID或内容ID<br />
+					$type 是否为显示页，1为显示页（即此时的$id为内容页ID），其他为栏目页ID<br />
+					$str 自定义标题<br />
+					$model 模型, shop则为商城，此时调用商城相关信息，默认为content，即内容模型<br />
+					若定义$str 其他参数无效，$str优先级大于任何情况
+                </p>
+            </li>
+            <li><b class="f_sub">editor($content)</b> 编辑器文件路径修改</li>
+            <li><b class="f_sub">thumb($src,$w,$h,$newpic='',$isauto="1")</b> 生成缩略图
+            	<p class="f_blur">
+                	$src 原图路径<br />
+					$w 生成图片宽度<br />
+					$h 生成图片高度<br />
+					$newpic 生成图片文件名（非路径），若为空，则直接源文件名基础上加_宽度_高度<br />
+					$isauto 生成方式，1为裁图，0为填充
+                </p>
+            </li>
+            <li><b class="f_sub">UU($url='',$vars='',$suffix=true,$redirect=false,$domain=false)</b> <span class="f_out">URL静态封装，参数同U函数</span>   //【仅前台（默认分组）有效】</li>
+            <li><b class="f_sub">showMsg($msg='', $gourl='-1')</b> 显示信息</li>
+            <li><b class="f_sub">getHtmlPage($p)</b> 静态页分页规则函数(用户静态页生成时使用)</li>
+            <li><b class="f_sub">user.info.php</b> 用户信息函数</li>
+        </ol>
+	</div>
+</div>
+
+<div class="wrap">
+	<h1 class="wrap_title">后台函数 <span class="f_blur">App/Modules/Admin/Common/</span></h1>
+    <div class="wrap_content"> 
+    	<p class="f_blur">暂无强调</p>
+	</div>
+</div>
+
+<div class="wrap">
+	<h1 class="wrap_title">生成静态页注意事项 <span class="f_blur">App/Modules/Home/Conf/</span></h1>
+    <div class="wrap_content"> 
+    	<ol>
+        	<li>后台必须启用静态，静态页才有效</li>
+            <li>根目录index.php -> define ( 'HTML_PATH','html');  定义静态文件生成文件夹</li>
+            <li>前台配置文件 'HTML_FILE_SUFFIX' =>'.html',  定义静态文件后缀</li>
+            <li>前台配置文件 HTML_CACHE_RULES  定义静态规则，相关参数，参考官网</li>
+            <li>生成静态原理：
+            	<ul>
+                	<li>利用TP自带静态缓存生成对应的html</li>
+                    <li>后台依靠访问前台[动态]程序，生成对应的静态缓存文件</li>
+                    <li>前台依靠UU函数将动态连接转化为对应的静态文件路径</li>
+                    <li>目前后台仅对商城列表页，详细页，内容列表页，详细页做了生成静态页功能 App/Modules/Admin/Action/HtmlAction.class.php</li>
+                    <li>在后期开发生成静态页，需注意，所有内容必须依靠模板文件编译才可生成对应的静态文件，如依靠action内部直接输出内容，不生成缓存文件</li>
+                    <li>静态规则定义，可结合函数，生成多样化的文件路径，如可通过ID获取对应的目录，作为静态文件路径</li>
+                </ul>
+            </li>
+        </ol>
+	</div>
+</div>
+
+<div class="wrap">
+	<h1 class="wrap_title">其他相关</h1>
+    <div class="wrap_content"> 
+    	<ol>
+        	<li>BaseAction.class.php： <span class="f_blur">App/Modules/Home/Action/BaseAction.class.php</span>
+            	<ul>
+                	<li>goUrl()  主要用于生成静态页输出模版编译 <span class="f_out">其中可利用{:ROOT}设置为程序根目录(不需要添加"/")</span></li>
+                </ul>
+            </li>
+            <li>GlobalAction.class.php： <span class="f_blur">App/Modules/Home/Action/GlobalAction.class.php</span>
+            	<ul>
+                	<li>verify()  验证码</li>
+                    <li>javascript 输出动态js,主要用于js内部调用动态连接 （前台引入方式：&lt;script src=&quot;&lt;{:U('Global/javascript')}&quot;&gt;&lt;/script&gt;）</li>
+                </ul>
+            </li>
+            <li>flag.php： <span class="f_blur">App/Conf/flag.php</span>
+            	<ul>
+                	<li>后台商品栏目，列表，内容栏目，列表属性参数设置</li>
+                </ul>
+            </li>
+            <li>config_diy.php： <span class="f_blur">App/Conf/config_diy.php</span>
+            	<ul>
+                	<li>自定义参数</li>
+                    <li>SYMBOL，ORDERSTATS，EVAlSTATS，REFUNDSTATS 为商城使用</li>
+                </ul>
+            </li>
+            <li>发送邮件相关： <span class="f_blur">data/phpmailer/</span>
+            	<ul>
+                	<li>需要引入require_once('data/phpmailer/class.phpmailer.php');</li>
+                    <li>sendsEmail("123456@qq.com","111","22222");</li>
+                </ul>
+            </li>
+            <li>幻灯片使用： <span class="f_blur">data/focus/</span>
+            	<ul>
+                	<li>使用方法：
+                    	<p>
+                        	<pre>&lt;?php
+$flash_cid="4";    //广告位ID，多个用，隔开
+$flash_width=225;    //广告位宽度
+$flash_height=425;    //广告位高度
+require('data/focus/adflash.php');   //引入相关文件
+?&gt;</pre>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<include file="Index/header" />
+<script type="text/javascript">
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+ 
+ $("#username").formValidator({onshow:"请输入姓名",onfocus:"请输入姓名"}).inputValidator({min:1,onerror:"请输入姓名"})
+
+ 
+})
+
+
+
+</script>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab" style="border:0;">
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>留言信息</i></a> | <a href="javascript:;" class="cur"><i>编辑留言</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit ">
+	<form method="post" id="myform">
+
+	<div class="table-edit_form">
+		<div id="te_tab_1" class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>		
+
+			<tr>
+				<th  width="200">姓名：</th>
+				<td><input type="text" class="sys_text" name="info[username]" id="username" value="<{$info['username']|escapeshow=###}>" /></td>
+			</tr>
+			<tr>
+				<th>电话：</th>
+				<td><input type="text" class="sys_text" name="info[tel]" id="tel" value="<{$info['tel']|escapeshow=###}>" /></td>
+			</tr>
+
+			<tr>
+				<th>邮箱：</th>
+				<td><input type="text" class="sys_text" name="info[email]" id="email" value=
+"<{$info['email']|escapeshow=###}>" /></td>
+			</tr>
+			<tr>
+				<th>内容：</th>
+				<td>
+			
+				<textarea name="info[content]" id="content" class="sys_textarea sys_textarea350"><{$info['content']|escapeshow=###}></textarea>
+				</td>
+			</tr>			
+			<tr>
+				<th>回复内容：</th>
+				<td>
+			
+				<textarea name="info[re_content]" id="re_content" class="sys_textarea sys_textarea350"><{$info['re_content']|escapeshow=###}></textarea>
+				</td>
+			</tr>
+	
+			<tr>
+				<th>是否显示回复内容：</th>
+				<td>
+					<label><input type="checkbox"  value="1" name="info[isshow]" <if condition="$info['isshow']  eq '1' "> checked="checked" </if> /> 显示 </label> 
+				</td>
+			</tr>			
+			<tr>
+				<th>是否显示：</th>
+				<td>
+					<label><input type="checkbox"   value="1" name="info[checkinfo]"  <if condition="$info['checkinfo']  eq '1' "> checked="checked" </if> /> 不显示 </label> 
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+	
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="200">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+					<input type="hidden" value="<{$info['id']}>" name="info[id]">
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+</body>
+</html>

@@ -1,0 +1,116 @@
+<include file='Index/header' />
+<script type="text/javascript">
+
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+<if condition="ACTION_NAME eq 'add'">	
+ $("#username").formValidator({onshow:'请输入用户名',onfocus:'用户名应该为2-20位之间'}).inputValidator({min:2,max:20,onerror:"用户名应该为2-20位之间"}).ajaxValidator({
+	    type : "GET",
+		url : "<{:U('public_checkname_ajax')}>",
+	
+		async:false,
+		success : function(data){	
+		
+            if( data == "1" ){
+                return true;
+			}else{
+                return false;
+			}
+		},
+
+		onerror : "用户已存在",
+		onwait : "请稍候..."
+	});
+
+ $("#password").formValidator({onshow:'请输入密码',onfocus:'密码应该为6-20位之间'}).inputValidator({min:6,max:20,onerror:"密码应该为6-20位之间"});
+ $("#repassword").formValidator({onshow:"请输入确认密码",onfocus:"请输入两次密码不同。",oncorrect:"密码输入一致"}).compareValidator({desid:"password",operateor:"=",onerror:"请输入两次密码不同"});
+
+ 
+ <else/>
+  $("#password").formValidator({empty:true,onshow:'不修改密码请留空',onfocus:'密码应该为6-20位之间'}).inputValidator({min:6,max:20,onerror:"密码应该为6-20位之间"});
+  $("#repassword").formValidator({empty:true,onshow:"不修改密码请留空",onfocus:"请输入两次密码不同。",oncorrect:"密码输入一致"}).compareValidator({desid:"password",operateor:"=",onerror:"请输入两次密码不同"});
+ </if>
+ 
+  $("#email").formValidator({onshow:"请输入E-mail",onfocus:"请输入E-mail",oncorrect:"E-mail格式正确"}).regexValidator({regexp:"email",datatype:"enum",onerror:"E-mail格式错误"});
+
+ })
+</script>
+
+</head>
+
+<body>
+
+<!--add-tab-->
+
+
+<div class="add-tab" style="border:0;">
+	<div class="at_tab">
+		<a href="javascript:;" class="cur"><i><if condition="ACTION_NAME eq 'add'">添加管理员<else/>编辑管理员</if></i></a> | <a href="<{:U('index')}>"><i>管理员管理</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+
+<!--table-list-->
+<div class="table-edit ">
+	
+	<form method="post" id="myform">
+	<input type="hidden" value="<{$data['userid']}>" name="userid">
+	<div class="table-edit_form">
+		<div  class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>
+			
+			<tr>
+				<th width="100">用户名</th>
+				<td>
+				<if condition="ACTION_NAME eq 'add'"><input type="text" class="sys_text" name="username" id="username"  /><else/><{$data['username']}></if>
+				</td>
+			</tr>	
+
+				
+			<tr>
+				<th>密码</th>
+				<td><input type="password" class="sys_text" name="password" id="password"  /></td>
+			</tr>			
+			<tr>
+				<th>确认密码</th>
+				<td><input type="password" class="sys_text" name="repassword" id="repassword"  /></td>
+			</tr>
+
+			<tr>
+				<th >E-mail</th>
+				<td><input type="text" class="sys_text" name="email" id="email" value="<{$data['email']}>"  /></td>
+			</tr>			
+			<tr>
+				<th >真实姓名</th>
+				<td><input type="text" class="sys_text" name="realname" id="realname" value="<{$data['realname']}>" /></td>
+			</tr>
+
+			</tbody>
+		    </table>
+			
+			
+		</div>
+
+	</div>
+	
+	
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="100">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" name="send" /> 
+			
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+
+
+</body>
+</html>

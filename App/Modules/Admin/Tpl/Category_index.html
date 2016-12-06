@@ -1,0 +1,94 @@
+<include file="Index/header" />
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>" class="cur"><i>管理栏目</i></a> | 
+		<a href="<{:U('add')}>"><i>添加栏目</i></a> | 
+        <a href="<{:U('categoryCacheHtml')}>"><i>更新栏目缓存</i></a>
+
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form id="myform" method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="15" class="nobg"><input type="checkbox" value="" id="check_box" ></th>
+			<th width="35">排序</th>
+			<th width="35">ID</th>
+			<th>栏目名称</th>
+			<th>所属模型</th>
+			<th>是否导航显示</th>
+			<th>操作</th>
+		</tr>
+		<tbody>
+		<if condition="$list">
+		<php>$no_category_id=explode(',',C('cfg_no_category_id'));</php>
+		<volist name="list" id="foo">
+		<tr>
+			<td><input type="checkbox" value="<{$foo['id']}>" name="id[]" <if condition="in_array($foo['id'],explode(',',C('cfg_no_category_id')))">disabled</if>></td>
+			<td><input type="text" class="sys_text" style="width:25px;text-align:center;" name="orderid[<{$foo['id']}>]" value="<{$foo.orderid}>" /></td>
+			<td align="center"><{$foo.id}></td>
+			<td width="50%">
+            	<{$foo.d}><{$foo.classname|escapeshow=###}>&nbsp;<if condition="$foo.picurl neq '' "><a href="__ROOT__/<{$foo.picurl}>" target="_blank"><img src="__TMPL__images/infoimg_ico.png" title="有缩略图,点击可查看"></a></if>
+            	<span style="color:#999;">
+                	<?php $flagArr=explode(",",$foo['flag']);$configFlagArr=C("contentclassflag");?>
+                    <foreach name="flagArr" item="flagVal">
+                    <{$configFlagArr[$flagVal]}>&nbsp;
+                    </foreach>
+                </span>	
+            </td>
+			<td align="center" width="10%"><{$foo.modelid|model=###,1}></td>
+			<td align="center"  width="10%"><if condition="$foo.navshow eq '0' ">否<else/><span style="color:green;">是</span></if></td>
+			<td align="center"  width="30%"><a href="<{:U('checkinfo',array('id'=>$foo['id']))}>"><if condition="$foo.checkinfo eq '0'">已审核<else/><span style="color:red;">未审核</span></if></a> | <a href="<{:U('add',array('id'=>$foo['id']))}>">添加子栏目</a> | <a href="<{:U('edit',array('id'=>$foo['id']))}>">修改</a> | 
+			<if condition="in_array($foo['id'],$no_category_id)">
+			
+			<span style="color:#ccc;">删除</span>
+			<else/>
+			<a href="<{:U('del',array('id'=>$foo['id']))}>" onClick="return del(1);">删除</a>
+			</if>
+			</td>
+		</tr>
+		</volist>
+		<else/>
+		<tr><td colspan="7" class="nodata">暂无相关数据</td></tr>
+		
+		</if>
+		</tbody>
+	</table>
+	
+	<div class="tools-list">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+		
+				<td colspan="2">
+				<label for="check_box">全选/取消</label>
+					<input type="button" class="sys_btn" value="删除" onClick="myform.action='<{:U('del')}>';return confirm_del();" /> 
+					&nbsp;<input type="button" class="sys_btn" value="排序" onClick="myform.action='<{:U('orderid')}>';myform.submit();" /> 
+				</td>
+				<td class="bk_right">
+					<div class="pages"><{$page}></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

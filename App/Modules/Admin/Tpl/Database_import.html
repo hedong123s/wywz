@@ -1,0 +1,80 @@
+<include file="Index/header" />
+<script type="text/javascript">
+	$(function(){
+		$("#selectdb").click(function(){
+			if($(this).attr('checked')=='checked'){
+				$('input[name="filename[]"]').attr('checked','checked');
+			}else{
+				$('input[name="filename[]"]').attr('checked',false);
+			}
+		})
+	})
+</script>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>" ><i>数据库操作</i></a> | 
+		<a href="<{:U('import')}>" class="cur"><i>数据库还原</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit">
+	<form name="myform" action="<{:U('database')}>" method="post">
+
+<!--table-list-->
+<div class="table-list ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+			<th width="35"><input type="checkbox"  value="" id="selectdb"  ></th>
+			<th>文件名</th>
+			<th>文件大小</th>
+			<th>创建时间</th>
+			<th width="200">操作</th>
+		</tr>
+		<tbody>
+		<if condition="$list">
+		<volist name="list" id="foo">
+		<tr>
+			<td align="center"><input type="checkbox"  value="<{$foo['filename']}>" name="filename[]" ></td>
+			<td align="center"><a href="__ROOT__/data/backup/<{$foo.filename}>" target="_blank"><{$foo.filename}></a></td>
+			<td  align="center"><{$foo.fileinfo.size|getsize=###}></td>
+			<td  align="center"><{$foo.fileinfo.ctime|getdatetime=###}></td>
+			<td align="center"><a href="<{:U('backup_del',array('filename'=>$foo['filename']))}>" onclick="return del(0);">删除</a></td>
+		</tr>
+		</volist>
+		<else/>
+		<tr><td colspan="5" class="nodata">暂无备份数据</td></tr>
+		</if>
+		</tbody>
+	</table>
+
+	<div class="tools-list">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+		
+				<td colspan="5">
+				<label for="selectdb">全选/取消</label>
+					<input type="button" class="sys_btn" value="删除" onclick="myform.action='<{:U('backup_del')}>';myform.submit();" /> 
+	
+				</td>
+				
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<!--/table-list-->
+	</form>
+
+</div>
+<!--/table-list-->
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<{:getSeo($cid)}>
+<include file="Public/cn_title" />
+</head>
+
+<body>
+<include file="Public/cn_header" />
+
+<!--ipath-->
+<div class="w1100 ipath mt20">
+<a href="<{:U('Index/cn')}>">网站首页</a><{:getPos($cid)}>
+</div>
+<!--ipath-->
+
+<!--wrap-->
+<div class="w1100 clearfix mt20">
+	<div class="fl w175">
+    	<div class="leftTit"><{$topClassArray['classname']}></div>
+    	<div class="leftNav">
+        	<ul>
+            	<volist name="ClassMenuArray" id="fo">
+            	<li <if condition="substr_count($categoryArray['path'],$fo['path']) gt 0">class="cur"</if>><a href="<{:UU('Content/lists',array('cid'=>$fo['id']))}>"><{$fo['classname']}></a></li>
+				</volist>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="fr rightWrap">
+    	<div class="rightTitle"><{$categoryArray['classname']}></div>
+    	<div class="rightContent">
+        	<!--主体内容-->
+            <php>
+            $doPage=new listPages("select * from `#@__content` where checkinfo=0 and instr(path,'".$categoryArray['path']."')>0 order by orderid desc,id desc",15);
+            $lists['total']=$doPage->total;
+            $lists['info']=$doPage->data;
+            $lists['pages']=$doPage->pages;
+            </php>
+            <if condition="$lists['total'] gt 0">
+        	<div class="downlist">
+                <ul>
+                    <volist name="lists['info']" id="foo">
+                    <php>$content_arr=json_decode($foo['content_arr'],true);</php>
+                    <li><em><{$foo['posttime']|getdatetime}></em><a href="__ROOT__/<{$content_arr['down']}>" target="_blank"><{$foo['title']|escapeshow}></a></li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="pages"><{$lists['pages']}></div>
+            <else/>
+            暂无相关信息
+            </if>
+            <!--主体内容-->    
+        </div>
+        
+    </div>
+</div>
+<!--wrap-->
+
+
+<include file="Public/cn_footer" />
+</body>
+</html>

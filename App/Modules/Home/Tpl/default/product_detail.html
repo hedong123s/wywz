@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/public/wy/css/index.css">
+    <link rel="stylesheet" href="/public/wy/css/xiangqing.css">
+</head>
+<body>
+
+    <include file="Public/header"/>
+
+    <div class="banner7">
+        <img src="/public/wy/images/banner7.jpg" alt="">
+    </div>
+    <div class="container">
+        <div class="pro_show">
+            <div class="show1">
+                <div class="showLeft">
+                    <img src="<{$res.picurl}>" alt="">
+                </div>
+                <div class="showRight">
+                    <p class="pro_title">Products Gallery</p>
+                    <p class="pro_style">
+                        <img src="<{$res.picurl}>" alt="">
+                        <!--
+                        <img src="/public/wy/images/xiangqing3.jpg" alt="">
+                        <img src="/public/wy/images/xiangqing4.jpg" alt="">
+                        <img src="/public/wy/images/xiangqing5.jpg" alt="">
+                        <img src="/public/wy/images/xiangqing6.jpg" alt="">
+                        <img src="/public/wy/images/xiangqing7.jpg" alt="">
+                        -->
+                    </p>
+                    <p class="pro_name">
+                        Champs Elysees型号或名称
+                    </p>
+                    <p class="pro_size">
+                        SIZE : 600X600MM <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800X800MM
+                    </p>
+                </div>
+            </div>
+            <div class="show2">
+                <div class="showLeft">
+                    <!--<img src="/public/wy/images/xiangqing9.jpg" alt="">-->
+                </div>
+                <div class="showRight">
+                    <p class="pro_txt"><{$res.content}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <include file="Public/footer"/>
+  
+    <script src="/public/wy/js/jquery-3.1.1.slim.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".pro_style img").click(function(){
+                $(this).css({"border":"1px solid #066f39","margin-right":"23px","margin-bottom":"13px"})
+                        .siblings().css({"margin-right":"25px","margin-bottom":"15px","border":"0"});
+                $(".showLeft img").attr("src",$(this).attr("src"));
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<include file="Index/header" />
+<script type="text/javascript">
+$(document).ready(function(){
+ $.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+ 
+ $("#account").formValidator({onshow:"请输入帐号",onfocus:"请输入帐号"}).inputValidator({min:1,onerror:"请输入帐号"})
+
+ 
+})
+
+</script>
+</head>
+<body>
+
+<!--add-tab-->
+<div class="add-tab" style="border:0;">
+
+	<div class="at_tab">
+		<a href="<{:U('index')}>"><i>客服管理</i></a>&nbsp;|&nbsp;<a href="javascript:;"  class="cur"><i><if condition="ACTION_NAME eq 'add'">添加客服<else/>编辑客服</if></i></a>&nbsp;|&nbsp;<a href="<{:U('set')}>"><i>客服设置</i></a>&nbsp;|&nbsp;<a href="<{:U('tpl')}>"><i>模板选择</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+<!--table-list-->
+<div class="table-edit ">
+	<form method="post" id="myform" action="<{:U('send')}>">
+
+
+	<div class="table-edit_form">
+		<div id="te_tab_1" class="te_tab_c">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-edit_tb">
+			<tbody>		
+			<tr>
+				<th width="200">类型：</th>
+				<td>
+					<label><input type="radio" <if condition="ACTION_NAME eq 'add'">checked="checked"<else/><if condition="$info['type'] eq 'qq'">checked="checked"</if></if> value="qq"  name="info[type]">&nbsp;QQ</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="skype" name="info[type]" <if condition="$info['type'] eq 'skype'">checked="checked"</if>>&nbsp;Skype</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="msn" name="info[type]" <if condition="$info['type'] eq 'msn'">checked="checked"</if>>&nbsp;MSN</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="wangwang" name="info[type]" <if condition="$info['type'] eq 'wangwang'">checked="checked"</if>>&nbsp;旺旺</label>
+				</td>
+			</tr>
+			<tr>
+				<th>帐号：</th>
+				<td><input type="text" class="sys_text" name="info[account]" id="account" value="<{$info['account']|escapeshow=###}>" /></td>
+			</tr>
+			<tr>
+				<th>说明：</th>
+				<td><input type="text" class="sys_text" name="info[title]" id="title" value="<{$info['title']|escapeshow=###}>" /></td>
+			</tr>
+
+			<tr>
+				<th>颜色：</th>
+				<td><input type="text" class="sys_text" name="info[color]" id="color" value="<{$info['color']|escapeshow=###}>" /></td>
+			</tr>				
+			
+			<tr id="qqstyle">
+				<th>风格：</th>
+				<td>
+				
+				<div style="width:600px;">
+				<for start="1" end="23">
+				<div style="width:150px;display:block;float:left;height:40px;"><label><input type="radio" value="<{$foo}>" name="info[style]" <if condition="ACTION_NAME eq 'add'"><if condition="$i eq 1">checked="checked"</if><else/><if condition="$info['style'] eq $i">checked="checked"</if></if>>&nbsp;<img src="__PUBLIC__/kefu/qqico/button<{$i}>.gif"></label></div>
+				
+				</for>
+				</div>
+				</td>
+			</tr>	
+
+			
+			<tr>
+				<th>状态：</th>
+				<td>
+					<label><input type="radio" value="0" name="info[status]"  <if condition="ACTION_NAME eq 'add'">checked="checked"<else/><if condition="$info['status'] eq 0">checked="checked"</if></if>>&nbsp;区分在线</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" value="1" name="info[status]" <if condition="$info['status'] eq 1">checked="checked"</if>>&nbsp;一直在线</label>
+				</td>
+			</tr>
+	
+			<tr>
+				<th>排序：</th>
+				<td><input type="text" class="sys_text" name="info[orderid]" id="orderid" value="<{$info['orderid']|intval=###}>" /></td>
+			</tr>		
+		
+			<tr>
+				<th>是否显示：</th>
+				<td>
+					<label><input type="checkbox"   value="1" name="info[checkinfo]"  <if condition="$info['checkinfo']  eq '1' "> checked="checked" </if> /> 不显示 </label> 
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+
+
+		
+	</div>
+	<div class="tools-edit">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="tools-list_tb">
+			<tr>
+				<th width="200">&nbsp;</th>
+				<td>
+					<input type="submit" class="sys_blue_btn" value="提交" /> 
+					<input type="hidden" value="<{$info['id']}>" name="info[id]">
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<!--/table-list-->
+</body>
+</html>

@@ -1,0 +1,62 @@
+<include file='Index/header' />
+</head>
+
+<body>
+
+
+<!--add-tab-->
+<div class="add-tab">
+	<div class="at_tab">
+		<a href="#" class="cur"><i>管理员管理</i></a> | <a href="<{:U('add')}>"><i>添加管理员</i></a>
+	</div>
+	<div class="clearall"></div>
+</div>
+<!--add-tab-->
+
+
+
+<!--table-list-->
+<div class="table-list">
+	<form>
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table-list_tb">
+		<tr>
+	
+			<th width="35" class="nobg">序号</th>
+			<th>用户名</th>
+			<th>E-mail</th>
+			<th>真实姓名</th>
+			<th>所属角色</th>
+			<th>最后登录IP</th>
+			<th>最后登录时间</th>
+			<th>操作</th>
+		</tr>
+		<tbody>
+		<volist name="list" id="foo">
+		<tr>
+		
+			<td align="center"><{$foo.userid}></td>
+			<td align="center"><{$foo.username}></td>
+			<td align="center"><{$foo.email}></td>
+			<td align="center"><{$foo.realname}></td>
+			<td align="center">超级管理员</td>
+			<td align="center"><{$foo.lastlogintime|getdatetime=###}></td>
+			<td align="center"><{$foo.lastloginip}></td>
+			<td align="center">
+            	<if condition="$foo['userid'] eq 2">
+                	-
+                <else/>
+            		<a href="<{:U('edit',array('id'=>$foo['userid']))}>">修改</a> | <if condition="$foo['userid'] eq '1' "><span style="color:#ccc;">删除</span><else/><a href="<{:U('del',array('id'=>$foo['userid']))}>" onClick="return del(0);">删除</a></if>
+                </if>
+            </td>
+		</tr>
+		</volist>
+		</tbody>
+	</table>
+
+	</form>
+</div>
+<!--/table-list-->
+
+
+</body>
+</html>
