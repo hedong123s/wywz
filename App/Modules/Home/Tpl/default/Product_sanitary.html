@@ -17,12 +17,12 @@
     </div>
     <div class="container">
         <div class="products_list">
+            <!--
             <div class="select">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="txt">Sanitary ware</span>
                         <b>∨</b>
-                        <!--<span class="caret"></span>-->
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
@@ -80,11 +80,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="pro_imgs">
+            -->
+            <div class="pro_imgs" style="margin-top:100px;">
+                <volist name='list2' id='i'>
                 <a href="javascript:;">
-                    <img src="public/wy/images/faucet01.jpg" alt="">
-                    <span class="focused">Bathroom Cabinet</span>
+                    <img src="<{$i.picurl}>" alt="">
+                    <span class="focused"><{$i.title}></span>
                 </a>
+                </volist>
+                <!--
                 <a href="javascript:;">
                     <img src="public/wy/images/faucet02.jpg" alt="">
                     <span>Toilet</span>
@@ -113,6 +117,7 @@
                     <img src="public/wy/images/faucet08.jpg" alt="">
                     <span>Accessories</span>
                 </a>
+                -->
             </div>
         </div>
     </div>

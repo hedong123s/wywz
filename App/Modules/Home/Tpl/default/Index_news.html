@@ -42,46 +42,40 @@
                     <div class="con_txt">
                         <div class="top">
                             <p class="title"><{$l.title}></p>
-                            <span class="time">2016-4-29</span>
+                            <span class="time"><{$l.posttime|getdatetime}></span>
                         </div>
                         <p class="middle">
                             <{$l.content}>
                         </p>
-                        <a href="javascript:;" class="outlink">View></a>
+                        <a href="javascript:;" class="outlink" class='view' val="<{$l.id}>">View></a>
                     </div>
                 </div>
+
+                <div class="detail_<{$l.id}> detail">
+                    <div class="top">
+                        <p class="title"><{$l.title}></p>
+                        <span class="time"><{$l.posttime|getdatetime}></span>
+                    </div>
+                    <div class="detail_txt">
+                        <{$l.content}>
+                    </div>
+                    <div class="btn_back">
+                        <a href="javascript:;">＜＜Back </a>
+                    </div>
+                </div>
+
+
                 </volist>
-               
+                
+                <!--
                 <div class="pager">
                     <span class="active">1</span>
                     <span>2</span>
                     <span>3</span>
                     <span>4</span>
                 </div>
-                <div class="detail">
-                    <div class="top">
-                        <p class="title">6 Tips for Keeping Your Home Safe This Holiday Season</p>
-                        <span class="time">2016-4-29</span>
-                    </div>
-                    <div class="detail_txt">
-                        <p>Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI, nearly 400,000 burglarie，Yes, burglaries. According to the FBI, nearly 400,000 burglarie</p>
-                        <h6>aaaaaaaaaaa</h6>
-                        <p>
-                            Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,
-                        </p>
-                        <h6>bbbbbbbbbbbb</h6>
-                        <p>
-                            Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,
-                        </p>
-                        <h6>ccccccccccccc</h6>
-                        <p>
-                            Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,Yes, burglaries. According to the FBI, nearly 400,000 burglarie,Yes, burglaries. According to the FBI,
-                        </p>
-                    </div>
-                    <div class="btn_back">
-                        <a href="javascript:;">＜＜Back </a>
-                    </div>
-                </div>
+                -->
+                
             </div>
 
             <div class="con_right">
@@ -111,8 +105,8 @@
 
     
 
-    <script src="js/jquery-3.1.1.slim.min.js"></script>
-    <script src="js/swiper.min.js"></script>
+    <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
+    <script src="public/wy/js/swiper.min.js"></script>
     <script type="text/javascript">
         $(function(){
             var mySwiper = new Swiper ('.swiper-container', {
@@ -130,9 +124,10 @@
             });
 
             $(".outlink").click(function(){
+                var id = $(this).attr("val");
                 $(".con_left").hide();
                 $(".pager").hide();
-                $(".detail").show(1000);
+                $(".detail_"+id).show(1000);
             });
             $(".detail .btn_back").click(function(){
                 $(".detail").hide();

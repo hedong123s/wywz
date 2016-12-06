@@ -5,6 +5,12 @@ class ProductAction extends BaseAction{
 	 * Ceramics
 	 */
 	function ceramics(){
+		$map1['pid'] = 57;   //Ceramics
+		$map2['pid'] = 58;   //Sanitary ware
+		$list1 = M("content")->where($map1)->select();
+		$list2 = M("content")->where($map2)->select();
+		$this->assign("list1",$list1);
+		$this->assign("list2",$list2);
 		$this->display();
 	} 
 
@@ -12,6 +18,12 @@ class ProductAction extends BaseAction{
 	 * Sanitary ware
 	 */
 	function sanitary(){
+		$map1['pid'] = 57;   //Ceramics
+		$map2['pid'] = 58;   //Sanitary ware
+		$list1 = M("content")->where($map1)->select();
+		$list2 = M("content")->where($map2)->select();
+		$this->assign("list1",$list1);
+		$this->assign("list2",$list2);
 		$this->display();
 	}
 

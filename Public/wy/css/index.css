@@ -7,7 +7,7 @@ button{border:none; outline: none;}
 a:hover{text-decoration:none;}
 h1,h2,h3,h4,h5,h6{font-weight:100;}
 input{outline:none;border:none;}
-a{text-decoration:none; color:#dcdcdc;}
+a{text-decoration:none; color:#999999;}
 .main{width:1200px;padding:0 31px 0 32px; margin:0 auto;}
 .clearfix:after{content: "."; clear:both; display:block; height:0; overflow:hidden; visibility: hidden; }
 .container{width:100%;border-bottom:1px solid #d9d9d9;padding:0;margin:0;}
