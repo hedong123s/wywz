@@ -13,22 +13,22 @@
                     <span>Sanitary ware</span>
                     <span>Company</span>
                 </p>
+                
+                <?php
+                    $map1['pid'] = 57;   //Ceramics
+                    $map2['pid'] = 58;   //Sanitary ware
+                    $list1 = M("content")->where($map1)->select();
+                    $list2 = M("content")->where($map2)->select();
+                ?>
                 <ul class="list1">
-                    <li><a href="javascript:;">Rustic Tiles</a></li>
-                    <li><a href="javascript:;">Wood Like Tiles</a></li>
-                    <li><a href="javascript:;">Marble Tiles</a></li>
-                    <li><a href="javascript:;">Micro Crystal</a></li>
-                    <li><a href="javascript:;">Mosaic</a></li>
+                    <volist name="list1" id="l1">
+                         <li><a href="index.php?m=product&a=detail&id=<{$l1.id}>"><{$l1.title}></a></li>
+                    </volist>                   
                 </ul>
                 <ul class="list2">
-                    <li><a href="javascript:;">Bathroom Cabinet</a></li>
-                    <li><a href="javascript:;">Toilet</a></li>
-                    <li><a href="javascript:;">Basin</a></li>
-                    <li><a href="javascript:;">Shower Room</a></li>
-                    <li><a href="javascript:;">Bathtu</a></li>
-                    <li><a href="javascript:;">Faucet</a></li>
-                    <li><a href="javascript:;">Sink</a></li>
-                    <li><a href="javascript:;">Accessories</a></li>
+                    <volist name="list2" id="l2">
+                         <li><a href="index.php?m=product&a=detail&id=<{$l2.id}>"><{$l2.title}></a></li>
+                    </volist>  
                 </ul>
                 <ul class="list3">
                     <li><a href="javascript:;">Company Profile</a></li>
