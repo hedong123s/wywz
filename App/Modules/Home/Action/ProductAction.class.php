@@ -31,6 +31,22 @@ class ProductAction extends BaseAction{
 		$this->display();
 	}
 
+	function alist(){
+		$id = I('id');
+		$map['id'] = $id;
+		$res = M("category")->where($map)->select();
+		$this->assign("list",$list);
+		$this->display();
+	}
+
+	function blist(){
+		$id = I('id');
+		$map['id'] = $id;
+		$res = M("category")->where($map)->select();
+		$this->assign("list",$list);
+		$this->display();
+	}
+
 	function detail(){
 		$id = I('id');
 		$map['id'] = $id;
