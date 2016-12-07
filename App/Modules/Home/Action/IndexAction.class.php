@@ -68,27 +68,7 @@ class IndexAction extends BaseAction{
 	function company(){
 		$this->display();
 	}
-	
-	//英文版
-	function en(){
-		$navId=1;
-		$this->assign("navId",$navId);
-		$this->display();
-	}
-	
-	//中文版
-	function cn(){
-		$navId=1;
-		$this->assign("navId",$navId);
-		$this->display();
-	}
 
-	function wy(){
-		$this->display();
-	}
-
-
-	
 }
 
 ?>

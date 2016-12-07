@@ -45,7 +45,7 @@
                             <span class="time"><{$l.posttime|getdatetime}></span>
                         </div>
                         <p class="middle">
-                            <{$l.content}>
+                            <{$l.content|substr=0,320}>
                         </p>
                         <a href="javascript:;" class="outlink" class='view' val="<{$l.id}>">View></a>
                     </div>
