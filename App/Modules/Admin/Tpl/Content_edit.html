@@ -186,7 +186,7 @@
 				<td>
 				<fieldset class="picarr">
 					<legend>列表</legend>
-					<div>最多可以上传<strong><if condition="topclass($_GET['menuid'],'id') eq 3">3</if><if condition="topclass($_GET['menuid'],'id') eq 29">10</if></strong>张图片<span onClick="getuploadify('uploadify2','组图上传','image','image',<if condition="topclass($_GET['menuid'],'id') eq 3">3</if><if condition="topclass($_GET['menuid'],'id') eq 29">10</if>,<{:C('cfg_max_file_size')}>,'picarr','picarr_area')">开始上传</span></div>
+					<div>最多可以上传<strong>10张图片<span onClick="getuploadify('uploadify2','组图上传','image','image',10,<{:C('cfg_max_file_size')}>,'picarr','picarr_area')">开始上传</span></div>
 					<ul id="picarr_area">
 						<if condition="trim($info['picarr'][0]) neq '' ">
 						<volist name="info['picarr']" id="foo">	
