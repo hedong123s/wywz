@@ -127,7 +127,7 @@
 				</td>
 			</tr>
 			
-			<tr>
+			<tr style="display:none">
 				<th>来源</th>
 				<td>
 					<input type="text" class="sys_text" name="info[source][text]" id="source" value="<{$info['source'][0]}>" />
@@ -149,38 +149,7 @@
 				</td>
 			</tr>
 			</if>
-			
-			
-			<tr>
-				<th>链接地址</th>
-				<td><input type="text" class="sys_text" name="info[url]" id="url" value="<{$info['url']|escapeshow=###}>" /></td>
-			</tr>
-			
-			
-			<tr>
-				<th>Tag标签</th>
-				<td><input type="text" class="sys_text " name="info[tag]" id="tag" value="<{$info['tag']|escapeshow=###}>" /><span style="color:#999;padding:0 0 0 10px;">多个用逗号,隔开</span></td>
-			</tr>
-			<tr>
-				<th>关键词</th>
-				<td><input type="text" class="sys_text " name="info[keywords]" id="keywords" value="<{$info['keywords']|escapeshow=###}>" /></td>
-			</tr>			
-			<tr>
-				<th>摘要</th>
-				<td>
-					<textarea class="sys_textarea sys_textarea350" name="info[description]" id="description" ><{$info['description']|escapeshow=###}></textarea>
-					<div> 最多能输入 <strong>255</strong> 个字符 </div>
-				</td>
-			</tr>			
-		
-			
-		
-			<tr>
-				<th>内容</th>
-				<td><textarea name="info[content]" id="content" style="width:85%;height:300px;"><{$info['content']|escapeshow=###,true}></textarea></td>
-			</tr>		
-			
-			
+
 			<tr style="">
 				<th>组图</th>
 				<td>
@@ -197,6 +166,39 @@
 				</fieldset>
 				</td>
 			</tr>
+			
+			
+			<tr style="display:none">
+				<th>链接地址</th>
+				<td><input type="text" class="sys_text" name="info[url]" id="url" value="<{$info['url']|escapeshow=###}>" /></td>
+			</tr>
+			
+			
+			<tr style="display:none">
+				<th>Tag标签</th>
+				<td><input type="text" class="sys_text " name="info[tag]" id="tag" value="<{$info['tag']|escapeshow=###}>" /><span style="color:#999;padding:0 0 0 10px;">多个用逗号,隔开</span></td>
+			</tr>
+			<tr>
+				<th>关键词</th>
+				<td><input type="text" class="sys_text " name="info[keywords]" id="keywords" value="<{$info['keywords']|escapeshow=###}>" /></td>
+			</tr>			
+			<tr style="display:none">
+				<th>摘要</th>
+				<td>
+					<textarea class="sys_textarea sys_textarea350" name="info[description]" id="description" ><{$info['description']|escapeshow=###}></textarea>
+					<div> 最多能输入 <strong>255</strong> 个字符 </div>
+				</td>
+			</tr>			
+		
+			
+		
+			<tr>
+				<th>内容</th>
+				<td><textarea name="info[content]" id="content" style="width:85%;height:300px;"><{$info['content']|escapeshow=###,true}></textarea></td>
+			</tr>		
+			
+			
+			
 			
 			
 			<tr>
