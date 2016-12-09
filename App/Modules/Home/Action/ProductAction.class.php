@@ -7,8 +7,8 @@ class ProductAction extends BaseAction{
 	function ceramics(){
 		$map1['pid'] = 57;   //Ceramics
 		$map2['pid'] = 58;   //Sanitary ware
-		$list1 = M("content")->where($map1)->select();
-		$list2 = M("content")->where($map2)->select();
+		$list1 = M("category")->where($map1)->select();
+		$list2 = M("category")->where($map2)->select();
 		$this->assign("list1",$list1);
 		$this->assign("list2",$list2);
 		$this->display();
@@ -20,8 +20,8 @@ class ProductAction extends BaseAction{
 	function sanitary(){
 		$map1['pid'] = 57;   //Ceramics
 		$map2['pid'] = 58;   //Sanitary ware
-		$list1 = M("content")->where($map1)->select();
-		$list2 = M("content")->where($map2)->select();
+		$list1 = M("category")->where($map1)->select();
+		$list2 = M("category")->where($map2)->select();
 		$this->assign("list1",$list1);
 		$this->assign("list2",$list2);
 		$this->display();
@@ -34,8 +34,8 @@ class ProductAction extends BaseAction{
 	function alist(){
 		$id = I('id');
 		$map['pid'] = $id;
-		$res = M("content")->where($map)->select();
-		$this->assign("alist",$list);
+		$res = M("category")->where($map)->select();
+		$this->assign("list",$res);
 		$this->display();
 	}
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>products2</title>
+    <title>products - list</title>
     <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/wy/css/index.css">
     <link rel="stylesheet" href="public/wy/css/products2.css">
@@ -92,9 +92,9 @@
             </div>
             <div class="_imgp">
                 <volist name="list" id="l">
-                <a href="index.php?m=product&a=blist&id=<{$l.id}>">
-                    <img src="public/wy/images/products1.jpg" alt="">
-                    <u><{$l.title}></u>
+                <a href="index.php?m=product&a=adetail&id=<{$l.id}>">
+                    <img src="<{$l.picurl}>" alt="">
+                    <u><{$l.classname}></u>
                 </a>
                 </volist>
                
