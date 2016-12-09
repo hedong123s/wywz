@@ -91,38 +91,13 @@
                 </div>
             </div>
             <div class="_imgp">
-                <a href="javascript:;">
+                <volist name="list" id="l">
+                <a href="index.php?m=product&a=blist&id=<{$l.id}>">
                     <img src="public/wy/images/products1.jpg" alt="">
-                    <u>Rustic Tiles</u>
+                    <u><{$l.title}></u>
                 </a>
-                <a class="a_middle" href="javascript:;">
-                    <img src="public/wy/images/products2.jpg" alt="">
-                    <u>Wood Like Tiles</u>
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/products3.jpg" alt="">
-                    <u>Marble Tiles </u>
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/products4.jpg" alt="">
-                    <u>MicroTiles</u>
-                </a>
-                <a class="a_middle"  href="javascript:;">
-                    <img src="public/wy/images/products5.jpg" alt="">
-                    <u>Crystal Mosaic</u>
-                </a>
-                <a class="a_middle"  href="javascript:;">
-                    <img src="public/wy/images/products1.jpg" alt="">
-                    <u>Crystal Mosaic</u>
-                </a>
-                <a class="a_middle"  href="javascript:;">
-                    <img src="public/wy/images/products2.jpg" alt="">
-                    <u>Crystal Mosaic</u>
-                </a>
-                <a class="a_middle"  href="javascript:;">
-                    <img src="public/wy/images/products3.jpg" alt="">
-                    <u>Crystal Mosaic</u>
-                </a>
+                </volist>
+               
             </div>
         </div>
     </div>

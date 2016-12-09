@@ -20,41 +20,17 @@
                 <div class="lists">
                     <volist name="list1" id="l1" key="k">
                         <ul class="list1">
-                            <a href="index.php?m=product&a=detail&id=<{$l1.id}>"><li class="lists_01"><{$l1.title}></li></a>                      
+                            <a href="index.php?m=product&a=alist&id=<{$l1.id}>"><li class="lists_01"><{$l1.classname}></li></a>
+                            <?php
+                                $map['pid'] = $l1['id'];
+                                $r = M("category")->where($map)->select();                                
+                            ?>
+                            <volist name="r" id='r'>
+                                <li><a href="javascript:;"><{$r.classname}> </a> </li>
+                            </volist>                                            
                         </ul>
                     </volist>
-                    <!--
-                    <ul class="list2">
-                        <li class="lists_01">Wood Like Tiles</li>
-                        <li><a href="javascript:;">Wood Like Tiles width Rectified Edge </a> </li>
-                        <li><a href="javascript:;">Wood Like Tiles Original Edge</a></li>
-                    </ul>
-                    <ul class="list3">
-                        <li class="lists_01">Marble Tiles</li>
-                        <li><a href="javascript:;">Lucca</a></li>
-                        <li><a href="javascript:;">Latina</a></li>
-                        <li><a href="javascript:;">Pisa(pi)</a></li>
-                        <li><a href="javascript:;">Roma(roma)</a></li>
-                        <li><a href="javascript:;">Torino(to)</a></li>
-                        <li><a href="javascript:;">Sassari(ss)</a></li>
-                        <li><a href="javascript:;">Siena</a></li>
-                        <li><a href="javascript:;">Pistoia</a></li>
-                        <li><a href="javascript:;">Enna</a></li>
-                        <li><a href="javascript:;">Belluno</a></li>
-                        <li><a href="javascript:;">Mantova</a></li>
-                        <li><a href="javascript:;">Pesearo</a></li>
-                    </ul>
-                    <ul class="list4">
-                        <li class="lists_01">Micro Crystal</li>
-                        <li><a href="javascript:;">Crystal Love</a></li>
-                        <li><a href="javascript:;">Desert star</a></li>
-                    </ul>
-                    <ul class="list5">
-                        <li class="lists_01">Mosaic</li>
-                        <li><a href="javascript:;">Glass Mosaic</a></li>
-                        <li><a href="javascript:;">Geramics Mosaic</a></li>
-                    </ul>
-                    -->
+                   
                 </div>
             </div>
             <div class="_img _img2">
@@ -66,7 +42,14 @@
                 <div class="lists">
                     <volist name="list2" id="l2" key="k">
                     <ul class="list<{$k}>">
-                        <a href="index.php?m=product&a=detail&id=<{$l2.id}>"><li class="lists_01"><{$l2.title}></li></a>                       
+                        <a href="index.php?m=product&a=blist&id=<{$l2.id}>"><li class="lists_01"><{$l2.classname}></li></a>
+                        <?php
+                            $map['pid'] = $l2['id'];
+                            $rs = M("category")->where($map)->select();                                
+                        ?>
+                        <volist name="rs" id='rs'>
+                            <li><a href="javascript:;"><{$rs.classname}> </a> </li>
+                        </volist>                           
                     </ul>
                     </volist>
                     <!--

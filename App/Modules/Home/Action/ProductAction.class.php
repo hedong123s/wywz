@@ -33,9 +33,9 @@ class ProductAction extends BaseAction{
 
 	function alist(){
 		$id = I('id');
-		$map['id'] = $id;
-		$res = M("category")->where($map)->select();
-		$this->assign("list",$list);
+		$map['pid'] = $id;
+		$res = M("content")->where($map)->select();
+		$this->assign("alist",$list);
 		$this->display();
 	}
 
@@ -43,11 +43,19 @@ class ProductAction extends BaseAction{
 		$id = I('id');
 		$map['id'] = $id;
 		$res = M("category")->where($map)->select();
-		$this->assign("list",$list);
+		$this->assign("blist",$list);
 		$this->display();
 	}
 
-	function detail(){
+	function adetail(){
+		$id = I('id');
+		$map['id'] = $id;
+		$res = M("content")->where($map)->find();
+		$this->assign("res",$res);
+		$this->display();
+	}
+
+	function bdetail(){
 		$id = I('id');
 		$map['id'] = $id;
 		$res = M("content")->where($map)->find();
