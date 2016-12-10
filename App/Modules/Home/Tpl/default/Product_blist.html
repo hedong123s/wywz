@@ -27,8 +27,13 @@
     <div class="container">
             <div class="container">
                 <div class="pro_list_top">
+                    <?php
+                        $map['id'] = I('id');
+                        $r = M("category")->where($map)->find();
+                    ?>
                     <div class="faucetlogo">
-                        <img src="public/wy/images/faucetlogo.jpg" alt="">
+                        <!--<img src="public/wy/images/faucetlogo.jpg" alt=""> -->
+                        <p style="color:#4fb4c8;font-size:26px"><{$r.classname}></p>
                     </div>
                     <div class="select">
                         <div class="btn-group">
@@ -121,43 +126,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="pro_imgs">
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet101.jpg" alt="">
+    
+           
+
+            <div class="_imgp">
+                <volist name="list" id="l">
+                <div style="float:left;margin-top:80px;margin-left:50px;">
+                <a href="index.php?m=product&a=bdetail&id=<{$l.id}>">
+                    <img src="<{$l.picurl}>" alt="" style="width:200px;height:200px;">
+                    <u><{$l.title}></u>
                 </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet102.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet103.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet104.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet105.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet106.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet107.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet108.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet109.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet110.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet111.jpg" alt="">
-                </a>
-                <a href="javascript:;">
-                    <img src="public/wy/images/faucet112.jpg" alt="">
-                </a>
+                </div>
+                </volist>
+               
             </div>
         </div>
     </div>

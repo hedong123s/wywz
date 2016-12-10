@@ -41,9 +41,9 @@ class ProductAction extends BaseAction{
 
 	function blist(){
 		$id = I('id');
-		$map['id'] = $id;
+		$map['pid'] = $id;
 		$res = M("content")->where($map)->select();
-		$this->assign("blist",$list);
+		$this->assign("list",$res);
 		$this->display();
 	}
 
