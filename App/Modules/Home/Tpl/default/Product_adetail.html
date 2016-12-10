@@ -12,26 +12,43 @@
 
     <div class="banner7">
         <img src="public/wy/images/banner7.jpg" alt="">
+        <div class="banner_txt">
+
+            <?php
+                //var_dump($res);
+                $map['id'] = $res['pid'];
+                $r = M('category')->where($map)->find();
+            ?>
+            <span class="title">Veronoa</span>
+            <p class="article">
+                <span class="_span1">Faenza@</span>
+                <span class="_span2">| Ceramics |</span>
+                <span class="_span3"><{$r.classname}></span>
+            </p>
+        </div>
     </div>
     <div class="container">
         <div class="pro_show">
             <div class="show1">
+                <?php
+                    $arr = explode(',', $res['picarr']);
+                ?>
                 <div class="showLeft">
-                    <img src="<{$res.picurl}>" alt="">
+                    <img src="<?php echo $arr[0];?>" alt="">
                 </div>
                 <div class="showRight">
-                    <p class="pro_title">Products Gallery</p>
+                    <p class="pro_title"><{$r.classname}></p>
                     <p class="pro_style">
                         <?php
-                            $arr = explode(',', $res['picarr']);
+                            
                             foreach ($arr as $k => $v) {
-                                echo '<img src="'.$v.'" alt="">';
+                                echo '<img src="'.$v.'" alt="" style="width:100px;height:80px;"/> ';
                             }
                         ?>
-                       
+                        
                     </p>
                     <p class="pro_name">
-                        <{$res.title}>
+                        <{$res.title}>型号或名称
                     </p>
                     <p class="pro_size">
                         SIZE : 600X600MM <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800X800MM
@@ -40,14 +57,17 @@
             </div>
             <div class="show2">
                 <div class="showLeft">
-                    <img src="public/wy/images/xiangqing9.jpg" alt="">
+                    <img src="images/xiangqing9.jpg" alt="">
                 </div>
                 <div class="showRight">
-                    <p class="pro_txt"><{$res.content}></p>
+                    <p class="pro_txt">FAENZA product texture, color is very rich, personalized or rough,or bold,or natural, realistic reduction sand natural appearance</p>
                 </div>
             </div>
         </div>
     </div>
+
+
+    
 
     <include file="Public/footer"/>
   

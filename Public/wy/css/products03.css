@@ -7,20 +7,14 @@
 .pro_container .wrap ._img .bg_color{height:282px;width:100%;background:#066e39;position:relative;}
 .pro_container .wrap ._img img{height:282px;width:675px;position:absolute;left:238px;bottom:0;}
 .pro_container .wrap .products_1 h2{height:78px;line-height:78px;font-size:32px;color:#066f39;border-bottom:1px solid #9d9d9d;border-bottom:25px;}
-.pro_container .wrap .products_1 .lists{height:158px;width:100%;}
-.pro_container .wrap .products_1 .lists ul{float:left;}
+.pro_container .wrap .products_1 .lists{height:358px;width:100%;}
+.pro_container .wrap .products_1 .lists ul{float:left;width:280px;height:180px;}
 .pro_container .wrap .products_1 .lists ul li{float:left;height:24px;width:100%;line-height:24px;}
-.pro_container .wrap .products_1 .lists .list1{width:180px;}
-.pro_container .wrap .products_1 .lists .list2{width:180px;}
-.pro_container .wrap .products_1 .lists .list3{width:180px;}
-.pro_container .wrap .products_1 .lists .list4{width:180px;}
-.pro_container .wrap .products_1 .lists .list5{width:180px;}
+.pro_container .wrap .products_1 .lists .list1{width:280px;}
 .pro_container .wrap ._img2 .bg_color{background:#4fb4c8;}
-.pro_container .wrap .products_2 .lists{height:120px;width:100%;}
-.pro_container .wrap .products_2 .lists ul{height:80px;}
-.pro_container .wrap .products_2 .lists .list6{width:180px;}
-.pro_container .wrap .products_2 .lists .list7{width:180px;}
-.pro_container .wrap .products_2 .lists .list8{width:180px;}
-.pro_container .wrap .products_1 .lists .list_01{color:#666;}
+.pro_container .wrap .products_2 .lists{height:320px;}
+.pro_container .wrap .products_2 .lists ul{height:180px;width:280px;}
+.pro_container .wrap .products_2 .lists .list1{}
+
 
 

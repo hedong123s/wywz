@@ -21,13 +21,17 @@
     <include file="Public/header"/>
 
     <div class="conta">
-        <div class="banner6">
-            <img src="images/banner6.jpg" alt="">
+        <div class="banner6" style="height:350px;">
+            <img src="public/wy/images/banner6.jpg" alt=""n >
         </div>
+        <?php
+            $map['id'] = I('id');
+            $r = M("category")->where($map)->find();
+        ?>
         <div class="protect_txt">
             <p class="title">
                 <span class="title1">Ceramics | &nbsp;</span>
-                <span class="title2">Rustic Tiles</span>
+                <span class="title2"><{$r.classname}></span>
             </p>
             <p class="article">
                 he popular ceramics industry expanded towards the middle of the 19th century. <br> special field assembles and sells the Wei bath product and  the accessory

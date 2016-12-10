@@ -1,11 +1,15 @@
 
 /*products2*/
-.conta{width:100%;border-bottom:1px solid #d9d9d9;padding:0;margin:0;}
-.banner6{height:633px;width:100%;}
+.conta{width:100%;border-bottom:1px solid #d9d9d9;padding:0;margin:0;position:relative;}
+.banner6{height:633px;width:100%; }
 .banner6 img{height:100%;width:100%;}
 .main{min-height:1000px;width:1190px;margin:0 auto;padding:0;}
 .main .select{height:46px;width:100%; text-align:center;margin: 70px 0 94px 0; }
 
+.protect_txt{height:270px;width:540px;position:absolute;left:20%;bottom:0;}
+.protect_txt .title{float:left;height:114px; width:100%;line-height:114px;font-size:38px;color:#fff;}
+.protect_txt .title .span{float:left;}
+.protect_txt .article{font-size:14px;line-height:38px;color:#fff;}
 
 
 .main .select .btn_select{background:#fff !important;}

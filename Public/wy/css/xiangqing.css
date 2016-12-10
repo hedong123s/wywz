@@ -1,5 +1,8 @@
-.banner7{height:211px;width:1190px;margin:0 auto;}
+.banner7{height:211px;width:1190px;margin:0 auto; position:relative;}
 .banner7 img{height:100%;width:100%;}
+.banner7 .banner_txt{height:80px;width:100%;position:absolute;top:65px;left:0;color:#fff;}
+.banner7 .banner_txt .title{float:left; height:38px;width:100%;line-height:38px; font-size:38px; text-align:center;margin-bottom:10px;}
+.banner7 .banner_txt .article{font-size:20px;width:100%;text-align:center;}
 
 .pro_show {height:1300px;width:1190px;margin:0 auto;}
 .pro_show .show1{float:left;height:570px;padding-top:80px;border-bottom:1px solid #d9d9d9;}
