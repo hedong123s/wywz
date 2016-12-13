@@ -6,7 +6,7 @@
 'cfg_description'=>'this is FAENZA',
 'cfg_copyright'=>'©2016 FAENZA Sanitary ware All Rights Reserved.',
 'cfg_beianhao'=>'©2016 FAENZA Sanitary ware All Rights Reserved.',
-'cfg_email'=>'hedong123s@163.com',
-'cfg_scape'=>'474738268@qq.com',
+'cfg_email'=>'royware@royware.com',
+'cfg_scape'=>'royware@royware.com',
 'cfg_phone'=>'1-（904）6669345',
 )?>

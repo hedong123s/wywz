@@ -4,7 +4,7 @@
 .pic_content{height:970px;width:1190px;margin:0 auto;}
 .pic_content .con_left{float:left;height:970px;width:880px; }
 .pic_content .con_left .list{float:left;height:315px;width:862px; padding:0 5px; margin-top:80px;}
-.pic_content .con_left .list a{float:left;height:314px;width:187px;border-bottom:1px solid #d9d9d9;margin:0 13px;}
+.pic_content .con_left .list a{float:left;height:314px;width:187px;border-bottom:1px solid #d9d9d9;margin:0 13px;margin-bottom: 60px;}
 .pic_content .con_left .list a img{float:left;height:256px;width:187px;}
 .pic_content .con_left .list a u{float:left;height:40px;width:100%;margin-top:18px;line-height:40px;font-size:14px;text-align:center;}
 .pic_content .con_left .pager{float:left;height:40px;width:100%;margin:60px auto;text-align:center;}

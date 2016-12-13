@@ -2,10 +2,10 @@ html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, l
 fieldset, img {border:0; }
 img{display: block;}
 ul, ol { list-style:none; }
-body {width:100%;font-family: "Microsoft yahei"; color:#666;font-size:14px;}
+body {width:100%;font-family: "微软雅黑"; color:#666;font-size:14px;}
 button{border:none; outline: none;}
 a:hover{text-decoration:none;}
-h1,h2,h3,h4,h5,h6{font-weight:100;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
 input{outline:none;border:none;}
 a{text-decoration:none; color:#666;}
 .main{width:1200px;padding:0 31px 0 32px; margin:0 auto;}
@@ -24,15 +24,15 @@ a{text-decoration:none; color:#666;}
 #header .headerRight .links a{float:left;height:14px;margin-right:25px;}
 #header .headerRight .down{float:left;height:30px;line-height:30px;width:600px; padding-right:48px;}
 #header .headerRight .down .downLeft{float:left;height:30px;width:345px;font-size:16px;}
-#header .headerRight .down .downLeft a{float:left;height:30px;width:172px;line-height:30px;text-align:center;}
+#header .headerRight .down .downLeft a{float:left;height:30px;width:172px;line-height:30px;text-align:center;font-size: 22px;font-weight: normal;}
 #header .headerRight .down .downLeft .txt1{border-right:1px solid #d9d9d9;}
 #header .headerRight .down .downRight{float:right;}
 #header .headerRight .down .downRight input{float:left;height:28px;width:142px;padding:0 15px;line-height:28px;border:1px solid #d9d9d9;border-radius: 15px;margin-right:10px;}
 #header .headerRight .down .downRight button{float:left;height:23px;width:23px;margin-top:3px;border:none;outline:none;background:url("../images/search.png") no-repeat left top;}
 
-#banner{height:652px;width:100%;}
-#banner .swiper-slide{height:100%;width:100%;}
-#banner .swiper-slide img{height:100%;width:100%;}
+#banner{height:2000px;width:100%;}
+#banner .swiper-slide{height:100%;width:100%; }
+#banner .swiper-slide img{height:100%;width:100%; }
 
 .con_about{background:#f9f9f9;}
 #content{height:auto;width:1190px;margin:0 auto;}
