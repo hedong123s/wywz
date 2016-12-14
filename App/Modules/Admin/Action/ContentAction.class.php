@@ -82,6 +82,7 @@ class ContentAction extends BaseAction{
 						$info['source']=explode('=',$info['source']);
 						$info['content_arr']=json_decode($info['content_arr'],true);
 						$info['picarr']=explode(',',$info['picarr']);
+					
 						
 						$this->assign('relation',$c->where(array('id'=>array('in',$info['relation_id'])))->select());
 						$this->assign('info',$info);

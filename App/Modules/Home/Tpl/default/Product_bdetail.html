@@ -20,7 +20,7 @@
     <div class="_con">
         <div class="pro_list_top">
             <?php
-                $map['id'] = I('id');
+                $map['pid'] = I('id');
                 $r = M("category")->where($map)->find();
             ?>
             <div class="faucetlogo">
@@ -131,7 +131,9 @@
             </div>
             <div class="down">
                 <h1>Product Size</h1>
-                <img src="images/xiangqing2_2.jpg" alt="">
+                <p class="pro_txt">
+                    <{$res.content|editor|escapeshow=true}>
+                </p>
             </div>
         </div>
     </div>
