@@ -23,7 +23,7 @@ a{text-decoration:none; color:#666;}
 #header .headerRight .links{float:right;height:14px;line-height:14px;margin-bottom:34px;}
 #header .headerRight .links a{float:left;height:14px;margin-right:25px;}
 #header .headerRight .down{float:left;height:30px;line-height:30px;width:600px; padding-right:48px;}
-#header .headerRight .down .downLeft{float:left;height:30px;width:345px;font-size:16px;}
+#header .headerRight .down .downLeft{float:left;height:30px;width:345px;font-size:24px;}
 #header .headerRight .down .downLeft a{float:left;height:30px;width:172px;line-height:30px;text-align:center;font-size: 22px;font-weight: normal;}
 #header .headerRight .down .downLeft .txt1{border-right:1px solid #d9d9d9;}
 #header .headerRight .down .downRight{float:right;}

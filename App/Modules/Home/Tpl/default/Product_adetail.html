@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ceramics</title>
     <link rel="stylesheet" href="public/wy/css/index.css">
     <link rel="stylesheet" href="public/wy/css/xiangqing.css">
 </head>
@@ -42,7 +42,7 @@
                         <?php
                             
                             foreach ($arr as $k => $v) {
-                                echo '<img src="'.$v.'" alt="" style="width:100px;height:80px;"/> ';
+                                echo '<img src="'.$v.'" alt="" style="width:60px;height:50px;"/> ';
                             }
                         ?>
                         
@@ -50,8 +50,14 @@
                     <p class="pro_name">
                         <{$res.title}>型号或名称
                     </p>
+                    <?php
+                        $a = explode('|', $res['keywords']);
+                    ?>
                     <p class="pro_size">
-                        SIZE : 600X600MM <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800X800MM
+                        SIZE : 
+                        <volist name="a" id="a">
+                            <{$a}> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </volist> 
                     </p>
                 </div>
             </div>
@@ -60,7 +66,9 @@
                     <img src="images/xiangqing9.jpg" alt="">
                 </div>
                 <div class="showRight">
-                    <p class="pro_txt">FAENZA product texture, color is very rich, personalized or rough,or bold,or natural, realistic reduction sand natural appearance</p>
+                    <p class="pro_txt">
+                        <{$res.content|editor|escapeshow=true}>
+                    </p>
                 </div>
             </div>
         </div>
