@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="container" style="height:100%">
-        <div class="pro_show">
+        <div class="pro_show clearfix">
             <div class="show1">
                 <?php
                     $arr = explode(',', $res['picarr']);
@@ -98,7 +98,7 @@
     <script type="text/javascript">
         $(function(){
             $(".pro_style img").click(function(){
-                $(this).css({"border":"1px solid #066f39","margin-right":"23px","margin-bottom":"13px"})
+                $(this).css({"border":"1px solid #066f39","margin-right":"22px","margin-bottom":"13px"})
                         .siblings().css({"margin-right":"25px","margin-bottom":"15px","border":"0"});
                 $(".showLeft img").attr("src",$(this).attr("src"));
             })
