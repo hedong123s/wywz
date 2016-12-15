@@ -28,7 +28,7 @@ a{text-decoration:none; color:#666;}
 #header .headerRight .down .downLeft .txt1{border-right:1px solid #d9d9d9;}
 #header .headerRight .down .downRight{float:right;}
 #header .headerRight .down .downRight input{float:left;height:28px;width:142px;padding:0 15px;line-height:28px;border:1px solid #d9d9d9;border-radius: 15px;margin-right:10px;}
-#header .headerRight .down .downRight button{float:left;height:23px;width:23px;margin-top:3px;border:none;outline:none;background:url("../images/search.png") no-repeat left top;}
+#header .headerRight .down .downRight button{float:left;height:23px;width:23px;margin-top:3px;border:none;outline:none;background:url("/public/wy/images/search.png") no-repeat left top;}
 
 #banner{height:2000px;width:100%;}
 #banner .swiper-slide{height:100%;width:100%; }
