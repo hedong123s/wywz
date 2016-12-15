@@ -5,6 +5,7 @@
     <title>Ceramics</title>
     <link rel="stylesheet" href="public/wy/css/index.css">
     <link rel="stylesheet" href="public/wy/css/xiangqing.css">
+    <link rel="stylesheet" href="public/wy/css/swiper.min.css">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
             <div class="show1">
                 <?php
                     $arr = explode(',', $res['picarr']);
+                    $arr_xg = explode(',', $res['picarr_xg']);
                 ?>
                 <div class="showLeft">
                     <img src="<?php echo $arr[0];?>" alt="">
@@ -62,9 +64,24 @@
                 </div>
             </div>
             <div class="show2">
-                <div class="showLeft">
-                    <img src="images/xiangqing9.jpg" alt="">
+                <div class="showLeft swiper-container">
+                    <div class="swiper-wrapper">
+                        <volist name="arr_xg" id="xg">
+                            <div class="swiper-slide">
+                                <a href="javascript:;">
+                                    <img src="<{$xg}>" alt="" style="width:600px;height:450px">
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                     <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
                 </div>
+
+    
+       
+    </div>
+
                 <div class="showRight">
                     <p class="pro_txt">
                         <{$res.content|editor|escapeshow=true}>
@@ -80,6 +97,7 @@
     <include file="Public/footer"/>
   
     <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
+    <script src="public/wy/js/swiper.min.js"></script>
     <script type="text/javascript">
         $(function(){
             $(".pro_style img").click(function(){
@@ -87,6 +105,16 @@
                         .siblings().css({"margin-right":"25px","margin-bottom":"15px","border":"0"});
                 $(".showLeft img").attr("src",$(this).attr("src"));
             })
+
+             var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+                autoplay:2000,
+                autoplayDisableOnInteraction:false
+
+            });
         })
     </script>
 </body>

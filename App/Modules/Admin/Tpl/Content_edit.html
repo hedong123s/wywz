@@ -166,6 +166,23 @@
 				</fieldset>
 				</td>
 			</tr>
+
+			<tr style="">
+				<th>效果图</th>
+				<td>
+				<fieldset class="picarr picarr_xg">
+					<legend>列表</legend>
+					<div>最多可以上传<strong>5张图片<span onClick="getuploadify('uploadify3','组图上传','image','image',6,<{:C('cfg_max_file_size')}>,'picarr_xg','picarr_xg_area')">开始上传</span></div>
+					<ul id="picarr_xg_area">
+						<if condition="trim($info['picarr_xg'][0]) neq '' ">
+						<volist name="info['picarr_xg']" id="foo">	
+						<li rel="<{$foo}>"><input type="text" name="info[picarr_xg][]" value="<{$foo}>"><a href="javascript:void(0);" onClick="ClearPicArr('<{$foo}>')">删除</a> <a style="padding:0;margin:0;" target="_blank" href="<{$foo}>">查看</a></li>
+						</volist>
+						</if>
+					</ul>
+				</fieldset>
+				</td>
+			</tr>
 			
 			
 			<tr style="display:none">
@@ -174,21 +191,21 @@
 			</tr>
 			
 			
-			<tr style="display:none">
-				<th>Tag标签</th>
-				<td><input type="text" class="sys_text " name="info[tag]" id="tag" value="<{$info['tag']|escapeshow=###}>" /><span style="color:#999;padding:0 0 0 10px;">多个用逗号,隔开</span></td>
+			<tr style="">
+				<th>Colour</th>
+				<td><input type="text" class="sys_text " name="info[tag]" id="tag" value="<{$info['tag']|escapeshow=###}>" /><span style="color:#999;padding:0 0 0 10px;">sanitary详情页填写</span></td>
 			</tr>
 			<tr>
 				<th>型号</th>
-				<td><input type="text" class="sys_text " name="info[keywords]" id="keywords" value="<{$info['keywords']|escapeshow=###}>" />
+				<td><input type="text" class="sys_text " name="info[keywords]" id="keywords" value="<{$info['keywords']|escapeshow=###}>" style="width:400px;"/>
 				多个以"|"隔开，例: 600X600MM|800X800MM
 				</td>
 			</tr>			
-			<tr style="display:none">
-				<th>摘要</th>
+			<tr style="">
+				<th>描述</th>
 				<td>
 					<textarea class="sys_textarea sys_textarea350" name="info[description]" id="description" ><{$info['description']|escapeshow=###}></textarea>
-					<div> 最多能输入 <strong>255</strong> 个字符 </div>
+					<span style="color:#999;padding:0 0 0 10px;">sanitary详情页填写</span>
 				</td>
 			</tr>			
 		

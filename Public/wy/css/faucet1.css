@@ -43,7 +43,7 @@
 .products_list2{position:relative;}
 .products_list2 .pro_imgs{float:left;height:1200px;width:100% ;margin-top:50px;}
 .products_list2 .pro_imgs a{float:left;margin:0 30px; margin-bottom:50px;}
-.products_list2 .btn_special{position:absolute;left:-100px;top:20px;height:44px;width:283px;border:1px solid #d9d9d9;background:#4fb4c8; box-shadow: 1px 1px 0 1px #eee;}
+.products_list2 .btn_special{position:absolute;top:20px;height:44px;width:283px;border:1px solid #d9d9d9;background:#4fb4c8; box-shadow: 1px 1px 0 1px #eee;}
 .products_list2 .btn_special .dropdown-menu{width:230px;height:auto;}
 .products_list2 .btn_special .dropdown-menu li{height:36px;border-bottom:1px solid #d9d9d9;}
 .products_list2 .btn_special .dropdown-menu .last{border:0;}

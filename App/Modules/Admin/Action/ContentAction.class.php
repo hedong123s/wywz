@@ -82,6 +82,7 @@ class ContentAction extends BaseAction{
 						$info['source']=explode('=',$info['source']);
 						$info['content_arr']=json_decode($info['content_arr'],true);
 						$info['picarr']=explode(',',$info['picarr']);
+						$info['picarr_xg']=explode(',',$info['picarr_xg']);
 					
 						
 						$this->assign('relation',$c->where(array('id'=>array('in',$info['relation_id'])))->select());
@@ -112,6 +113,7 @@ class ContentAction extends BaseAction{
 		$_POST['info']['source']=implode('=',$_POST['info']['source']);
 		$_POST['info']['content_arr']=jsonEscape(json_encode($_POST['info']['content_arr']));
 		$_POST['info']['picarr']=is_array($_POST['info']['picarr'])?implode(',',$_POST['info']['picarr']):'';
+		$_POST['info']['picarr_xg']=is_array($_POST['info']['picarr_xg'])?implode(',',$_POST['info']['picarr_xg']):'';
 		$_POST['info']['relation_id']=empty($_POST['info']['relation_id'])?'':implode(',',array_unique(explode(',',trim($_POST['info']['relation_id'],','))));
 
 		if($row=$t->create($_POST['info'])){
