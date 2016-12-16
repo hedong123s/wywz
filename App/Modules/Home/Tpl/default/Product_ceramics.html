@@ -38,44 +38,38 @@
             <div class="select">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt">category</span>
-                        <b>∨</b>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li>
-                            <a href="#">Sanitary ware</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn-group" style="margin-left:30px;">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="txt">Ceramics</span>
                         <b>∨</b>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=ceramics">Ceramics</a>
                         </li>
                         <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li class="last">
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=sanitary">Sanitary ware</a>
                         </li>
                     </ul>
                 </div>
-                <!--
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt">Ceramics</span>
+                        <span class="txt">Rustic Tiles</span>
                         <b>∨</b>
                     </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <volist name='list1' id='i'>
+                        <li>
+                            <a href="index.php?m=product&a=alist&id=<{$i.id}>"><{$i.classname}></a>
+                        </li>
+                        </volist>
+                       
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="txt">None</span>
+                        <b>∨</b>
+                    </button>
+                    <!--
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="#">Ceramics</a>
@@ -90,8 +84,8 @@
                             <a href="#">Ceramics</a>
                         </li>
                     </ul>
+                    -->
                 </div>
-                -->
             </div>
 
             <div class="_imgp">
