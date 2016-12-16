@@ -35,7 +35,7 @@
                     $arr = explode(',', $res['picarr']);
                     $arr_xg = explode(',', $res['picarr_xg']);
                 ?>
-                <div class="showLeft">
+                <div class="showLeft" id="showLeft">
                     <img src="<?php echo $arr[0];?>" alt="">
                 </div>
                 <div class="showRight">
@@ -99,8 +99,8 @@
         $(function(){
             $(".pro_style img").click(function(){
                 $(this).css({"border":"1px solid #066f39","margin-right":"22px","margin-bottom":"13px"})
-                        .siblings().css({"margin-right":"25px","margin-bottom":"15px","border":"0"});
-                $(".showLeft img").attr("src",$(this).attr("src"));
+                        .siblings().css({"margin-right":"25px","border":"0"});
+                $("#showLeft img").attr("src",$(this).attr("src"));
             })
 
              var mySwiper = new Swiper ('.swiper-container', {

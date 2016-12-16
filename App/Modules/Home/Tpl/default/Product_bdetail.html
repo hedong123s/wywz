@@ -36,57 +36,47 @@
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=ceramics">Ceramics</a>
                         </li>
                         <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li class="last">
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=sanitary">Sanitary ware</a>
                         </li>
                     </ul>
                 </div>
                 <div class="btn-group">
+                    <?php
+                        $map1['id'] = $res['pid'];   //Ceramics
+                        $map2['pid'] = 58;   //Sanitary ware
+                        $map3['pid'] = $res['pid'];
+                        $list1 = M("category")->where($map1)->find();
+                        $list2 = M("category")->where($map2)->select();
+                        $list3 = M("content")->where($map3)->select();
+                    ?>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt">Bathroom Cabinet</span>
+                        <span class="txt"><{$list1.classname}></span>
                         <b>∨</b>
                     </button>
+                    
                     <ul class="dropdown-menu" role="menu">
+                        <volist name="list2" id="l1">
                         <li>
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=blist&id=<{$l1.id}>"><{$l1.classname}></a>
                         </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li class="last">
-                            <a href="#">Ceramics</a>
-                        </li>
+                        </volist>
+                        
                     </ul>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt">Ancient Cabinet</span>
+                        <span class="txt"><{$res.title}></span>
                         <b>∨</b>
                     </button>
                     <ul class="dropdown-menu" role="menu">
+                        <volist name="list3" id="l3">
                         <li>
-                            <a href="#">Ceramics</a>
+                            <a href="index.php?m=product&a=bdetail&id=<{$l3.id}>"><{$l3.title}></a>
                         </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li>
-                            <a href="#">Ceramics</a>
-                        </li>
-                        <li class="last">
-                            <a href="#">Ceramics</a>
-                        </li>
+                        </volist>
                     </ul>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>faucet2</title>
+    <title>faucet list</title>
     <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/wy/css/index.css">
     <link rel="stylesheet" href="public/wy/css/faucet1.css">
@@ -53,19 +53,20 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+
                                 <span class="txt"><{$r.classname}></span>
                                 <b>∨</b>
                             </button>
                             <?php
-                                $map1['pid'] = 57;   //Ceramics
+                                $map1['pid'] = $res['pid'];   //Ceramics
                                 $map2['pid'] = 58;   //Sanitary ware
-                                $list1 = M("category")->where($map1)->select();
+                                $list1 = M("category")->where($map1)->find();
                                 $list2 = M("category")->where($map2)->select();
                             ?>
                             <ul class="dropdown-menu" role="menu">
                                 <volist name="list2" id="l1">
                                 <li>
-                                    <a href="index.php?m=product&a=alist&id=<{$i.id}>"><{$l1.classname}></a>
+                                    <a href="index.php?m=product&a=blist&id=<{$l1.id}>"><{$l1.classname}></a>
                                 </li>
                                 </volist>
                                 
@@ -79,7 +80,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <volist name="list" id="l">
                                 <li>
-                                    <a href="index.php?m=product&a=adetail&id=<{$l.id}>"><{$l.title}></a>
+                                    <a href="index.php?m=product&a=bdetail&id=<{$l.id}>"><{$l.title}></a>
                                 </li>
                                 </volist>
                                 
@@ -90,28 +91,19 @@
 
             </div>
         <div class="products_list2">
-            <div class="btn-group btn_special">
-                <button type="button" class="btn  btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="txt">Faucet menu</span>
+            <div class="btn-group btn_special" style="border-radius:10px;">
+                <button type="button" class="btn  btn-default dropdown-toggle" data-toggle="dropdown" style="border-radius:10px;">
+                    <span class="txt" style="border-radius:10px;">Faucet menu</span>
                     <b class="beChanged"><</b>
                     <!--<span class="caret"></span>-->
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="#">Basin Faucet</a>
-                    </li>
-                    <li>
-                        <a href="#">Sink Faucet</a>
-                    </li>
-                    <li>
-                        <a href="#">Bathtub Faucet</a>
-                    </li>
-                    <li>
-                        <a href="#">Shower Mixer</a>
-                    </li>
-                    <li class="last">
-                        <a href="#">Wall-Hung Basin Mixer</a>
-                    </li>
+                    <volist name="list2" id="l1">
+                        <li>
+                            <a href="index.php?m=product&a=blist&id=<{$l1.id}>"><{$l1.classname}></a>
+                        </li>
+                    </volist>
+                    
                 </ul>
             </div>
     
@@ -143,7 +135,7 @@
                if($(".btn_special").hasClass("open")){
                    $(".btn .beChanged").html("<").css({"background":"#4fb4c8"});
                } else{
-                   $(".btn .beChanged").html(">").css({"background":"#066f39"});
+                   $(".btn .beChanged").html(">").css({"background":"#4fb4c8"});
                }
             })
         })
