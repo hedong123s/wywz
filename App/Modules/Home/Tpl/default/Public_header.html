@@ -16,10 +16,25 @@
                     <a class="txt2" href="index.php?m=product&a=sanitary"> Sanitary ware</a>
                 </div>
                 <div class="downRight">
-                    <input type="text" placeholder="Search">
-                    <button type="button"></button>
+                    <input type="text" placeholder="Search" id="name">
+                    <a href="javascript:;" id="sub"><button  ></button></a>
                 </div>
             </div>
         </div>
 
+
+
 </div>
+        <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
+        <script type="text/javascript">
+            $("#sub").click(function(){
+                var k =$('#name').val();
+                if(k == ''){
+                    alert('请输入搜索关键字');
+                }else{
+                    location.href='./index.php?m=index&a=search&k='+k;
+                    return false
+                }
+                
+            })
+        </script>

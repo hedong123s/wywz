@@ -76,6 +76,14 @@ class IndexAction extends BaseAction{
 		$this->display();
 	}
 
+	function search(){
+		$keyword = I('k');
+		$map['title'] = array('like',"%$keyword%");
+		$list = M("content")->where($map)->limit(8)->select();
+		$this->assign("list",$list);
+		$this->display();
+	}
+
 }
 
 ?>
