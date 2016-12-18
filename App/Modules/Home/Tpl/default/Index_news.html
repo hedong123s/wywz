@@ -50,6 +50,7 @@
                         </p>
                         <a href="javascript:;" class="outlink" class='view' val="<{$l.id}>">View></a>
                     </div>
+
                 </div>
 
                 <div class="detail_<{$l.id}> detail">
@@ -60,15 +61,15 @@
                     <div class="detail_txt">
                         <{$l.content}>
                     </div>
-                    <div class="btn_back">
+                    <div class="btn_back" style="">
                         <a href="javascript:;">＜＜Back </a>
                     </div>
                 </div>
 
 
                 </volist>
-                
                 <div class="pages"><{$page}></div>
+                
                 
             </div>
 
@@ -120,21 +121,21 @@
             $(".outlink").click(function(){
                 var id = $(this).attr("val");
                 $(".con_left").hide();
-                $(".pager").hide();
+                $(".pages").hide();
                 $(".detail_"+id).show(1000);
             });
 
             $(".outlinks").click(function(){
                 var id = $(this).attr("val");
                 $(".con_left").hide();
-                $(".pager").hide();
+                $(".pages").hide();
                 $(".detail_"+id).show(1000);
             });
 
             $(".detail .btn_back").click(function(){
                 $(".detail").hide();
                 $(".con_left").show();
-                $(".pager").show();
+                $(".pages").show();
 
             });
 
