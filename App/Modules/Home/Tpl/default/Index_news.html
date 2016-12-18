@@ -41,7 +41,7 @@
                     </div>
                     <div class="con_txt">
                         <div class="top">
-                            <p class="title"><{$l.title}></p>
+                            <a href="javascript:;"  class='outlinks' val="<{$l.id}>"><p class="title"><{$l.title}></p></a>
                             <span class="time"><{$l.posttime|getdatetime}></span>
                         </div>
                         <p class="middle">
@@ -129,6 +129,14 @@
                 $(".pager").hide();
                 $(".detail_"+id).show(1000);
             });
+
+            $(".outlinks").click(function(){
+                var id = $(this).attr("val");
+                $(".con_left").hide();
+                $(".pager").hide();
+                $(".detail_"+id).show(1000);
+            });
+
             $(".detail .btn_back").click(function(){
                 $(".detail").hide();
                 $(".con_left").show();
