@@ -27,18 +27,22 @@ class IndexAction extends BaseAction{
 	 * @return [type] [description]
 	 */
 	function catalog(){
-		$map['pid'] = 53;   //Ceramics
+		$map['pid'] = 53;   //news
 		$id = I('id');
-		if(!empty($id)){
+		if($id){
 			$maps['pid'] = $id;
-			$list = M("content")->where($maps)->select();
 		}else{
-			$maps['path'] = array('like',"%53%");
-			$list = M("content")->where($maps)->select();
+			$maps['path'] = array('like','0,53%');
 		}
+		$count  = M('content')->where($maps)->count();// 查询满足要求的总记录数
+		import('ORG.Util.Page');// 导入分页类
+		$Page   = new Page($count,6);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+		$show   = $Page->show();// 分页显示输出
+		$list = M("content")->where($maps)->limit($Page->firstRow.','.$Page->listRows)->select();
 		$cate = M("category")->where($map)->select();
 		$this->assign("list",$list);
 		$this->assign("cate",$cate);
+		$this->assign('page',$show);// 赋值分页输出
 		$this->display();
 	}
 
@@ -53,18 +57,24 @@ class IndexAction extends BaseAction{
 	}
 
 	function news(){
-		$map['pid'] = 55;   //Ceramics
+		$map['pid'] = 55;   //news
 		$id = I('id');
-		if(!empty($id)){
+		if($id){
 			$maps['pid'] = $id;
-			$list = M("content")->where($maps)->select();
 		}else{
-			$maps['path'] = array('like',"%55%");
-			$list = M("content")->where($maps)->select();
+			$maps['path'] = array('like','0,55%');
 		}
+		$count  = M('content')->where($maps)->count();// 查询满足要求的总记录数
+		import('ORG.Util.Page');// 导入分页类
+		$Page   = new Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+		$show   = $Page->show();// 分页显示输出
+
+
+		$list = M("content")->where($maps)->limit($Page->firstRow.','.$Page->listRows)->select();
 		$cate = M("category")->where($map)->select();
 		$this->assign("list",$list);
 		$this->assign("cate",$cate);
+		$this->assign('page',$show);// 赋值分页输出
 		$this->display();
 	}
 

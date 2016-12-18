@@ -44,7 +44,6 @@ class Page {
      */
     public function __construct($totalRows,$listRows='',$parameter='',$url='') {
 	
-		
 			$this->totalRows    =   $totalRows;
 			$this->parameter    =   $parameter;
 			$this->varPage      =   C('VAR_PAGE') ? C('VAR_PAGE') : 'p' ;

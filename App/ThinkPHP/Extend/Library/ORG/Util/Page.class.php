@@ -23,15 +23,15 @@ class Page {
     // 起始行数
     public $firstRow    ;
     // 分页总页面数
-    public $totalPages  ;
+    protected $totalPages  ;
     // 总行数
     protected $totalRows  ;
     // 当前页数
-    public $nowPage    ;
+    protected $nowPage    ;
     // 分页的栏的总页数
     protected $coolPages   ;
     // 分页显示定制
-    public $config  =    array('header'=>'条记录','prev'=>'上一页','next'=>'下一页','first'=>'第一页','last'=>'最后一页','theme'=>' %totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first%  %prePage%  %linkPage%  %nextPage% %end%');
+    protected $config  =    array('header'=>'条记录','prev'=>'上一页','next'=>'下一页','first'=>'第一页','last'=>'最后一页','theme'=>' %totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first%  %prePage%  %linkPage%  %nextPage% %end%');
     // 默认分页变量名
     protected $varPage;
 
@@ -44,7 +44,6 @@ class Page {
      */
     public function __construct($totalRows,$listRows='',$parameter='',$url='') {
 	
-
 			$this->totalRows    =   $totalRows;
 			$this->parameter    =   $parameter;
 			$this->varPage      =   C('VAR_PAGE') ? C('VAR_PAGE') : 'p' ;
@@ -61,6 +60,7 @@ class Page {
 			}
 			$this->firstRow     =   $this->listRows*($this->nowPage-1);
 			
+		
 
 		
 		
@@ -76,15 +76,15 @@ class Page {
      * 分页显示输出
      * @access public
      */
-    public function show() {
+    public function show($id='') {
         if(0 == $this->totalRows) return '';
 		
 		
-		if(c('cfg_runmode')==0){  //动态分页
+
 		
 			$p    =   $this->varPage;
 				$nowCoolPage    =   ceil($this->nowPage/$this->rollPage);
-			
+
 				// 分析分页参数
 				if($this->url){
 					$depr       =   C('URL_PATHINFO_DEPR');
@@ -126,8 +126,6 @@ class Page {
 					$prePage    =   "<a href='".str_replace('__PAGE__',$preRow,$url)."' ><span>上".$this->rollPage."页</span></a>";
 					$theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' ><span>".$this->config['first']."</span></a>";
 				}
-			
-				
 				if($nowCoolPage == $this->coolPages){
 					$nextPage   =   '';
 					$theEnd     =   '';
@@ -139,87 +137,8 @@ class Page {
 				}
 				// 1 2 3 4 5
 				$linkPage = "";
-			
-					
-					
-					
 				for($i=1;$i<=$this->rollPage;$i++){
 					$page       =   ($nowCoolPage-1)*$this->rollPage+$i;
-				
-					if($page!=$this->nowPage){
-						if($page<=$this->totalPages){
-							$linkPage .= "&nbsp;<a href='".str_replace('__PAGE__',$page,$url)."'><span>".$page."</span></a>";
-						}else{
-							break;
-						}
-					}else{
-						if($this->totalPages != 1){
-							$linkPage .= "&nbsp;<a href='' class='cur'><span>".$page."</span></a>";
-						}
-					}
-				}
-				$pageStr     =   str_replace(
-					array('%header%','%nowPage%','%totalRow%','%totalPage%','%upPage%','%downPage%','%first%','%prePage%','%linkPage%','%nextPage%','%end%'),
-					array($this->config['header'],$this->nowPage,$this->totalRows,$this->totalPages,$upPage,$downPage,$theFirst,$prePage,$linkPage,$nextPage,$theEnd),$this->config['theme']);			
-		
-		}elseif(c('cfg_runmode')==1){  //纯静态分页
-				
-				$curUrl=UU('MODULE_NAME.'/'.ACTION_NAME',$_GET);   //获取动态转换为静态后的地址
-				$curFileName = end(explode('/',$curUrl));   //获取当前静态文件名
-				$curLastIndex=strrpos($curUrl,$curFileName);   //截取文件名最后出现的位置；
-				
-				$curFolderUrl=substr($curUrl,0,$curLastIndex);   //当前分页静态文件所在路径
-				$curFileNameArr=explode(".",$curFileName);
-				$p=!isset($curFileNameArr[0])||$curFileNameArr[0]=='index'?1:intval($curFileNameArr[0]);   //当前页
-				
-				$url=$curFolderUrl.'__PAGE__'.C('HTML_FILE_SUFFIX');  //分页整体路径，其中__PAGE__为页数
-				
-				$nowCoolPage    =   ceil($this->nowPage/$this->rollPage);
-				
-				//上下翻页字符串
-				$upRow          =   $this->nowPage-1;
-				$downRow        =   $this->nowPage+1;
-				
-				if ($upRow>0){
-					$upPage     =   "<a href='".str_replace('__PAGE__',$upRow,$url)."'><span>".$this->config['prev']."</span></a>";
-				}else{
-					$upPage     =   '';
-				}
-
-				if ($downRow <= $this->totalPages){
-					$downPage   =   "<a href='".str_replace('__PAGE__',$downRow,$url)."'><span>".$this->config['next']."</span></a>";
-				}else{
-					$downPage   =   '';
-				}
-				// << < > >>
-				if($nowCoolPage == 1){
-					$theFirst   =   '';
-					$prePage    =   '';
-				}else{
-					$preRow     =   $this->nowPage-$this->rollPage<=1?1:$this->nowPage-$this->rollPage;
-					$prePage    =   "<a href='".str_replace('__PAGE__',$preRow,$url)."' ><span>上".$this->rollPage."页</span></a>";
-					$theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' ><span>".$this->config['first']."</span></a>";
-				}
-			
-				
-				if($nowCoolPage == $this->coolPages){
-					$nextPage   =   '';
-					$theEnd     =   '';
-				}else{
-					$nextRow    =   $this->nowPage+$this->rollPage>=$this->totalPages?$this->totalPages:$this->nowPage+$this->rollPage;
-					$theEndRow  =   $this->totalPages;
-					$nextPage   =   "<a href='".str_replace('__PAGE__',$nextRow,$url)."' ><span>下".$this->rollPage."页</span></a>";
-					$theEnd     =   "<a href='".str_replace('__PAGE__',$theEndRow,$url)."' ><span>".$this->config['last']."</span></a>";
-				}
-				// 1 2 3 4 5
-				$linkPage = "";
-			
-					
-					
-					
-				for($i=1;$i<=$this->rollPage;$i++){
-					$page       =   ($nowCoolPage-1)*$this->rollPage+$i;
-				
 					if($page!=$this->nowPage){
 						if($page<=$this->totalPages){
 							$linkPage .= "&nbsp;<a href='".str_replace('__PAGE__',$page,$url)."'><span>".$page."</span></a>";
@@ -235,9 +154,10 @@ class Page {
 				$pageStr     =   str_replace(
 					array('%header%','%nowPage%','%totalRow%','%totalPage%','%upPage%','%downPage%','%first%','%prePage%','%linkPage%','%nextPage%','%end%'),
 					array($this->config['header'],$this->nowPage,$this->totalRows,$this->totalPages,$upPage,$downPage,$theFirst,$prePage,$linkPage,$nextPage,$theEnd),$this->config['theme']);
+					
 		
-		}
 		
+	
 		
 		
 		

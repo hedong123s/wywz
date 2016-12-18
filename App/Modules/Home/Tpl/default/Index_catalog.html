@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="public/wy/css/index.css">
     <link rel="stylesheet" href="public/wy/css/huace.css">
 
+    <style>
+
+/*分页*/
+.pages{ float:left;height:42px;padding:65px 0;text-align:center;width:100%;}
+.pages a{ line-height:40px; border:1px solid #dedede; display:inline-block; font-size:12px; padding:0 10px; border-radius:3px; text-decoration:none; color:#666;min-width: 40px;}
+.pages a:hover{ background:#f1f1f1; border-color:#bbb; color:#333;}
+.pages a.cur{ background:#1b6d85;color:#fff;}
+.pages a.cur:hover{ color:#f60; background:none;}
+
+
+</style>
+
 </head>
 <body>
 
@@ -22,22 +34,14 @@
             <div class="con_left">
                 <div class="top list">
                     <volist name="list" id="l">
-                        <a href="<{$l.url}>" target="_blank">
+                        <a class="pic" href="<{$l.url}>" target="_blank">
                             <img src="<{$l.picurl}>" alt="">
                             <u style="margin-top:10px;font-size:12px;text-decoration:none"><{$l.title}></u>
                         </a>
                     </volist>
-                    
+                    <div class="pages"><{$page}></div>
                 </div>
         
-                <!--
-                <div class="pager">
-                    <span class="active">1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                </div>
-                -->
             </div>
             <div class="con_right btn_select">
                 <div class="btn-group btn_select">
@@ -58,6 +62,7 @@
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 
