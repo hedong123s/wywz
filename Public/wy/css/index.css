@@ -30,7 +30,7 @@ a{text-decoration:none; color:#666;}
 #header .headerRight .down .downRight input{float:left;height:28px;width:142px;padding:0 15px;line-height:28px;border:1px solid #d9d9d9;border-radius: 15px;margin-right:10px;}
 #header .headerRight .down .downRight button{float:left;height:23px;width:23px;margin-top:3px;border:none;outline:none;background:url("/public/wy/images/search.png") no-repeat left top;}
 
-#banner{height:2000px;width:100%;}
+#banner{height:650px;width:100%;}
 #banner .swiper-slide{height:100%;width:100%; }
 #banner .swiper-slide img{height:100%;width:100%; }
 
@@ -42,7 +42,7 @@ a{text-decoration:none; color:#666;}
 #content .about .about_txt{float:left;height:130px; width:650px;line-height:36px;}
 #content .about i{float:left;width:100%;margin-top:30px;text-decoration: underline;color:#066f39;}
 
-.special{border-top:1px solid #d9d9d9;margin-top:78px;}
+.special{border-top:1px solid #d9d9d9;margin-top:18px;}
 #ceramics{min-height:508px;width:1190px;margin:0 auto;}
 #ceramics .left{float:left;min-height:446px;width:240px;border-right:1px solid #d9d9d9;padding:62px 42px 0 18px;}
 #ceramics .left h3{height:30px;line-height:30px;font-size:30px;text-align:left;margin-bottom:50px;color:#066f39;}
