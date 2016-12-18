@@ -20,8 +20,11 @@
 
     <div id="faenza" class="same">
         <h1>THE COURSE OF A COMPANY'S HISTORY </h1>
+        <?php
+              $l = M("category")->where(array("classname"=>'contract us'))->find();
+           ?>
         <div class="middle">
-            <p> THE COURSE OF A COMPANY'S HISTORY ,With a global reputation, FAENZA group has three branches,With a global reputation, FAENZA group has three branches,</p>
+            <p><{$l['content']|editor|escapeshow=true}></p>
         </div>
         <div class="down">
             <a href="index.php?m=index&a=catalog">

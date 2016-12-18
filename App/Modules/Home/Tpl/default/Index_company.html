@@ -20,8 +20,11 @@
    <div id="faenza" class="same">
        <h1>FAENZA & COMPANY PROFILE </h1>
        <div class="middle">
-           <h3>THE FAENZA FAMILY OF BUSINESSES</h3>
-           <p> With a global reputation, FAENZA group has three branches,With a global reputation, FAENZA group has three branches,With a global reputation, FAENZA group has three branches,</p>
+           <!-- <h3>THE FAENZA FAMILY OF BUSINESSES</h3> -->
+           <?php
+              $l = M("category")->where(array("classname"=>'contract us'))->find();
+           ?>
+           <p><{$l['content']|editor|escapeshow=true}></p>
        </div>
        <div class="down">
            <a href="index.php?m=index&a=catalog">
@@ -46,8 +49,11 @@
     <div id="origin" class="same">
         <h1>The ORIGIN OF FAENZA  </h1>
         <div class="middle">
-            <h3>TWHAT DOES GRACIOUS LIVING MEAN TO US?</h3>
-            <p> Faenza, Italy famous ceramic village, at the beginning of ninet,With a global reputation, FAENZA group has three branches,With a global reputation, FAENZA group has three branches,</p>
+            <!--<h3>TWHAT DOES GRACIOUS LIVING MEAN TO US?</h3> -->
+            <?php
+              $ls = M("category")->where(array("classname"=>'history'))->find();
+             ?>
+             <p><{$ls['content']|editor|escapeshow=true}></p>
         </div>
         <div class="down">
             <a href="javascript:;">
