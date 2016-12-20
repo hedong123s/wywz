@@ -19,10 +19,6 @@
     </div>
     <div class="_con">
         <div class="pro_list_top">
-            <?php
-                $map['pid'] = I('id');
-                $r = M("category")->where($map)->find();
-            ?>
             <div class="faucetlogo">
                 <img src="public/wy/images/faucetlogo.jpg" alt="">
             </div>
@@ -44,20 +40,23 @@
                 </div>
                 <div class="btn-group">
                     <?php
-                        $map1['id'] = $res['pid'];   //Ceramics
-                        $map2['pid'] = 58;   //Sanitary ware
-                        $map3['pid'] = $res['pid'];
-                        $list1 = M("category")->where($map1)->find();
-                        $list2 = M("category")->where($map2)->select();
-                        $list3 = M("content")->where($map3)->select();
+                        $map1['id'] = I('id');   //Ceramics
+                        $r = M("content")->where($map1)->find();
+                        $map2['id'] = $r['pid'];   //Sanitary ware                        
+                        $r2 = M("category")->where($map2)->find();
+                        $map3['pid'] = $r2['pid'];
+                        $list3 = M("category")->where($map3)->select();
+                        $r3 = M('category')->where(array('id'=>$list3[0]['pid']))->find();
+                        $map4['pid'] = $r3['pid'];
+                        $list4 = M("category")->where($map4)->select();
                     ?>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt"><{$list1.classname}></span>
+                        <span class="txt"><{$r3.classname}></span>
                         <b>∨</b>
                     </button>
                     
                     <ul class="dropdown-menu" role="menu">
-                        <volist name="list2" id="l1">
+                        <volist name="list4" id="l1">
                         <li>
                             <a href="index.php?m=product&a=blist&id=<{$l1.id}>"><{$l1.classname}></a>
                         </li>
@@ -67,13 +66,13 @@
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt"><{$res.title}></span>
+                        <span class="txt"><{$r2.classname}></span>
                         <b>∨</b>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <volist name="list3" id="l3">
                         <li>
-                            <a href="index.php?m=product&a=bdetail&id=<{$l3.id}>"><{$l3.title}></a>
+                            <a href="index.php?m=product&a=b2list&id=<{$l3.id}>"><{$l3.classname}></a>
                         </li>
                         </volist>
                     </ul>
