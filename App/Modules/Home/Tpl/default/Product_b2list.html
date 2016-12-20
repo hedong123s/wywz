@@ -52,23 +52,23 @@
                             </ul>
                         </div>
                         <div class="btn-group">
+                            
+                            <?php
+                                $map3['id'] = I('id');
+                                $r = M("category")->where($map3)->find();
+                                $rs = M("category")->where(array('id'=>$r['pid']))->find();
+                                $list2 = M("category")->where(array('pid'=>$rs['pid']))->select();
+                                $list3 = M("category")->where(array('pid'=>$r['pid']))->select();
+                            ?>
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
-                                <span class="txt"><{$r.classname}></span>
+                                <span class="txt"><{$rs.classname}></span>
                                 <b>∨</b>
                             </button>
-                            <?php
-                                $map1['pid'] = $res['pid'];   //Ceramics
-                                $map2['pid'] = 58;   //Sanitary ware
-                                $map3['pid'] = I('id');
-                                $list1 = M("category")->where($map1)->find();
-                                $list2 = M("category")->where($map2)->select();
-                                $list3 = M("category")->where($map3)->select();
-                            ?>
                             <ul class="dropdown-menu" role="menu">
-                                <volist name="list2" id="l1">
+                                <volist name="list2" id="l2">
                                 <li>
-                                    <a href="index.php?m=product&a=blist&id=<{$l1.id}>"><{$l1.classname}></a>
+                                    <a href="index.php?m=product&a=blist&id=<{$l2.id}>"><{$l2.classname}></a>
                                 </li>
                                 </volist>
                                 
@@ -76,7 +76,7 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="txt">Please choose</span>
+                                <span class="txt"><{$r.classname}></span>
                                 <b>∨</b>
                             </button>
                             <ul class="dropdown-menu" role="menu">

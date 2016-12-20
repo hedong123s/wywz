@@ -42,6 +42,20 @@ class ProductAction extends BaseAction{
 	function blist(){
 		$id = I('id');
 		$map['pid'] = $id;
+		$res = M("category")->field("id")->where($map)->select();
+		$new = array();
+		foreach ($res as $k => $v) {
+			$new[] = $v['id'];			
+		}
+		$arr['pid']  = array('in',$new);
+		$res = M("content")->where($arr)->select();
+		$this->assign("list",$res);
+		$this->display();
+	}
+
+	function b2list(){
+		$id = I('id');
+		$map['pid'] = $id;
 		$res = M("content")->where($map)->select();
 		$this->assign("list",$res);
 		$this->display();
@@ -62,6 +76,8 @@ class ProductAction extends BaseAction{
 		$this->assign("res",$res);
 		$this->display();
 	}
+
+
 
 
 }
