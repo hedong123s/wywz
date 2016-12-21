@@ -10,7 +10,7 @@
 .products_list .select .btn-group{background:#fff !important;}
 .products_list .select .btn{height:44px;width:227px;border:1px solid #d9d9d9; box-shadow: 1px 1px 0 1px #eee; margin-right:20px; position:relative; background:#fff !important;}
 .products_list .select .btn .txt{float:left;}
-.products_list .select .btn b{display:block;height:44px;width:44px;line-height:44px;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
+.products_list .select .btn b{color:#d9d9d9;display:block;height:44px;width:44px;line-height:44px;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
 .products_list .select .dropdown-menu{width:227px;height:auto;}
 .products_list .select .dropdown-menu li{height:36px;border-bottom:1px solid #d9d9d9;}
 .products_list .select .dropdown-menu .last{border:0;}
@@ -34,7 +34,7 @@
 .pro_list_top .select .btn-group{background:#fff !important;}
 .pro_list_top .select .btn{float:left;height:44px;width:227px;border:1px solid #d9d9d9; box-shadow: 1px 1px 0 1px #eee; margin-right:20px; background:#fff !important; position:relative;}
 .pro_list_top .select .btn .txt{float:left;}
-.pro_list_top .select .btn b{display:block;height:44px;width:44px;line-height:44px;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
+.pro_list_top .select .btn b{color:#d9d9d9;display:block;height:44px;width:44px;line-height:44px;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
 .pro_list_top .select .dropdown-menu{width:227px;height:auto;}
 .pro_list_top .select .dropdown-menu li{height:36px;border-bottom:1px solid #d9d9d9;}
 .pro_list_top .select .dropdown-menu .last{border:0;}

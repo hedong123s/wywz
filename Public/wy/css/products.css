@@ -11,7 +11,7 @@
 .main .select{height:46px;width:100%; text-align:center;margin: 70px 0 94px 0; }
 .main .select .btn-group{height:46px;width:229px;background:#fff !important;}
 .main .select .btn{height:44px;width:227px;border:1px solid #d9d9d9; box-shadow: 1px 1px 0 1px #eee;position:relative;background:#fff !important;}
-.main .select .btn b{display:block;height:44px;width:44px;line-height:44px;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
+.main .select .btn b{display:block;height:44px;width:44px;line-height:44px;color:#d9d9d9;text-align:center;font-size:20px;position:absolute;right:0;top:0;}
 .main .select .btn .txt{float:left;}
 .main .select .dropdown-menu{width:227px;height:auto;}
 .main .select .dropdown-menu li{height:36px;border-bottom:1px solid #d9d9d9;}
