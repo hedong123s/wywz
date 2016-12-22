@@ -159,7 +159,14 @@
 					<ul id="picarr_area">
 						<if condition="trim($info['picarr'][0]) neq '' ">
 						<volist name="info['picarr']" id="foo">	
-						<li rel="<{$foo}>"><input type="text" name="info[picarr][]" value="<{$foo}>"><a href="javascript:void(0);" onClick="ClearPicArr('<{$foo}>')">删除</a> <a style="padding:0;margin:0;" target="_blank" href="<{$foo}>">查看</a></li>
+						<li rel="<{$foo}>">
+							<input type="text" name="info[picarr][]" value="<{$foo}>">
+							<a href="javascript:void(0);" onClick="ClearPicArr('<{$foo}>')">删除</a> 
+							<?php
+								$a = explode("|", $foo);
+								$url  =$a[0];
+							?>							
+							<a style="padding:0;margin:0;" target="_blank" href="<{$url}>">查看</a></li>
 						</volist>
 						</if>
 					</ul>
