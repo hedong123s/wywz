@@ -97,7 +97,9 @@
                 <button type="button" class="btn  btn-default dropdown-toggle" data-toggle="dropdown" 
                 style="width:280px;border-radius:20px;">
                     <span class="txt" style="text-align:left;padding-left:20px;">Sanitary ware</span>
-                    <b class="beChanged"><</b>
+                    <b class="">
+                        <!-- <img src="public/wy/images/11.jpg" class="img"/> -->
+                    </b>
                     <!--<span class="caret"></span>-->
                 </button>
                 <ul class="dropdown-menu" role="menu">
@@ -135,12 +137,9 @@
     <script type="text/javascript">
         $(function(){
             $(".btn_special .btn").click(function(){
-               if($(".btn_special").hasClass("open")){
-                   $(".btn .beChanged").html("<").css({"background":"#4fb4c8"});
-               } else{
-                   $(".btn .beChanged").html(">").css({"background":"#066f39"});
-               }
+               $(".btn_special b").toggleClass('beChanged');
             })
+          
         })
     </script>
 </body>
