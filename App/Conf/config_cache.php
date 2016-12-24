@@ -1,6 +1,6 @@
 <?php return array(
 'cfg_webname'=>'FAENZA',
-'cfg_weburl'=>'www.xiutub.com',
+'cfg_weburl'=>'www.royware.com',
 'cfg_webpath'=>'/',
 'cfg_keyword'=>'FAENZA',
 'cfg_description'=>'this is FAENZA',
