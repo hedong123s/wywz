@@ -7,8 +7,8 @@ class ProductAction extends BaseAction{
 	function ceramics(){
 		$map1['pid'] = 57;   //Ceramics
 		$map2['pid'] = 58;   //Sanitary ware
-		$list1 = M("category")->where($map1)->select();
-		$list2 = M("category")->where($map2)->select();
+		$list1 = M("category")->order(array("orderid"=>"asc"))->where($map1)->select();
+		$list2 = M("category")->order(array("orderid"=>"asc"))->where($map2)->select();
 		$this->assign("list1",$list1);
 		$this->assign("list2",$list2);
 		$this->display();
@@ -20,8 +20,8 @@ class ProductAction extends BaseAction{
 	function sanitary(){
 		$map1['pid'] = 57;   //Ceramics
 		$map2['pid'] = 58;   //Sanitary ware
-		$list1 = M("category")->where($map1)->select();
-		$list2 = M("category")->where($map2)->select();
+		$list1 = M("category")->order(array("orderid"=>"asc"))->where($map1)->select();
+		$list2 = M("category")->order(array("orderid"=>"asc"))->where($map2)->select();
 		$this->assign("list1",$list1);
 		$this->assign("list2",$list2);
 		$this->display();
@@ -34,7 +34,7 @@ class ProductAction extends BaseAction{
 	function alist(){
 		$id = I('id');
 		$map['pid'] = $id;
-		$res = M("content")->where($map)->select();
+		$res = M("content")->order(array("orderid"=>"asc"))->where($map)->select();
 		$this->assign("list",$res);
 		$this->display();
 	}
@@ -42,13 +42,13 @@ class ProductAction extends BaseAction{
 	function blist(){
 		$id = I('id');
 		$map['pid'] = $id;
-		$res = M("category")->field("id")->where($map)->select();
+		$res = M("category")->order(array("orderid"=>"asc"))->field("id")->where($map)->select();
 		$new = array();
 		foreach ($res as $k => $v) {
 			$new[] = $v['id'];			
 		}
 		$arr['pid']  = array('in',$new);
-		$res = M("content")->where($arr)->select();
+		$res = M("content")->order(array("orderid"=>"asc"))->where($arr)->select();
 		$this->assign("list",$res);
 		$this->display();
 	}
@@ -56,7 +56,7 @@ class ProductAction extends BaseAction{
 	function b2list(){
 		$id = I('id');
 		$map['pid'] = $id;
-		$res = M("content")->where($map)->select();
+		$res = M("content")->order(array("orderid"=>"asc"))->where($map)->select();
 		$this->assign("list",$res);
 		$this->display();
 	}
@@ -64,7 +64,7 @@ class ProductAction extends BaseAction{
 	function adetail(){
 		$id = I('id');
 		$map['id'] = $id;
-		$res = M("content")->where($map)->find();
+		$res = M("content")->order(array("orderid"=>"asc"))->where($map)->find();
 		$this->assign("res",$res);
 		$this->display();
 	}
@@ -72,7 +72,7 @@ class ProductAction extends BaseAction{
 	function bdetail(){
 		$id = I('id');
 		$map['id'] = $id;
-		$res = M("content")->where($map)->find();
+		$res = M("content")->order(array("orderid"=>"asc"))->where($map)->find();
 		$this->assign("res",$res);
 		$this->display();
 	}
