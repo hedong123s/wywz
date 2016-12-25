@@ -94,6 +94,13 @@ class IndexAction extends BaseAction{
 		$this->display();
 	}
 
+	function content(){
+		$id = I('id');
+		$map['id'] = $id;
+		$list = M("content")->where($map)->find();
+		var_dump($list);
+	}
+
 }
 
 ?>

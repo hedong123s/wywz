@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>company</title>
+    <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/wy/css/index.css">
+    <link rel="stylesheet" href="public/wy/css/jianjie.css">
+    <link rel="stylesheet" href="public/wy/css/jianjie2.css">
+</head>
+<body>
+
+    <include file="Public/header"/>
+
+    <div class="container">
+        <div class="banner4">
+            <img src="public/wy/images/banner4.jpg" alt="">
+        </div>
+    </div>
+
+    <div id="faenza" class="same">
+        <h1>THE COURSE OF A COMPANY'S HISTORY </h1>
+        <?php
+              $l = M("category")->where(array("classname"=>'contract us'))->find();
+           ?>
+        <div class="middle">
+            <p><{$l['content']|editor|escapeshow=true}></p>
+        </div>
+        <div class="down">
+            <a href="index.php?m=index&a=catalog">
+                <img src="public/wy/images/middle1.jpg" alt="">
+                <u>Faenza is our brand</u>
+            </a>
+            <a class="aa" href="index.php?m=index&a=history">
+                <img src="public/wy/images/middle2.jpg" alt="">
+                <u>History</u>
+            </a>
+            <a href="index.php?m=index&a=company">
+                <img src="public/wy/images/middle3.jpg" alt="">
+                <u>Contact us</u>
+            </a>
+        </div>
+    </div>
+
+    <include file="Public/footer"/>
+
+</body>
+</html>
