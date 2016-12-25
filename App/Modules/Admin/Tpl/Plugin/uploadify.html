@@ -245,7 +245,7 @@ $(function() {
 			var fileurl_tmp = "";
 
 			$("input[name^='fileurl_tmp']").each(function(){
-				fileurl_tmp += '<li rel="'+ this.value +'"><input type="text" name="info[<?php echo $input; ?>][]" value="'+ this.value +'" /><a href="javascript:void(0);" onclick="ClearPicArr(\''+ this.value +'\')">删除</a></li>';
+				fileurl_tmp += '<li rel="'+ this.value +'"><img src="'+ this.value +'"style="width:50px;height:50px;"/><input type="text" name="info[<?php echo $input; ?>][]" value="'+ this.value +'" /><a href="javascript:void(0);" onclick="ClearPicArr(\''+ this.value +'\')">删除</a></li>';
 			});
 
 			$(window.parent.document).find("#<?php echo $area ;?>").append(fileurl_tmp);
