@@ -97,8 +97,9 @@ class IndexAction extends BaseAction{
 	function content(){
 		$id = I('id');
 		$map['id'] = $id;
-		$list = M("content")->where($map)->find();
-		var_dump($list);
+		$list = M("category")->where($map)->find();
+		$this->assign("r",$list);
+		$this->display();
 	}
 
 }
