@@ -45,9 +45,19 @@ class ProductAction extends BaseAction{
 		$res = M("category")->order(array("orderid"=>"asc"))->field("id")->where($map)->select();
 		$new = array();
 		foreach ($res as $k => $v) {
+			$maps['pid'] = $v['id'];
+			$r = M("category")->order(array("orderid"=>"asc"))->field("id")->where($maps)->select();
+			if($r){
+				foreach ($r as $key => $value) {
+					$new[] = $value['id'];
+				}
+			}else{}
 			$new[] = $v['id'];			
 		}
 		$arr['pid']  = array('in',$new);
+		if($id == 72){
+			$arr['pid'] = 72;
+		}
 		$res = M("content")->order(array("orderid"=>"asc"))->where($arr)->select();
 		$this->assign("list",$res);
 		$this->display();
@@ -56,6 +66,13 @@ class ProductAction extends BaseAction{
 	function b2list(){
 		$id = I('id');
 		$map['pid'] = $id;
+		$r = M("category")->order(array("orderid"=>"asc"))->field("id")->where($map)->select();
+		if($r){
+			foreach ($r as $key => $value) {
+				$new[] = $value['id'];
+			}
+			$map['pid']  = array('in',$new);
+		}
 		$res = M("content")->order(array("orderid"=>"asc"))->where($map)->select();
 		$this->assign("list",$res);
 		$this->display();
