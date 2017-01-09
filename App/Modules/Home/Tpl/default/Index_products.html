@@ -47,10 +47,10 @@
                         <a href="index.php?m=product&a=blist&id=<{$l2.id}>"><li class="lists_01"><{$l2.classname}></li></a>
                         <?php
                             $map['pid'] = $l2['id'];
-                            $rs = M("content")->where($map)->select();                                
+                            $rs = M("category")->where($map)->select();                                
                         ?>
                         <volist name="rs" id='rs'>
-                            <li><a href="index.php?m=product&a=bdetail&id=<{$rs.id}>"><{$rs.title}> </a> </li>
+                            <li><a href="index.php?m=product&a=bdetail&id=<{$rs.id}>"><{$rs.classname}> </a> </li>
                         </volist>                           
                     </ul>
                     </volist>
