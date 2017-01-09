@@ -1,27 +1,29 @@
-.banner7{height:211px;width:1190px;margin:0 auto; position:relative;}
-.banner7 img{height:100%;width:100%;}
-.banner7 .banner_txt{height:80px;width:100%;position:absolute;top:65px;left:0;color:#fff;}
-.banner7 .banner_txt .title{float:left; height:38px;width:100%;line-height:38px; font-size:38px; text-align:center;margin-bottom:10px;}
-.banner7 .banner_txt .article{font-size:20px;width:100%;text-align:center;}
-
-.pro_show {min-height:1300px;height:auto;width:1190px;margin:0 auto;}
-.pro_show .show1{float:left;min-height:570px;height:auto;padding-top:80px;border-bottom:1px solid #d9d9d9;}
-.pro_show .show1 .showLeft{float:left;height:450px;width:600px; margin-right:75px;}
-.pro_show .show1 .showLeft img{height:100%;width:100%;}
-.pro_show .show1 .showRight{float:left;min-height:450px;width:455px;}
-.pro_show .show1 .showRight .pro_title{float:left;height:13px;width:100%;padding:25px 0 40px 0;line-height:13px;text-align: left;}
-.pro_show .show1 .showRight .pro_style {float:left;height:151px;width:100%;margin-bottom:46px;}
-.pro_show .show1 .showRight .pro_style img{float:left;margin-right:25px;margin-bottom:15px;-webkit-box-sizing:border-box;cursor:pointer;}
-.pro_show .show1 .showRight .pro_style img:nth-child(1){border:1px solid #066f39;margin-right:23px;margin-bottom:13px;}
-.pro_show .show1 .showRight .pro_name{float:left;height:48px;width:100%;line-height:48px;font-size:16px;border-bottom:1px solid #d9d9d9;color:#066f39;margin-bottom:26px;}
-.pro_show .show1 .showRight .pro_size{float:left;line-height:38px;font-size:14px;}
-
-.pro_show .show2{float:left;min-height:570px;height:auto;padding-top:80px;}
-.pro_show .show2 .showLeft{float:left;height:450px;width:600px; margin-right:75px; overflow: hidden;}
-.pro_show .show2 .showRight{float:left;min-height:450px;width:455px;}
-.pro_show .show2 .showRight .pro_txt{width:388px;line-height:24px;margin-top:25px;}
-
-
-.pro_show .show2 .swiper-container .swiper-slide{height:100%; width:100%}
-
-
+.banner7{height:211px;width:1190px;margin:0 auto; position:relative;}
+.banner7 img{height:100%;width:100%;}
+.banner7 .banner_txt{height:80px;width:100%;position:absolute;top:65px;left:0;color:#fff;}
+.banner7 .banner_txt .title{float:left; height:38px;width:100%;line-height:38px; font-size:38px; text-align:center;margin-bottom:10px;}
+.banner7 .banner_txt .article{font-size:20px;width:100%;text-align:center;}
+
+.pro_show {min-height:1300px;height:auto;width:1190px;margin:0 auto;}
+.pro_show .show1{float:left;min-height:570px;height:auto;padding-top:80px;border-bottom:1px solid #d9d9d9;}
+.pro_show .show1 .showLeft{float:left;height:450px;width:600px; margin-right:75px; text-align:center; border:#006600 solid 0px;}
+.pro_show .show1 .showLeft img{height:100%;width:100%;}
+.pro_show .show1 .showRight{float:left;min-height:450px;width:455px;}
+.pro_show .show1 .showRight .pro_title{float:left;height:13px;width:100%;padding:25px 0 40px 0;line-height:13px;text-align: left;}
+.pro_show .show1 .showRight .pro_style {float:left;min-height:151px;width:100%;margin-bottom:46px;}
+.pro_show .show1 .showRight .pro_style img{float:left;margin-right:25px;margin-bottom:15px;-webkit-box-sizing:border-box;cursor:pointer;width:58px;height:50px; border:#FFFFFF solid 1px;}
+.pro_show .show1 .showRight .pro_style img.cur{ border:1px solid #066f39;}
+/*
+.pro_show .show1 .showRight .pro_style img:nth-child(1){border:1px solid #066f39;margin-right:23px;margin-bottom:13px;}*/
+.pro_show .show1 .showRight .pro_name{float:left;height:48px;width:100%;line-height:48px;font-size:16px;border-bottom:1px solid #d9d9d9;color:#066f39;margin-bottom:26px;}
+.pro_show .show1 .showRight .pro_size{float:left;line-height:38px;font-size:14px;}
+
+.pro_show .show2{float:left;min-height:570px;height:auto;padding-top:80px;}
+.pro_show .show2 .showLeft{float:left;height:450px;width:600px; margin-right:75px; overflow: hidden;}
+.pro_show .show2 .showRight{float:left;min-height:450px;width:455px;}
+.pro_show .show2 .showRight .pro_txt{width:388px;line-height:24px;margin-top:25px;}
+
+
+.pro_show .show2 .swiper-container .swiper-slide{height:100%; width:100%}
+
+
