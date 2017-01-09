@@ -2,79 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>search</title>
+    <title>Products - Ceramics</title>
     <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/wy/css/swiper.min.css">
     <link rel="stylesheet" href="public/wy/css/index.css">
-    <link rel="stylesheet" href="public/wy/css/huace.css">
-
+    <link rel="stylesheet" href="public/wy/css/products.css">
+    <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
+    <script src="public/wy/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var $bannerHeight = 442 * (document.body.clientWidth / 1920)+"px";
+            console.log($bannerHeight);
+            $(".banner5").css({"height":$bannerHeight});
+        })
+    </script>
+    <style type="text/css">
+        /*分页*/
+.pages{ float:left;height:42px;padding:65px 0;text-align:center;width:100%;}
+.pages a{ line-height:40px; border:1px solid #dedede; display:inline-block; font-size:12px; padding:0 10px; border-radius:3px; text-decoration:none; color:#666;min-width: 40px;}
+.pages a:hover{ background:#f1f1f1; border-color:#bbb; color:#333;}
+.pages a.cur{ background:#1b6d85;color:#fff;}
+.pages a.cur:hover{ color:#f60; background:none;}
+    </style>
 </head>
 <body>
+    
+    <include file="Public/header"/>    
 
-    <include file="Public/header"/>
-
-    <div class="banner9">
-        <img src="public/wy/images/banner5.jpg" alt="">
+    <div class="conta">
+        <div class="banner5">
+            <img src="public/wy/images/banner5.jpg" alt="">
+        </div>
     </div>
 
-    <div class="container" >
-        <div class="pic_content">
-            <div class="con_left">
-                <div class="top list">
+    <div class="conta">
+        <div class="middle">
+            <h3>Search</h3>
+            <p class="txt1">he popular ceramics industry expanded towards the middle of the 19 century.</p>
+            <p class="txt2">he popular ceramics industry expanded towards </p>
+        </div>
+    </div>
+    <div class="conta">
+        <div class="main clearfix" style="padding-bottom:50px;">
+            
+
+            <div class="_imgp">
+
                     <volist name="list" id="l">
-                        <a href="<{$l.id}>">
+                        <a href="#"  style="margin:70px;width:250px;">
                             <img src="<{$l.picurl}>" alt="">
                             <u><{$l.title}></u>
                         </a>
                     </volist>
                     
-                </div>
-        
-                <!--
-                <div class="pager">
-                    <span class="active">1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                </div>
-                -->
             </div>
-            <div class="con_right btn_select">
-                <div class="btn-group btn_select">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="txt">Search</span>
-                        <!--<span class="caret"></span>-->
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="./index.php?m=index&a=catalog">ALL</a>
-                        </li>
-                        <volist name="cate" id="c">
-                        <li>
-                            <a href="./index.php?m=index&a=catalog&id=<{$c.id}>"><{$c.classname}></a>
-                        </li>
-                        </volist>
-                        
-                    </ul>
-                </div>
-            </div>
+            <div class="pages"><{$page}></div>
         </div>
     </div>
 
+    <include file="Public/footer"/>
 
-   <include file="Public/footer"/>
-
-    <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
-    <script src="public/wy/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $(".pager span").click(function(){
-                $(this).addClass("active").siblings().removeClass("active");
-            });
-            var $bannerHeight = 367 * (document.body.clientWidth / 1920)+"px";
-            console.log($bannerHeight);
-            $(".banner9").css({"height":$bannerHeight});
-        })
-    </script>
 </body>
 </html>

@@ -38,7 +38,9 @@
                 <volist name="list" id="l">
                 <div class="con_left">
                     <div class="_img">
+                        <a href="javascript:;"  class='outlinkimg' val="<{$l.id}>">
                         <img src="<{$l.picurl}>" alt="">
+                        </a>
                     </div>
                     <div class="con_txt">
                         <div class="top">
@@ -126,6 +128,13 @@
             });
 
             $(".outlinks").click(function(){
+                var id = $(this).attr("val");
+                $(".con_left").hide();
+                $(".pages").hide();
+                $(".detail_"+id).show(1000);
+            });
+
+            $(".outlinkimg").click(function(){
                 var id = $(this).attr("val");
                 $(".con_left").hide();
                 $(".pages").hide();

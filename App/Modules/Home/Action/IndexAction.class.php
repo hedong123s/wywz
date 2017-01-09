@@ -89,8 +89,13 @@ class IndexAction extends BaseAction{
 	function search(){
 		$keyword = I('k');
 		$map['title'] = array('like',"%$keyword%");
-		$list = M("content")->order(array("orderid"=>"asc"))->where($map)->limit(8)->select();
+		import('ORG.Util.Page');// 导入分页类
+		$count = M("content")->order(array("orderid"=>"asc"))->where($map)->count();
+		$Page   = new Page($count,4);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+		$show   = $Page->show();// 分页显示输出
+		$list = M("content")->order(array("orderid"=>"asc"))->where($map)->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign("list",$list);
+		$this->assign('page',$show);
 		$this->display();
 	}
 
