@@ -1,52 +1,52 @@
-<div  id="header">
-        <h1>
-            <a href="index.php"><img src="public/wy/images/logo.png" alt=""></a>
-        </h1>
-        <div class="headerRight">
-            <div class="links">
-                <a href="index.php">HOME</a>
-                <a href="index.php?m=index&a=catalog">CATALOG</a>
-                <a href="index.php?m=index&a=products">PRODUCTS</a>
-                <a href="index.php?m=index&a=news">NEWS</a>
-                <a href="index.php?m=index&a=company">COMPANY</a>
-            </div>
-            <div class="down">
-                <div class="downLeft">
-                    <a class="txt1" href="index.php?m=product&a=ceramics" style="width:40%;padding-left:20px;">Ceramics</a>
-                    <a class="txt2" href="index.php?m=product&a=sanitary"> Sanitary ware</a>
-                </div>
-                <div class="downRight">
-                    <input type="text" placeholder="Search" id="name">
-                    <a href="javascript:;" id="sub"><button  ></button></a>
-                </div>
-            </div>
-        </div>
-<style>
-
-/*分页*/
-.pages{ float:left;height:42px;padding:65px 0;text-align:center;width:100%;}
-.pages a{ line-height:40px; border:1px solid #dedede; display:inline-block; font-size:12px; padding:0 10px; border-radius:3px; text-decoration:none; color:#666;min-width: 40px;}
-.pages a:hover{ background:#f1f1f1; border-color:#bbb; color:#333;}
-.pages a.cur{ background:#1b6d85;color:#fff;}
-.pages a.cur:hover{ color:#f60; background:none;}
-
-.btn b{font-size: 50px;}
-
-
-</style>
-
-
-</div>
-        <script src="public/wy/js/jquery-1.7.1.js"></script>
-        <script type="text/javascript">
-            $("#sub").click(function(){
-                var k =$('#name').val();
-                if(k == ''){
-                    alert('请输入搜索关键字');
-                }else{
-                    location.href='./index.php?m=index&a=search&k='+k;
-                    return false
-                }
-                
-            })
+<div  id="header">
+        <h1>
+            <a href="index.php"><img src="public/wy/images/logo.png" alt=""></a>
+        </h1>
+        <div class="headerRight">
+            <div class="links">
+                <a href="index.php">HOME</a>
+                <a href="index.php?m=index&a=catalog">CATALOG</a>
+                <a href="index.php?m=index&a=products">PRODUCTS</a>
+                <a href="index.php?m=index&a=news">NEWS</a>
+                <a href="index.php?m=index&a=company">COMPANY</a>
+            </div>
+            <div class="down">
+                <div class="downLeft">
+                    <a class="txt1" href="index.php?m=product&a=ceramics" style="width:40%;padding-left:20px;">Ceramics</a>
+                    <a class="txt2" href="index.php?m=product&a=sanitary"> Sanitary ware</a>
+                </div>
+                <div class="downRight">
+                    <input type="text" placeholder="Search" id="name">
+                    <a href="javascript:;" id="sub"><button  ></button></a>
+                </div>
+            </div>
+        </div>
+<style>
+
+/*分页*/
+.pages{ float:left;height:42px;padding:65px 0;text-align:center;width:100%;}
+.pages a{ line-height:40px; border:1px solid #dedede; display:inline-block; font-size:12px; padding:0 10px; border-radius:3px; text-decoration:none; color:#666;min-width: 40px;}
+.pages a:hover{ background:#f1f1f1; border-color:#bbb; color:#333;}
+.pages a.cur{ background:#1b6d85;color:#fff;}
+.pages a.cur:hover{ color:#f60; background:none;}
+
+.btn b{font-size: 50px;}
+
+
+</style>
+
+
+</div>
+        <script src="public/wy/js/jquery-1.7.1.js"></script>
+        <script type="text/javascript">
+            $("#sub").click(function(){
+                var k =$('#name').val();
+                if(k == ''){
+                    alert('请输入搜索关键字');
+                }else{
+                    location.href='./index.php?m=index&a=search&k='+k;
+                    return false
+                }
+                
+            })
         </script>

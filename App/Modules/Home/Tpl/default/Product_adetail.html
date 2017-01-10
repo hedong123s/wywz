@@ -1,128 +1,254 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Ceramics</title>
+
     <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="public/wy/css/index.css">
+
     <link rel="stylesheet" href="public/wy/css/xiangqing.css">
+
     <link rel="stylesheet" href="public/wy/css/swiper.min.css">
+
 </head>
+
 <body>
 
+
+
    <include file="Public/header"/>
+
     <div class="banner7">
+
         <img src="public/wy/images/banner7.jpg" alt="">
+
         <div class="banner_txt">
 
+
+
             <?php
+
                 //var_dump($res);
+
                 $map['id'] = $res['pid'];
+
                 $r = M('category')->where($map)->find();
+
             ?>
+
             <span class="title">Veronoa</span>
+
             <p class="article">
+
                 <span class="_span1">Faenza@</span>
+
                 <span class="_span2">| Ceramics |</span>
+
                 <span class="_span3"><{$r.classname}></span>
+
             </p>
+
         </div>
+
     </div>
+<script src="public/wy/js/picautozoom.js"></script>
     <div class="container" style="height:100%">
+
         <div class="pro_show clearfix">
+
             <div class="show1">
+
                 <?php
+
                     $arr = explode(',', $res['picarr']);
+
                     $ar = explode('|', $arr[0]);
+
                     $arr_xg = explode(',', $res['picarr_xg']);
+
                 ?>
+
                 <div class="showLeft" id="showLeft">
+
                     <img src="<?php echo $ar[0];?>" alt="<?php echo $ar[1];?>"   name="picautozoom" >
+
                     <p style="text-align:center;padding-top:10px;"><{$ar[1]}></p>
+
                 </div>
+
                 <div class="showRight">
+
                     <p class="pro_title"><{$r.classname}></p>
+
                     <p class="pro_style">
+
                         <?php
+
                             
+
                             foreach ($arr as $k => $v) {
+
                                 $a = explode("|", $v);
+
                                 $url  =$a[0];
+
                                 echo '<img src="'.$url.'" alt="'.$a[1].'"  name="picautozoom"  /> ';
+
                                 //echo '<span>'.$a[1].'</span>';
+
                             }
+
                         ?>
+
                         
+
                     </p>
+
                     <p class="pro_name">
+
                         <{$res.title}>型号或名称
+
                     </p>
+
                     <?php
+
                         $a = explode('|', $res['keywords']);
+
                     ?>
+
                     <p class="pro_size">
+
                         SIZE : 
+
                         <volist name="a" id="a">
+
                             <{$a}> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                         </volist> 
+
                     </p>
+
                 </div>
-            </div>
-            <div class="show2">
-                <div class="showLeft swiper-container">
-                    <div class="swiper-wrapper">
-                        <volist name="arr_xg" id="xg">
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <img src="<{$xg}>" alt="" style="width:600px;height:450px">
-                                </a>
-                            </div>
-                        </volist>
-                    </div>
-                     <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
-                </div>    
+
             </div>
 
             <div class="show2">
+
+                <div class="showLeft swiper-container">
+
+                    <div class="swiper-wrapper">
+
+                        <volist name="arr_xg" id="xg">
+
+                            <div class="swiper-slide">
+
+                                <a href="javascript:;">
+
+                                    <img src="<{$xg}>" alt="" style="width:600px;height:450px">
+
+                                </a>
+
+                            </div>
+
+                        </volist>
+
+                    </div>
+
+                     <!-- 如果需要分页器 -->
+
+                    <div class="swiper-pagination"></div>
+
+                </div>    
+
+            </div>
+
+
+
+            <div class="show2">
+
                 <p class="pro_txt">
+
                     <{$res.content|editor|escapeshow=true}>
+
                 </p>
+
             </div>
+
             </div>
+
         </div>
+
+
+
+
 
 
 
     
 
+
+
     <include file="Public/footer"/>
+
   
+
     <!--<script src="public/wy/js/jquery-3.1.1.slim.min.js"></script> -->
+
 	
- <script src="public/wy/js/picautozoom.js"></script>
+
+ 
+
     <script src="public/wy/js/swiper.min.js"></script>
+
     <script type="text/javascript">
+
         $(function(){
+
             $(".pro_style img").click(function(){/*
+
                 $(this).css({"border":"1px solid #066f39","margin-right":"23px"})
+
                         .siblings().css({"margin-right":"25px","border":"0"});*/
+
 				$(this).addClass("cur").siblings().removeClass("cur");
-                $("#showLeft img").attr("src",$(this).attr("src")).css("height","auto");
+
+                $("#showLeft img").attr("src",$(this).attr("src")).css({"width":"100%","height":"auto"});
 				//.picauto();
+
                 $("#showLeft p").html($(this).attr("alt"));
+
             })
+
 			$(".pro_style img").eq(0).addClass("cur");
+
              var mySwiper = new Swiper ('.swiper-container', {
+
                 direction: 'horizontal',
+
                 loop: true,
+
                 // 如果需要分页器
+
                 pagination: '.swiper-pagination',
+
                 autoplay:2000,
+
                 autoplayDisableOnInteraction:false
 
+
+
             });
+
         })
+
     </script>
+
 </body>
+
 </html>
