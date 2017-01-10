@@ -14,6 +14,32 @@
 
     <link rel="stylesheet" href="public/wy/css/xiangqing2.css">
 
+      <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
+
+
+    <script src="public/wy/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript">
+
+
+        $(function(){
+
+
+            var $bannerHeight = 367 * (document.body.clientWidth / 1920)+"px";
+
+
+            console.log($bannerHeight);
+
+
+            $(".banner9").css({"height":$bannerHeight});
+
+
+        })
+
+
+    </script>
+
 </head>
 
 <body>
@@ -40,13 +66,35 @@
 
         <div class="pro_list_top">
 
+             <?php
+
+                $map1['id'] = I('id');   //Ceramics
+
+                $r = M("content")->where($map1)->find();
+
+                $map2['id'] = $r['pid'];   //Sanitary ware                        
+
+                $r2 = M("category")->where($map2)->find();
+
+                $map3['pid'] = $r2['pid'];
+
+                $list3 = M("category")->where($map3)->select();
+
+                $r3 = M('category')->where(array('id'=>$list3[0]['pid']))->find();
+
+                $map4['pid'] = $r3['pid'];
+
+                $list4 = M("category")->where($map4)->select();
+
+            ?>
+
             <div class="faucetlogo">
 
                <!--<img src="public/wy/images/faucetlogo.jpg" alt="">-->
 
-                <p style="color:#4fb4c8;font-size:26px"><{$rs.classname}></p>
+                <p style="color:#4fb4c8;font-size:26px"><{$r3.classname}></p>
 
-                <p>Faenze庐 Sanitary ware</p>
+                <p>Faenze® Sanitary ware</p>
 
             </div>
 
@@ -57,8 +105,6 @@
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
                         <span class="txt">Sanitary ware</span>
-
-                        <b>∨</b>
 
                         <!--<span class="caret"></span>-->
 
@@ -84,33 +130,11 @@
 
                 <div class="btn-group">
 
-                    <?php
-
-                        $map1['id'] = I('id');   //Ceramics
-
-                        $r = M("content")->where($map1)->find();
-
-                        $map2['id'] = $r['pid'];   //Sanitary ware                        
-
-                        $r2 = M("category")->where($map2)->find();
-
-                        $map3['pid'] = $r2['pid'];
-
-                        $list3 = M("category")->where($map3)->select();
-
-                        $r3 = M('category')->where(array('id'=>$list3[0]['pid']))->find();
-
-                        $map4['pid'] = $r3['pid'];
-
-                        $list4 = M("category")->where($map4)->select();
-
-                    ?>
+                   
 
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
                         <span class="txt"><{$r3.classname}></span>
-
-                        <b>∨</b>
 
                     </button>
 
@@ -139,9 +163,6 @@
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
                         <span class="txt"><{$r2.classname}></span>
-
-                        <b>∨</b>
-
                     </button>
 
                     <ul class="dropdown-menu" role="menu">
