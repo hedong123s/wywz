@@ -6,39 +6,40 @@
 
     <meta charset="UTF-8">
 
-    <title>detail</title>
+    <title>faucet list</title>
 
     <link rel="stylesheet" href="public/wy/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="public/wy/css/index.css">
 
-    <link rel="stylesheet" href="public/wy/css/xiangqing2.css">
+    <link rel="stylesheet" href="public/wy/css/faucet1.css">
 
-      <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
-
+    <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
 
     <script src="public/wy/js/bootstrap.min.js"></script>
 
-
     <script type="text/javascript">
-
 
         $(function(){
 
-
             var $bannerHeight = 367 * (document.body.clientWidth / 1920)+"px";
-
 
             console.log($bannerHeight);
 
-
             $(".banner9").css({"height":$bannerHeight});
-
 
         })
 
-
     </script>
+
+    <style type="text/css">
+        .bq{
+            padding:10px;line-height:40px;align:center;border:1px solid #d9d9d9;cursor:pointer
+        }
+        .cur{
+            background: #eff0f1
+        }
+    </style>
 
 </head>
 
@@ -48,102 +49,216 @@
 
     <include file="Public/header"/>
 
-    <div class="contain">
+    <div class="container conTop">
 
-        <div class="banner10">
+        <div class="banner9">
 
-            <img src="public/wy/images/banner10_1.jpg" alt="">
-
-            <img src="public/wy/images/banner10_2.jpg" alt="">
-
-            <img src="public/wy/images/banner10_3.jpg" alt="">
+            <img src="public/wy/images/faucet1.jpg" alt="">
 
         </div>
 
     </div>
 
-    <div class="_con">
+    <div class="container" style="padding-bottom:80px;">
 
-        <div class="pro_list_top">
+            <div class="container">
 
-             <?php
+                <div class="pro_list_top">
 
-                $map1['id'] = I('id');   //Ceramics
+                    <?php
 
-                $r = M("content")->where($map1)->find();
+                                $map3['id'] = I('id');
 
-                $map2['id'] = $r['pid'];   //Sanitary ware                        
+                                $r = M("category")->where($map3)->find();
 
-                $r2 = M("category")->where($map2)->find();
+                                $rs = M("category")->where(array('id'=>$r['pid']))->find();
 
-                $map3['pid'] = $r2['pid'];
+                                $list2 = M("category")->where(array('pid'=>$rs['pid']))->select();
 
-                $list3 = M("category")->where($map3)->select();
+                                $list3 = M("category")->where(array('pid'=>$r['pid']))->select();
 
-                $r3 = M('category')->where(array('id'=>$list3[0]['pid']))->find();
+                    ?>
 
-                $map4['pid'] = $r3['pid'];
+                    <?php
 
-                $list4 = M("category")->where($map4)->select();
+                        $map['id'] = I('id');
 
-            ?>
+                        $r = M("category")->where($map)->find();
 
-            <div class="faucetlogo">
+                    ?>
 
-               <!--<img src="public/wy/images/faucetlogo.jpg" alt="">-->
+                    <div class="faucetlogo">
 
-                <p style="color:#4fb4c8;font-size:26px"><{$r3.classname}></p>
+                        <!--<img src="public/wy/images/faucetlogo.jpg" alt="">-->
 
-                <p>Faenze® Sanitary ware</p>
+                        <p style="color:#4fb4c8;font-size:26px"><{$rs.classname}></p>
 
-            </div>
+                        <p>Faenze® Sanitary ware</p>
 
-            <div class="select">
+                    </div>
 
-                <div class="btn-group">
+                    <div class="select">
 
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <div class="btn-group">
 
-                        <span class="txt">Sanitary ware</span>
-                        <b></b>
-                        <!--<span class="caret"></span>-->
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
-                    </button>
+                                <span class="txt">Sanitary ware</span>
 
-                    <ul class="dropdown-menu" role="menu">
+                                <b></b>
 
-                        <li>
+                                <!--<span class="caret"></span>-->
 
-                            <a href="index.php?m=product&a=ceramics">Ceramics</a>
+                            </button>
 
-                        </li>
+                            <ul class="dropdown-menu" role="menu">
 
-                        <li>
+                                <li>
 
-                            <a href="index.php?m=product&a=sanitary">Sanitary ware</a>
+                                    <a href="index.php?m=product&a=ceramics">Ceramics</a>
 
-                        </li>
+                                </li>
 
-                    </ul>
+                                <li>
 
-                </div>
+                                    <a href="index.php?m=product&a=sanitary">Sanitary ware</a>
 
-                <div class="btn-group">
+                                </li>
 
-                   
+                            </ul>
 
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        </div>
 
-                        <span class="txt"><{$r3.classname}></span>
-                         <b></b>
+                        <div class="btn-group">
 
-                    </button>
+                            
+
+                            
+
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+
+
+
+                                <span class="txt"><{$rs.classname}></span>
+
+                                <b></b>
+
+                            </button>
+
+                            <ul class="dropdown-menu" role="menu">
+
+                                <volist name="list2" id="l2">
+
+                                <li>
+
+                                    <a href="index.php?m=product&a=blist&id=<{$l2.id}>"><{$l2.classname}>
+                                    </a>
+
+                                </li>
+
+                                </volist>
+
+                                
+
+                            </ul>
+
+                        </div>
+
+                        <div class="btn-group">
+
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+
+                                <span class="txt"><{$r.classname}></span>
+
+                                <b></b>
+
+                            </button>
+
+                            <ul class="dropdown-menu" role="menu">
+
+                                <volist name="list3" id="l3">
+
+                                <li>
+
+                                    <a href="index.php?m=product&a=b2list&id=<{$l3.id}>"><{$l3.classname}></a>
+
+                                </li>
+
+                                </volist>
+
+                                
+
+                            </ul>
+
+                        </div> 
+
+
+
+                        <?php
+
+                            $maps['pid'] = I('id');
+
+                            $rr = M("category")->order(array("orderid"=>"asc"))->where($maps)->select();                        
+
+                        ?>
+
+                        <if condition = "$rr != ''">
+
+                        
+
+                        <div style="padding-top:62px;padding-left:350px;">
+
+                            <volist name="rr" id="l4">
+                                
+                                <a href="index.php?m=product&a=b2list&id=<{$id}>|<{$l4.id}>" style="" class="bq cur"><{$l4.classname}></a>
+
+                            </volist>
+
+                        </div>
+
+                        </if>                   
+
+                    </div>
+
+
 
                     
 
-                    <ul class="dropdown-menu" role="menu">
 
-                        <volist name="list4" id="l1">
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+        <div class="products_list2">
+
+            <div class="btn-group btn_special"  style="border-radius:0px 10px 10px 0px">
+
+                <button type="button" class="btn  btn-default dropdown-toggle" data-toggle="dropdown" 
+
+                style="border-radius:20px;">
+
+                    <span class="txt" style="text-align:left;padding-left:20px;">Sanitary ware</span>
+
+                    <b class="">
+
+                        <!-- <img src="public/wy/images/11.jpg" class="img"/> -->
+
+                    </b>
+
+                    <!--<span class="caret"></span>-->
+
+                </button>
+
+                <ul class="dropdown-menu" role="menu">
+
+                    <volist name="list2" id="l1">
 
                         <li>
 
@@ -151,37 +266,39 @@
 
                         </li>
 
-                        </volist>
+                    </volist>
 
-                        
+                    
 
-                    </ul>
+                </ul>
 
-                </div>
+            </div>
 
-                <div class="btn-group">
+    
 
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+           
 
-                        <span class="txt"><{$r2.classname}></span>
-                         <b></b>
-                    </button>
 
-                    <ul class="dropdown-menu" role="menu">
 
-                        <volist name="list3" id="l3">
+            <div class="_imgp">
 
-                        <li>
+                <volist name="list" id="l">
 
-                            <a href="index.php?m=product&a=b2list&id=<{$l3.id}>"><{$l3.classname}></a>
+                <div style="float:left;margin-top:80px;margin-left:50px;">
 
-                        </li>
+                <a href="index.php?m=product&a=bdetail&id=<{$l.id}>">
 
-                        </volist>
+                    <img src="<{$l.picurl}>" alt="" style="width:200px;height:200px;">
 
-                    </ul>
+                    <p style="padding-left:50px;padding-top:10px;"><u ><{$l.title}></u></p>
+
+                </a>
 
                 </div>
+
+                </volist>
+
+               
 
             </div>
 
@@ -189,95 +306,7 @@
 
     </div>
 
-<script src="public/wy/js/picautozoom.js"></script>
 
-    <div class="_con">
-
-        <div class="xiangqing">
-
-            <div class="top">
-
-                <div class="left">
-
-                    <?php
-
-                        $arr = explode(',', $res['picarr']);
-
-                    ?>
-
-                    <img class="img" src="<?php echo $arr[0];?>" alt=""  name="picautozoom" >
-
-                    <div class="img_list">
-
-                        <?php
-
-                            
-
-                            foreach ($arr as $k => $v) {
-
-                                echo '<img src="'.$v.'" alt="" style="width:60px;height:60px;"  name="picautozoom"  /> ';
-
-                            }
-
-                        ?>
-
-                        
-
-                    </div>
-
-                </div>
-
-                <div class="details">
-
-                    <h1><{$res.title}></h1>
-
-                    <P class="details_1">
-
-                        <span class="model">Series:</span>
-
-                        <span class="model_txt">Sanitary ware | <{$list1.classname}></span>
-
-                    </P>
-
-                    <P class="details_2">
-
-                        <span class="model">Description:</span>
-
-                        <span class="model_txt"><{$res.description}></span>
-
-                    </P>
-
-                    <P class="details_3">
-
-                        <span class="model">Colour:</span>
-
-                        <span class="model_txt"><{$res.tag}></span>
-
-                    </P>
-
-
-
-                    <button type="button">Download PDF</button>
-
-                </div>
-
-            </div>
-
-            <div class="down clearfix">
-
-                <h1>Product Size</h1>
-
-                <p class="pro_txt">
-
-                    <{$res.content|editor|escapeshow=true}>
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
 
 
 
@@ -287,29 +316,25 @@
 
     <include file="Public/footer"/>
 
-    <!--<script src="public/wy/js/jquery-3.1.1.slim.min.js"></script> -->
 
-	
 
-    <script src="public/wy/js/bootstrap.min.js"></script>
+    <script src="public/wy/js/jquery-3.1.1.slim.min.js"></script>
 
     <script type="text/javascript">
 
         $(function(){
 
-            $(".img_list img").click(function(){
+            $(".btn_special .btn").click(function(){
 
-                $(this).css({"border":"2px solid #d9d9d9"}).siblings().css({"border":"1px solid #d9d9d9"});
-
-                $(".img").attr("src",$(this).attr("src"));
+               $(".btn_special b").toggleClass('beChanged');
 
             })
 
+          
+
         })
 
-    </script> 
-
-
+    </script>
 
 </body>
 
