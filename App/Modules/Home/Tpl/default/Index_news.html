@@ -32,7 +32,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="container">
+    <div class="container ">
         <div class="news_content">
             <div class="conLeft">
                 <volist name="list" id="l">
@@ -61,7 +61,7 @@
                         <span class="time"><{$l.posttime|getdatetime}></span>
                     </div>
                     <div class="detail_txt">
-                        <{$l.content}>
+                        <{$l.content|editor|escapeshow=true}>
                     </div>
                     <div class="btn_back" style="">
                         <a href="javascript:;">＜＜Back </a>

@@ -40,6 +40,15 @@
 
     </script>
 
+    <style type="text/css">
+        .bq{
+            padding:10px;line-height:40px;align:center;border:1px solid #d9d9d9;cursor:pointer
+        }
+        .cur{
+            background: #eff0f1
+        }
+    </style>
+
 </head>
 
 <body>
@@ -71,20 +80,19 @@
                 $map1['id'] = I('id');   //Ceramics
 
                 $r = M("content")->where($map1)->find();
+                $arr = explode(',', $r['path']);
+                foreach ($arr as $k => $v) {
+                    if($k >2 ){
+                        $map["id"] = $v;
+                        $r[] =  M("category")->where($map)->find();
 
-                $map2['id'] = $r['pid'];   //Sanitary ware                        
-
-                $r2 = M("category")->where($map2)->find();
-
-                $map3['pid'] = $r2['pid'];
-
-                $list3 = M("category")->where($map3)->select();
-
-                $r3 = M('category')->where(array('id'=>$list3[0]['pid']))->find();
-
-                $map4['pid'] = $r3['pid'];
-
-                $list4 = M("category")->where($map4)->select();
+                    }
+                    
+                }
+                $list[0] = M("category")->where(array("pid"=>$r[0]["pid"]))->select();
+                $list[1] = M("category")->where(array("pid"=>$r[1]["pid"]))->select();
+                $list[2] = M("category")->where(array("pid"=>$r[2]["pid"]))->select();
+                
 
             ?>
 
@@ -92,7 +100,7 @@
 
                <!--<img src="public/wy/images/faucetlogo.jpg" alt="">-->
 
-                <p style="color:#4fb4c8;font-size:26px"><{$r3.classname}></p>
+                <p style="color:#4fb4c8;font-size:26px"><{$r[0].classname}></p>
 
                 <p>Faenze® Sanitary ware</p>
 
@@ -134,7 +142,7 @@
 
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
-                        <span class="txt"><{$r3.classname}></span>
+                        <span class="txt"><{$r[0].classname}></span>
                          <b></b>
 
                     </button>
@@ -143,7 +151,7 @@
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <volist name="list4" id="l1">
+                        <volist name="list[0]" id="l1">
 
                         <li>
 
@@ -163,13 +171,13 @@
 
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 
-                        <span class="txt"><{$r2.classname}></span>
+                        <span class="txt"><{$r[1].classname}></span>
                          <b></b>
                     </button>
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <volist name="list3" id="l3">
+                        <volist name="list[1]" id="l3">
 
                         <li>
 
@@ -184,12 +192,30 @@
                 </div>
 
             </div>
+   
 
         </div>
 
     </div>
 
+
+
 <script src="public/wy/js/picautozoom.js"></script>
+
+     <if condition = "$r[2] != ''">
+
+            <div style="margin-top:0px;padding-left:1100px;">
+                    <volist name="list[2]" id="l4">
+                    
+                        <a href="index.php?m=product&a=b2list&id=<?php echo $l4['pid'];?>|<{$l4.id}>" style="" class="bq cur"><{$l4.classname}></a>
+
+                    </volist>
+            
+                
+            </div>
+
+            </if>          
+
 
     <div class="_con">
 

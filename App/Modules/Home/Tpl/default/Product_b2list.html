@@ -66,6 +66,8 @@
                 <div class="pro_list_top">
 
                     <?php
+                                $ids = explode('|', I('id'));
+                                //if($ids)
 
                                 $map3['id'] = I('id');
 
@@ -201,22 +203,7 @@
 
                         ?>
 
-                        <if condition = "$rr != ''">
-
                         
-
-                        <div style="padding-top:62px;padding-left:350px;">
-
-                            <volist name="rr" id="l4">
-                                
-                                <a href="index.php?m=product&a=b2list&id=<{$id}>|<{$l4.id}>" style="" class="bq cur"><{$l4.classname}></a>
-
-                            </volist>
-
-                        </div>
-
-                        </if>                   
-
                     </div>
 
 
@@ -272,6 +259,30 @@
                 </ul>
 
             </div>
+
+            <if condition = "$rr != ''">
+
+                        
+
+            <div style="padding-top:-2px;padding-left:800px;">
+                <if condition="count($ids) == 2">
+                    <volist name="rr" id="l4">
+                    
+                        <a href="index.php?m=product&a=b2list&id=<?php echo $ids[0];?>|<{$l4.id}>" style="" class="bq cur"><{$l4.classname}></a>
+
+                    </volist>
+                <else/>
+                    <volist name="rr" id="l4">
+                    
+                        <a href="index.php?m=product&a=b2list&id=<?php echo I('id');?>|<{$l4.id}>" style="" class="bq cur"><{$l4.classname}></a>
+
+                    </volist>
+                </if>
+                
+            </div>
+
+            </if>                   
+
 
     
 
