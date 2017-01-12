@@ -65,6 +65,10 @@ class ProductAction extends BaseAction{
 
 	function b2list(){
 		$id = I('id');
+		$ids = explode('|', $id);
+		if(count($ids) == 2){
+			$id = $ids[1];
+		}
 		$map['pid'] = $id;
 		$r = M("category")->order(array("orderid"=>"asc"))->field("id")->where($map)->select();
 		if($r){
