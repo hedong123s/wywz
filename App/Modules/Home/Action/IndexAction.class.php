@@ -68,8 +68,6 @@ class IndexAction extends BaseAction{
 		import('ORG.Util.Page');// 导入分页类
 		$Page   = new Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 		$show   = $Page->show();// 分页显示输出
-
-
 		$list = M("content")->order(array("orderid"=>"asc"))->where($maps)->limit($Page->firstRow.','.$Page->listRows)->select();
 		$cate = M("category")->order(array("orderid"=>"asc"))->where($map)->select();
 		$this->assign("list",$list);
@@ -89,6 +87,8 @@ class IndexAction extends BaseAction{
 	function search(){
 		$keyword = I('k');
 		$map['title'] = array('like',"%$keyword%");
+		$map["path"] = array('like',"0,54%");
+		$map["id"] = array("gt","60");
 		import('ORG.Util.Page');// 导入分页类
 		$count = M("content")->order(array("orderid"=>"asc"))->where($map)->count();
 		$Page   = new Page($count,6);// 实例化分页类 传入总记录数和每页显示的记录数(25)

@@ -48,10 +48,20 @@
             <div class="_imgp">
 
                     <volist name="list" id="l">
-                        <a href="#"  style="margin:70px;width:250px;">
-                            <img src="<{$l.picurl}>" alt="">
-                            <u><{$l.title}></u>
+                        <if condition="substr($l['path'],0,7) == '0,54,58'">
+                        <a href="index.php?m=product&a=bdetail&id=<{$l.id}>"  style="margin:70px;width:250px;">
+                            <img src="<{$l.picurl}>" alt="" style="width:240px;height:240px;">
+                            <u style="text-align:left;padding-left:70px;"><{$l.title}></u>
                         </a>
+                        </if>
+
+                        <if condition="substr($l['path'],0,7) == '0,54,57'">
+                        <a href="index.php?m=product&a=adetail&id=<{$l.id}>"  style="margin:70px;width:250px;">
+                            <img src="<{$l.picurl}>" alt="" style="width:240px;height:240px;">
+                            <u style="text-align:left;padding-left:70px;"><{$l.title}></u>
+                        </a>
+                        </if>
+                        
                     </volist>
                     
             </div>
